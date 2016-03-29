@@ -10,7 +10,7 @@ const BookList = function({ books }) {
 };
 
 BookList.propTypes = {
-  books: React.PropTypes.object.isRequired,
+  books: React.PropTypes.object.isRequired
 };
 
 export default BookList;

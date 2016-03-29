@@ -7,8 +7,8 @@ describe('Containers', function() {
   describe('BookView', function() {
     beforeEach(function() {
       this.book = {
-        title: "The little engine that could",
-        description: "A book about a train that tried so hard and finally succeeded"
+        title: 'The little engine that could',
+        description: 'A book about a train that tried so hard and finally succeeded'
       };
 
       const shallowRenderer = TestUtils.createRenderer();

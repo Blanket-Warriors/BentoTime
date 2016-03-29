@@ -17,7 +17,7 @@ class Img extends React.Component {
       <img src={ this.state.src } onError={ this._handleError } {...this.props} />
     );
   }
-};
+}
 
 Img.propTypes = {
   src: React.PropTypes.string.isRequired,

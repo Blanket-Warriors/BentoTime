@@ -16,7 +16,7 @@ const ChapterList = function({ book }) {
 };
 
 ChapterList.propTypes = {
-  book: React.PropTypes.object.isRequired,
+  book: React.PropTypes.object.isRequired
 };
 
 export default ChapterList;

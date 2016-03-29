@@ -53,7 +53,7 @@ module.exports = {
   module: {
     preLoaders: [
       {
-        test: /.js$x?/, loader: 'eslint', exclude: /node_modules/
+        test: /.jsx?$/, loader: 'eslint', exclude: /node_modules/
       }
     ],
 
@@ -76,12 +76,6 @@ module.exports = {
   },
   node: {
     fs: 'empty'
-  },
-  devServer: {
-    contentBase: path.join(baseDir, 'public')
-  },
-  webpackServer: {
-    noInfo: true
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.css', '.scss'],

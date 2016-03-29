@@ -77,7 +77,6 @@ module.exports = function(config) {
       'karma-mocha',
       'karma-sinon',
       'karma-webpack',
-      'karma-coverage',
       'karma-mocha-reporter',
       'karma-chrome-launcher',
       'karma-sourcemap-loader'
