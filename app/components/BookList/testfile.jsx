@@ -12,13 +12,13 @@ describe('Components', function() {
       node = document.createElement('div');
       shallowRenderer = TestUtils.createRenderer();
       books = {
-        "flappy-monkey": {
-          id: "flappy-monkey",
-          title: "Flappy Monkey Banana Attack"
+        'flappy-monkey': {
+          id: 'flappy-monkey',
+          title: 'Flappy Monkey Banana Attack'
         },
-        "flappy-monkey-2": {
-          id: "flappy-monkey-2",
-          title: "Return of the Flappy Monkey"
+        'flappy-monkey-2': {
+          id: 'flappy-monkey-2',
+          title: 'Return of the Flappy Monkey'
         }
       };
     });
