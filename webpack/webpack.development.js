@@ -1,13 +1,13 @@
 /* Development Configuration
 ======================================================================= */
 var developmentConfig = require('./webpack.base.js');
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-var historyApiFallback = require('connect-history-api-fallback')
+var path = require('path');
+var baseDir = developmentConfig.baseDir;
 
-developmentConfig.plugins.push(
-  new BrowserSyncPlugin({
-    proxy: 'localhost:8080'
-  })
-);
+Object.assign(developmentConfig, {
+  devServer: {
+    contentBase: path.join(baseDir, 'public')
+  }
+});
 
 module.exports = developmentConfig;
