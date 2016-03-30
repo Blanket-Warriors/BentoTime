@@ -49,7 +49,6 @@ module.exports = {
     publicPath: '/build/',
     filename: 'main.js'
   },
-  devtool: 'source-map',
   module: {
     preLoaders: [
       {

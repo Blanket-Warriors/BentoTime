@@ -4,11 +4,20 @@
 # BentoTime
 A native pc/mac/linux app for reading and saving manga.
 
-## Starting Development
+## Getting Started
   - install dependencies - `npm install`
   - Make sure all the tests are running - `npm test`
-  - Run Webpack dev server and electron - `npm run dev-server`
-  - Either open the app in a browser by pointing at `localhost:8080`, or open an electron app with `npm run electron`.
+  - Run Webpack dev server and electron - `npm start`
+  - Refresh the electron app when the development server has started.
+
+#### Other CLI Commands
+  - **`npm run build`** - Builds a production copy of BentoTime into `/public/build`
+  - **`npm run packager`** - Builds distributable copies of BentoTime into `/public/packages`
+  - **`npm run prod-electron`** - Runs electron as if it is running from a package. An external server is not necessary to do this.
+  - **`npm run dev-build`** - Builds a development copy of BentoTime (aka un-minified and with source-maps)
+  - **`npm run dev-electron`** - Runs electron in development mode. This depends on a development server running on port `8080`
+  - **`npm run dev-server`** - Runs our development server. We can use this if we just want to test in Chrome.  `npm start` runs both `dev-server` and `dev-electron`
+  - **`npm run clean`** Simply removes the build folder.
 
 ## Contributing
 Use our [contribution repo](https://github.com/Blanket-Warriors/Style-Guide/tree/master/Contribution) to get an idea of the format we expect for PR's, commits, and issues.
@@ -79,8 +88,8 @@ Lets us use Babel with Webpack. Basically, Webpack runs Babel whenever it sees a
 - #### CSS-Loader
 [CSS-Loader](https://github.com/MoOx/eslint-loader) is how we integrate our CSS compilation into our Webpack process.
 
-- #### Electron-Packager and Electron-BuildPbooer
-[Electron-Packager](https://github.com/electron-userland/electron-packager) and [Electron-Builder](https://github.com/electron-userland/electron-builder)are meant to be used together to create the applications for actual distribution. Our packager helps us make our `.exe` or `.app` file, while Builder helps us create the installation package. We have not yet implemented our build process with these, but it's coming soon!
+- #### Electron-Packager
+[Electron-Packager](https://github.com/electron-userland/electron-packager) is meant to create the applications for actual distribution. Our packager helps us make our `.exe` or `.app` file.
 
 - #### Electron-Debug
 [Electron-Debug](https://github.com/sindresorhus/electron-debug) adds the Chrome debugging tools into Electron! Not much to say about that besides the fact that it's just plain useful.
@@ -146,7 +155,4 @@ For testing! [Mocha](https://mochajs.org/) helps us describe the structure of ou
 [Webpack](https://webpack.github.io/) is a tool to help us compile and package our Javascript, and represents the centerpiece of our build process. It allows us to use [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html), [SASS](http://sass-lang.com/) and cool new Javascript features via [Babel](https://babeljs.io/) by taking code we write in those technologies, parsing them, and spitting our plain old CSS and EcmaScript5. The [React Webpack Cookbook](https://christianalfoni.github.io/react-webpack-cookbook/index.html) is a pretty good place to start getting used to using Webpack with React.
 
 - #### Webpack-dev-server
-[Webpack-Dev-Server](https://github.com/webpack/webpack-dev-server) is some cool webpack middleware that runs a development server, automatically updates when our code changes. Means we can check our work faster.
-
-- #### Webpack-Hot-Middleware
-Not implemented, but [Webpack-Hot-Middleware](https://github.com/glenjamin/webpack-hot-middleware) lets Webpack-Dev-Server reload individual modules at a time. The glory in this is that it means when we make a code change, our test app can stay in the same state. AKA it doesn't restart every. friggin. time. For more info on that, read [webpack's introduction to Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html)
+[Webpack-Dev-Server](https://github.com/webpack/webpack-dev-server) is some cool webpack middleware that runs a development server, automatically updates when our code changes. Means we can check our work faster. We are also working on implementing [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html), but we're not quite there yet.
