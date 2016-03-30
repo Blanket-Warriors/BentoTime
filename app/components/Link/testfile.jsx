@@ -1,8 +1,8 @@
 import React from 'react';
-import { Router, Route } from 'react-router'
+import { Router, Route } from 'react-router';
 import { render, findDOMNode } from 'react-dom';
 import { createRenderer } from 'react/lib/ReactTestUtils';
-import createHistory from 'history/lib/createMemoryHistory'
+import createHistory from 'history/lib/createMemoryHistory';
 import Link from './Link';
 
 describe('Components', function() {
@@ -19,7 +19,7 @@ describe('Components', function() {
       class LinkWrapper extends React.Component {
         render() {
           return (
-            <Link to='/blog' path='/home' query={{the: 'query'}} hash="#hash">
+            <Link to="/blog" path="/home" query={{the: 'query'}} hash="#hash">
               Home
             </Link>
           );
@@ -28,12 +28,12 @@ describe('Components', function() {
 
       render((
         <Router history={createHistory('/home')}>
-          <Route path='/home' component={LinkWrapper} />
+          <Route path="/home" component={LinkWrapper} />
         </Router>
         ), node, function() {
-        const a = node.querySelector('a');
-        expect(a.getAttribute('href')).to.equal('/blog?the=query#hash');
-      });
+          const a = node.querySelector('a');
+          expect(a.getAttribute('href')).to.equal('/blog?the=query#hash');
+        });
     });
   });
 });

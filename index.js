@@ -22,7 +22,7 @@ app.on('ready', function initializeElectron() {
 
     // in development, the webpack dev server serves resources from memory
     // http://goo.gl/SGwTdJ
-    mainWindow.loadURL(`http://localhost:3000`); 
+    mainWindow.loadURL(`http://localhost:8080`);
 
   } else {
     mainWindow.loadURL(`file://${__dirname}/public/index.html`);

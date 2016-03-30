@@ -6,7 +6,7 @@ const BookListItem = function({ key, book }) {
     <li className="book-list-item" key={key}>
       <Link
         className="book-list-item__name"
-        to={"book/" + book.id}
+        to={`book/${book.id}`}
       >
         {book.title}
       </Link>

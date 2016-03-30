@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Link = function(props) {
-  return <Link className={"nav-link " + props.className} {...props} />
+  return <Link className={'nav-link ' + props.className} {...props} />;
 };
 
 Link.propTypes = {

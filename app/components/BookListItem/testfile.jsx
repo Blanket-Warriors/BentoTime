@@ -4,25 +4,19 @@ import BookListItem from 'app/components/BookListItem';
 
 describe('Components', function() {
   describe('BookListItem', function() {
-    var shallowRenderer;
-    var node;
-    var book;
-
     beforeEach(function() {
-      node = document.createElement('div');
-      shallowRenderer = TestUtils.createRenderer();
+      this.shallowRenderer = TestUtils.createRenderer();
+      this.book = null;
     });
 
     it('Should render an `li` tag with appropriate props', function renderBookListItem() {
-      book = {
-        id: "flappy-monkey",
-        title: "Flappy Monkey Banana Attack"
-      }
+      this.book = {
+        id: 'flappy-monkey',
+        title: 'Flappy Monkey Banana Attack'
+      };
 
-      shallowRenderer.render(
-        <BookListItem key="key1" book={book} />
-       );
-      const BookListItemInstance = shallowRenderer.getRenderOutput();
+      this.shallowRenderer.render(<BookListItem key="key1" book={this.book} />);
+      const BookListItemInstance = this.shallowRenderer.getRenderOutput();
       expect(BookListItemInstance.type).to.equal('li');
     });
   });
