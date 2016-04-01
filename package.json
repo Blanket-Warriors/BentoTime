@@ -1,9 +1,9 @@
 {
   "name": "BentoTime",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "An application for reading Manga",
   "repository": "https://github.com/Blanket-Warriors/BentoTime",
-  "main": "index.js",
+  "main": "public/index.js",
   "scripts": {
     "test": "karma start",
     "start": "npm run dev-electron & npm run dev-server",
