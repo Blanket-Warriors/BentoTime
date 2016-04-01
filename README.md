@@ -148,9 +148,6 @@ For testing! [Mocha](https://mochajs.org/) helps us describe the structure of ou
 - #### Sinon
 [Sinon](http://sinonjs.org/) is basically a massive library of test-related utilities. Huuuuugely useful library for testing anything and everything. We talk about it more in our `/test` directory READMEs.
 
-- #### Source-Map-Support
-[Moar source map](https://www.npmjs.com/package/source-map-support)!
-
 - #### Webpack
 [Webpack](https://webpack.github.io/) is a tool to help us compile and package our Javascript, and represents the centerpiece of our build process. It allows us to use [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html), [SASS](http://sass-lang.com/) and cool new Javascript features via [Babel](https://babeljs.io/) by taking code we write in those technologies, parsing them, and spitting our plain old CSS and EcmaScript5. The [React Webpack Cookbook](https://christianalfoni.github.io/react-webpack-cookbook/index.html) is a pretty good place to start getting used to using Webpack with React.
 
