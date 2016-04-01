@@ -6,9 +6,13 @@
   "main": "index.js",
   "scripts": {
     "test": "karma start",
-    "start": "npm run dev-server & npm run electron",
+    "start": "npm run dev-electron & npm run dev-server",
+    "build": "export NODE_ENV='production'; npm run clean && webpack --config webpack/webpack.production.js --progress --colors --inline",
+    "packager": "electron-packager ./public BentoTime --all --out=./public/packages --overwrite",
+    "prod-electron": "export NODE_ENV='production'; electron ./public/",
+    "dev-build": "export NODE_ENV='development'; npm run clean && webpack --config webpack/webpack.development.js --progress --colors --inline",
+    "dev-electron": "export NODE_ENV='development'; electron ./public/",
     "dev-server": "export NODE_ENV='development'; webpack-dev-server --config webpack/webpack.development.js --progress --colors --inline",
-    "electron": "export NODE_ENV='development'; electron .",
     "clean": "rm -rf public/build"
   },
   "babel": {
@@ -46,7 +50,7 @@
     "css-loader": "^0.23.0",
     "electron-builder": "^3.1.1",
     "electron-debug": "^0.5.1",
-    "electron-packager": "^5.1.1",
+    "electron-packager": "^6.0.0",
     "electron-prebuilt": "^0.36.4",
     "eslint": "^1.6.0",
     "eslint-loader": "^1.2.0",
@@ -68,7 +72,6 @@
     "sinon": "^1.17.1",
     "source-map-support": "^0.4.0",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0",
-    "webpack-hot-middleware": "^2.6.0"
+    "webpack-dev-server": "^1.14.0"
   }
 }

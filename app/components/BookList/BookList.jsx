@@ -17,7 +17,7 @@ const BookList = function({ books, filter }) {
           const matchFromBeginning = new RegExp('^' + filter, 'gi');
           return Boolean(book.title.match(matchFromBeginning));
         } else {
-          const matchAnywhere = new RegExp(filter, 'gi')
+          const matchAnywhere = new RegExp(filter, 'gi');
           return Boolean(book.title.match(matchAnywhere));
         }
       }

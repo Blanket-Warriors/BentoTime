@@ -5,8 +5,14 @@ var path = require('path');
 var baseDir = developmentConfig.baseDir;
 
 Object.assign(developmentConfig, {
+  devtool: 'source-map',
+
   devServer: {
-    contentBase: path.join(baseDir, 'public')
+    contentBase: path.join(baseDir, 'public'),
+    port: 8080,
+    historyApiFallback: {
+      index: '/'
+    }
   }
 });
 
