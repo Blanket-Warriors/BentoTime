@@ -1,5 +1,6 @@
-[![Dependency Status](https://david-dm.org/Blanket-Warriors/BentoTime.svg?style=flat)](https://david-dm.org/Blanket-Warriors/BentoTime)
 [![Build Status](https://travis-ci.org/Blanket-Warriors/BentoTime.svg?branch=master)](https://travis-ci.org/Blanket-Warriors/BentoTime)
+[![Dependency Status](https://david-dm.org/Blanket-Warriors/BentoTime.svg?style=flat)](https://david-dm.org/Blanket-Warriors/BentoTime)
+[![devDependency Status](https://david-dm.org/Blanket-Warriors/BentoTime/dev-status.svg)](https://david-dm.org/Blanket-Warriors/BentoTime#info=devDependencies)
 
 # BentoTime
 A native pc/mac/linux app for reading and saving manga.
