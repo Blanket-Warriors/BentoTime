@@ -1,21 +1,22 @@
-import { compose, createStore, combineReducers, applyMiddleware } from 'redux';
-import { syncHistory } from 'react-router-redux';
-import rootReducer from 'app/data/reducers';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { routerMiddleware } from 'react-router-redux';
+import reducers from 'app/data/reducers';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 
 export default function storeCreator(browserHistory) {
   // Create our middleware plugins
   const loggerMiddleware = createLogger();
-  const reduxRouterMiddleware = syncHistory(browserHistory);
+  const reduxRouterMiddleware = routerMiddleware(browserHistory);
 
-  const createStoreWithMiddleware = applyMiddleware(
-    reduxRouterMiddleware,
-    thunkMiddleware,
-    loggerMiddleware
-  )(createStore);
+  const store = createStore(
+    reducers,
+    applyMiddleware(
+      reduxRouterMiddleware,
+      thunkMiddleware,
+      loggerMiddleware
+    )
+  );
 
-  const store = createStoreWithMiddleware(rootReducer);
-  reduxRouterMiddleware.listenForReplays(store);
   return store;
 }

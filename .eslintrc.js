@@ -1,4 +1,5 @@
 module.exports = {
+  'extends': 'eslint:recommended',
   'rules': {
     'indent': [2, 2, {'SwitchCase': 1}],
     'no-param-reassign': 1,
@@ -19,16 +20,17 @@ module.exports = {
   },
   'globals': {
     'expect': true,
-    'sinon': true
+    'sinon': true,
+    'chrome': true
   },
-  'extends': 'eslint:recommended',
-  'ecmaFeatures': {
-    'classes': true,
-    'jsx': true,
-    'modules': true,
-    'experimentalObjectRestSpread': true
+  parserOptions: {
+    'sourceType': 'module',
+    'ecmaFeatures': {
+      'classes': true,
+      'jsx': true,
+      'modules': true,
+      'experimentalObjectRestSpread': true
+    }
   },
-  'plugins': [
-    'react'
-  ]
+  'plugins': ['react']
 };
