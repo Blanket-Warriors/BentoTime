@@ -7,12 +7,9 @@ import Link from './Link';
 
 describe('Components', function() {
   describe('Link', function() {
-    var shallowRenderer;
-    var node;
-
     beforeEach(function() {
-      node = document.createElement('div');
-      shallowRenderer = createRenderer();
+      this.node = document.createElement('div');
+      this.shallowRenderer = createRenderer();
     });
 
     xit('Should render an "a" tag with a correct address', function() {
@@ -30,8 +27,8 @@ describe('Components', function() {
         <Router history={createHistory('/home')}>
           <Route path="/home" component={LinkWrapper} />
         </Router>
-        ), node, function() {
-          const a = node.querySelector('a');
+        ), this.node, function() {
+          const a = this.node.querySelector('a');
           expect(a.getAttribute('href')).to.equal('/blog?the=query#hash');
         });
     });

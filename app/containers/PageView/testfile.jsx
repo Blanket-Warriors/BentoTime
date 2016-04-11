@@ -4,17 +4,13 @@ import PageView from 'app/containers/PageView';
 
 describe('Containers', function() {
   describe('PageView', function() {
-    var shallowRenderer;
-    var node;
-
     beforeEach(function() {
-      node = document.createElement('div');
-      shallowRenderer = TestUtils.createRenderer();
+      this.shallowRenderer = TestUtils.createRenderer();
     });
 
     xit('Should render a `div`', function renderBookView() {
-      shallowRenderer.render(<PageView />);
-      const PageViewinstance = shallowRenderer.getRenderOutput();
+      this.shallowRenderer.render(<PageView />);
+      const PageViewinstance = this.shallowRenderer.getRenderOutput();
       expect(PageViewinstance.type).to.equal('div');
     });
 

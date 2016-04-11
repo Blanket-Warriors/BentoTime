@@ -4,23 +4,19 @@ import Img from 'app/components/Img';
 
 describe('Components', function() {
   describe('Img', function() {
-    var shallowRenderer;
-    var node;
-
     beforeEach(function() {
-      node = document.createElement('div');
-      shallowRenderer = TestUtils.createRenderer();
+      this.shallowRenderer = TestUtils.createRenderer();
     });
 
     it('Should render an `img` tag with appropriate props', function renderImg() {
-      shallowRenderer.render(
+      this.shallowRenderer.render(
         <Img
           src="assets/images/phant.svg"
           alt="Phant"
           fallback="assets/images/phant.png"
         />
        );
-      const ImgComponent = shallowRenderer.getRenderOutput();
+      const ImgComponent = this.shallowRenderer.getRenderOutput();
       expect(ImgComponent.type).to.equal('img');
       expect(ImgComponent.props.src).to.equal('assets/images/phant.svg');
       expect(ImgComponent.props.alt).to.equal('Phant');

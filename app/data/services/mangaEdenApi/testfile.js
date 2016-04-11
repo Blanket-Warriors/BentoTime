@@ -8,17 +8,14 @@ import chapterApiFixture from 'test/fixtures/mangaEden/chapterApiFixture.js';
 describe('Data', function() {
   describe('Services', function() {
     describe('MangaEden', function() {
-      var xhr;
-      var request = null;
-
       beforeEach(function () {
-        xhr = sinon.useFakeXMLHttpRequest();
-        xhr.onCreate = function (req) { request = req; };
+        this.xhr = sinon.useFakeXMLHttpRequest();
+        this.xhr.onCreate = req => this.request = req;
       });
 
       afterEach(function () {
-        request = null;
-        xhr.restore();
+        this.request = null;
+        this.xhr.restore();
       });
 
       it('should get the manga library', function() {
@@ -29,7 +26,7 @@ describe('Data', function() {
         };
         getLibrary$().forEach(observableAction);
 
-        request.respond(
+        this.request.respond(
           200,
           { 'Content-Type': 'application/json' },
           JSON.stringify(listApiFixture)
@@ -49,7 +46,7 @@ describe('Data', function() {
 
         getBook$(mangaID).forEach(observableAction);
 
-        request.respond(
+        this.request.respond(
           200,
           { 'Content-Type': 'application/json' },
           JSON.stringify(mangaApiFixture)
@@ -68,7 +65,7 @@ describe('Data', function() {
         };
         getChapter$(chapterID).forEach(observableAction);
 
-        request.respond(
+        this.request.respond(
           200,
           { 'Content-Type': 'application/json' },
           JSON.stringify(chapterApiFixture)

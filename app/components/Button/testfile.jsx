@@ -4,19 +4,15 @@ import Button from 'app/components/Button';
 
 describe('Components', function() {
   describe('Button', function() {
-    var shallowRenderer;
-    var node;
-
     beforeEach(function() {
-      node = document.createElement('div');
-      shallowRenderer = TestUtils.createRenderer();
+      this.shallowRenderer = TestUtils.createRenderer();
     });
 
     it('Should render a `button` tag with appropriate props', function renderButton() {
-      shallowRenderer.render(
+      this.shallowRenderer.render(
         <Button awesome="hello" />
        );
-      const ButtonInstance = shallowRenderer.getRenderOutput();
+      const ButtonInstance = this.shallowRenderer.getRenderOutput();
       expect(ButtonInstance.type).to.equal('button');
       expect(ButtonInstance.props.awesome).to.equal('hello');
     });
