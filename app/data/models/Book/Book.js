@@ -1,7 +1,7 @@
-import { assign, map } from 'lodash';
-import { imgHost } from 'app/data/services/mangaEdenApi';
-import Chapter from 'app/data/models/Chapter';
-import decodeEntities from 'app/utilities/decodeEntities';
+import { assign, map } from "lodash";
+import { imgHost } from "app/data/services/mangaEdenApi";
+import Chapter from "app/data/models/Chapter";
+import decodeEntities from "app/utilities/decodeEntities";
 
 const Book = function Book() {};
 

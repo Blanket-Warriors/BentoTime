@@ -1,7 +1,7 @@
 /* Production Configuration
 ======================================================================= */
-var webpack = require('webpack');
-var productionConfig = require('./webpack.base.js');
+var webpack = require("webpack");
+var productionConfig = require("./webpack.base.js");
 
 productionConfig.plugins = productionConfig.plugins.concat([
   new webpack.optimize.UglifyJsPlugin(),

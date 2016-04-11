@@ -1,8 +1,8 @@
-import React from 'react';
-import { map } from 'lodash';
+import React from "react";
+import { map } from "lodash";
 
-import ChapterList from 'app/components/ChapterList';
-import { Link } from 'react-router';
+import ChapterList from "app/components/ChapterList";
+import { Link } from "react-router";
 
 const BookView = function BookView({ book }) {
   if(!book) { return <div className="book-view">loading...</div>; }

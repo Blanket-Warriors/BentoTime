@@ -1,5 +1,5 @@
-import { merge } from 'lodash';
-import * as ActionTypes from 'app/data/actions/ActionTypes';
+import { merge } from "lodash";
+import * as ActionTypes from "app/data/actions/ActionTypes";
 
 const initialState = {
   id: undefined,

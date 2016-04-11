@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 const Button = function(props) {
   return <button className="button" {...props} />;
 };
 
 Button.defaultProps = {
-  className: ''
+  className: ""
 };
 
 export default Button;

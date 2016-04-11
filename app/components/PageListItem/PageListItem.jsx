@@ -1,5 +1,5 @@
-import React from 'react';
-import Img from 'app/components/Img';
+import React from "react";
+import Img from "app/components/Img";
 
 const PageListItem = function({ id, src }) {
   return (

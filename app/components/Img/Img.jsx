@@ -1,11 +1,11 @@
-import React from 'react';
-import { bindAll } from 'lodash';
+import React from "react";
+import { bindAll } from "lodash";
 
 class Img extends React.Component {
   constructor(props) {
     super(props);
     this.state = { src: this.props.src };
-    bindAll(this, ['_handleError']);
+    bindAll(this, ["_handleError"]);
   }
 
   _handleError() {

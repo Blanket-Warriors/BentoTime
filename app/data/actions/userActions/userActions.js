@@ -1,4 +1,4 @@
-import * as ActionTypes from 'app/data/actions/ActionTypes';
+import * as ActionTypes from "app/data/actions/ActionTypes";
 
 export function setReadMode(readMode) {
   return {

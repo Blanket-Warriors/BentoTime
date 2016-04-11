@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import BookList from 'app/components/BookList';
-import { bind, debounce } from 'lodash';
+import React, { Component } from "react";
+import BookList from "app/components/BookList";
+import { bind, debounce } from "lodash";
 
 class LibraryView extends Component {
   constructor(props) {
     super(props);
-    this.state = { searchFilter: '' };
+    this.state = { searchFilter: "" };
 
     this.onSearch = bind(this.onSearch, this);
     this.updateSearchState = debounce( searchFilter => {
