@@ -5,7 +5,7 @@ import BookListItem from "app/components/BookListItem";
 const BookList = function({ books, filter }) {
 
   const mappedBooks = _(books)
-    .filter(book => {
+    .filter(function filterBookList(book) {
       if(typeof filter === "boolean") {
         return filter;
       }
@@ -25,7 +25,7 @@ const BookList = function({ books, filter }) {
       return false;
     })
     .sortBy("alias")
-    .map(book => {
+    .map(function createBookListItem(book) {
       return <BookListItem key={book.id} book={book} />;
     })
     .value();
