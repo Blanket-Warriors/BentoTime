@@ -1,3 +1,4 @@
+// Our Style rules that are enforced with ESLint
 module.exports = {
   "extends": "eslint:recommended",
   "rules": {

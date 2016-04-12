@@ -1,7 +1,9 @@
-var webpackConfig = require("./webpack/webpack.test.js");
+var webpackConfig = require("../webpack/webpack.test.js");
 
 module.exports = function(config) {
   configuration = {
+    basePath: "..",
+
     // Load all "tests" files into the browser
     files: [
       "./app/**/testfile.js",
@@ -31,7 +33,7 @@ module.exports = function(config) {
       }
     },
 
-    // Pretend that api requests for assets aren"t failing
+    // Pretend that api requests for assets aren't failing
     proxies: {
       "/public/": "/test/fixtures/public/",
       "/assets/": "/test/fixtures/public/assets/",
@@ -57,7 +59,7 @@ module.exports = function(config) {
     // Grab the test config from our webpack config file
     webpack: webpackConfig,
     webpackServer: {
-      noInfo: true
+      noInfo: true // Don't spam the console with logs!
     },
 
     // Format the style our compilation output
@@ -71,7 +73,7 @@ module.exports = function(config) {
       }
     },
 
-    // Plugins we"re using
+    // Plugins we're using
     plugins: [
       "karma-chai",
       "karma-mocha",
@@ -83,6 +85,7 @@ module.exports = function(config) {
     ]
   };
 
+  // If we're running our tests with Travis CI, use chrome and run once.
   if(process.env.TRAVIS){
     configuration.browsers = ["Chrome_travis_ci"];
     configuration.singleRun = true;
