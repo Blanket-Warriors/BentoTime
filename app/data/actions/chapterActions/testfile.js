@@ -1,8 +1,8 @@
-import libraryActions from "app/data/actions/libraryActions";
+import chapterActions from "app/data/actions/chapterActions";
 
 describe("Data", function() {
   describe("Actions", function() {
-    describe("libraryActions", function() {
+    describe("chapterActions", function() {
       xit("Should exist");
     });
   });

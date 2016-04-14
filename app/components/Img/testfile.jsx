@@ -15,7 +15,7 @@ describe("Components", function() {
           alt="Phant"
           fallback="assets/images/phant.png"
         />
-       );
+      );
       const ImgComponent = this.shallowRenderer.getRenderOutput();
       expect(ImgComponent.type).to.equal("img");
       expect(ImgComponent.props.src).to.equal("assets/images/phant.svg");
@@ -26,11 +26,12 @@ describe("Components", function() {
     it("Should make the src match the fallback if onError is fired", function matchImgSrc() {
       const ImgComponent = TestUtils.renderIntoDocument(
         <Img
-          src="assets/images/phant.svg"
+          src="moop"
           alt="Phant"
           fallback="assets/images/phant.png"
-        />);
-      expect(ImgComponent.state.src).to.equal("assets/images/phant.svg");
+        />
+      );
+      expect(ImgComponent.state.src).to.equal("moop");
       TestUtils.Simulate.error(TestUtils.findRenderedDOMComponentWithTag(ImgComponent, "img"));
       expect(ImgComponent.state.src).to.equal("assets/images/phant.png");
     });

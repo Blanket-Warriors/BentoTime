@@ -1,8 +1,8 @@
-import libraryActions from "app/data/actions/libraryActions";
+import * as ActionTypes from "app/data/actions/ActionTypes";
 
 describe("Data", function() {
   describe("Actions", function() {
-    describe("libraryActions", function() {
+    describe("ActionTypes", function() {
       xit("Should exist");
     });
   });
