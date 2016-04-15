@@ -14,7 +14,7 @@ class Img extends React.Component {
 
   render() {
     return (
-      <img src={ this.state.src } onError={ this._handleError } {...this.props} />
+      <img className="image" src={ this.state.src } onError={ this._handleError } {...this.props} />
     );
   }
 }

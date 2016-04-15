@@ -22,20 +22,21 @@ class LibraryView extends Component {
     const library = this.props.library;
     const searchFilter = this.state.searchFilter;
 
-    if(library.lastUpdated) {
-      return (
-        <div className="library-view">
-          <input
-            className="library-view__search"
-            type="search"
-            onChange={this.onSearch}
-            placeholder="Search..."
-          />
-          <BookList books={library.books} filter={this.state.searchFilter} />
-        </div>
-      );
+    if(!library.lastUpdated) {
+      return <div className="library-view__loading">loading...</div>;
     }
-    return <div>loading...</div>;
+
+    return (
+      <div className="library-view">
+        <input
+          className="library-view__search"
+          type="search"
+          onChange={this.onSearch}
+          placeholder="Search..."
+        />
+        <BookList books={library.books} filter={this.state.searchFilter} />
+      </div>
+    );
   }
 }
 

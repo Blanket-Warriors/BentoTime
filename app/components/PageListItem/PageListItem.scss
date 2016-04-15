@@ -1,5 +1,6 @@
 .page-list-item,
 .page-list-item__image {
+  @include fadeIn(0.5s);
   max-width: 95%;
   max-height: 120vh;
   margin: auto;
