@@ -1,7 +1,6 @@
 import React from "react";
 import TestUtils from "react/lib/ReactTestUtils";
 import NotFoundView from "app/containers/NotFoundView";
-import { forEach } from "lodash";
 
 describe("Containers", function() {
   describe("NotFoundView", function() {
