@@ -35,12 +35,6 @@ describe("Containers", function() {
       expect(layoutInstance.children).to.exist;
     });
 
-    it("Should render the title BentoTime", function shouldRenderTitle() {
-      let title = TestUtils.findRenderedDOMComponentWithClass(this.component, "layout__title");
-      expect(title.tagName).to.equal("H1");
-      expect(title.textContent).to.equal("Bentotime");
-    });
-
     it("Should render children", function shouldRenderChildren() {
       let child = TestUtils.findRenderedDOMComponentWithClass(this.component, "layout__child");
       expect(child.tagName).to.equal("DIV");

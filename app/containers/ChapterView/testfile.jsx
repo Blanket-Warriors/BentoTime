@@ -23,20 +23,14 @@ describe("Containers", function() {
       expect(this.component.props.children.length).to.equal(3);
     });
 
-    it("Should render the title of the chapter", function() {
-      const title = find(this.component.props.children, {type:"h1"}).props;
-      expect(title.className).to.equal("chapter-view__title");
-      expect(title.children).to.equal(this.chapter.title);
-    });
-
     it("Should render a back button", function() {
-      const backButton = this.component.props.children[1];
+      const backButton = this.component.props.children[0];
       expect(backButton.props.className).to.equal("chapter-view__back");
       expect(backButton.props.to).to.equal(`/book/${this.book.id}`);
     });
 
     it("Should render a PageList component, and pass it all of our pages", function() {
-      const pageList = this.component.props.children[2].props;
+      const pageList = this.component.props.children[1].props;
       expect(pageList.pages).to.equal(this.chapter.pages);
     });
 

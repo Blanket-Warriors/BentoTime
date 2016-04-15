@@ -11,7 +11,7 @@ const ChapterList = function({ book }) {
         book={book}
       />
     );
-  });
+  }).reverse();
   return <ul className="chapter-list">{mappedChapters}</ul>;
 };
 

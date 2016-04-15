@@ -31,7 +31,7 @@ describe("Containers", function() {
     });
 
     it("Should render a BookList component, and pass it all of our books", function() {
-      const bookList = this.component.props.children[1].props.books;
+      const bookList = this.component.props.children[2].props.books;
       expect(bookList).to.equal(this.library.books);
     });
 

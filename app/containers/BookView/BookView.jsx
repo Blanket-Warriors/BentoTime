@@ -9,9 +9,9 @@ const BookView = function BookView({ book }) {
 
   return (
     <div className="book-view">
+      <Link to="/" className="book-view__back">Back</Link>
       <h1 className="book-view__title">{book.title}</h1>
       <p className="book-view__description">{book.description}</p>
-      <Link to="/" className="book-view__back">Back</Link>
       <ChapterList book={book} />
     </div>
   );

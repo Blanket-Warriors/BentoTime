@@ -19,7 +19,7 @@ describe("Components", function() {
       };
     });
 
-    it("Should render an `ul` tag", function renderBookList() {
+    it("Should render an `ul` tag", function renderUl() {
       this.shallowRenderer.render( <BookList books={this.books} /> );
       const BookListInstance = this.shallowRenderer.getRenderOutput();
       expect(BookListInstance.type).to.equal("ul");

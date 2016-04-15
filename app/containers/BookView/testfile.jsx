@@ -29,7 +29,7 @@ describe("Containers", function() {
     });
 
     it("Should render a back button", function() {
-      const backButton = this.component.props.children[2];
+      const backButton = this.component.props.children[0];
       expect(backButton.props.className).to.equal("book-view__back");
       expect(backButton.props.to).to.equal("/");
     });

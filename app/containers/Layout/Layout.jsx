@@ -81,7 +81,6 @@ class Layout extends Component {
 
     return (
       <div className="layout">
-        <h1 className="layout__title">Bentotime</h1>
         {React.cloneElement(this.props.children, { library, user, book, chapter, page })}
       </div>
     );

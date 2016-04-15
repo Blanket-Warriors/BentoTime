@@ -9,9 +9,9 @@ const ChapterView = function ChapterView({ chapter, book }) {
 
   return (
     <div className="chapter-view">
-      <h1 className="chapter-view__title">{chapter.title}</h1>
       <Link to={"/book/" + book.id} className="chapter-view__back">Back</Link>
       <PageList pages={chapter.pages}/>
+      <Link to={"/book/" + book.id} className="chapter-view__back">Back</Link>
     </div>
   );
 };

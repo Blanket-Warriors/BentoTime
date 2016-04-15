@@ -28,6 +28,7 @@ class LibraryView extends Component {
 
     return (
       <div className="library-view">
+        <h1 className="library-view__title">Bentotime</h1>
         <input
           className="library-view__search"
           type="search"
