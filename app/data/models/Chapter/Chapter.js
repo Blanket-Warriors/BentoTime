@@ -1,5 +1,5 @@
-import { assign, map } from 'lodash';
-import { imgHost } from 'app/data/services/mangaEdenApi';
+import { assign, map } from "lodash";
+import { imgHost } from "app/data/services/mangaEdenApi";
 
 const Chapter = function Chapter() {};
 

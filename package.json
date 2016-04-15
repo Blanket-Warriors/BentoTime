@@ -5,7 +5,7 @@
   "repository": "https://github.com/Blanket-Warriors/BentoTime",
   "main": "public/index.js",
   "scripts": {
-    "test": "karma start",
+    "test": "cd test && karma start",
     "start": "npm run dev-electron & npm run dev-server",
     "build": "export NODE_ENV='production'; npm run clean && webpack --config webpack/webpack.production.js --progress --colors --inline",
     "packager": "electron-packager ./public BentoTime --all --out=./public/packages --overwrite",

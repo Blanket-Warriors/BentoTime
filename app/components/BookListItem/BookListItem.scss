@@ -1,6 +1,7 @@
 .book-list-item {
   @include row();
   @include columns(6);
+  @include fadeIn(0.5s);
   list-style: none;
   text-align: center;
   padding: auto;

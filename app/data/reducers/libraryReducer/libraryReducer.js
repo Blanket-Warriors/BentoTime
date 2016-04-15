@@ -1,6 +1,6 @@
-import { merge } from 'lodash';
-import * as ActionTypes from 'app/data/actions/ActionTypes';
-import bookReducer from 'app/data/reducers/bookReducer';
+import { merge } from "lodash";
+import * as ActionTypes from "app/data/actions/ActionTypes";
+import bookReducer from "app/data/reducers/bookReducer";
 
 const initialState = {
   books: {},

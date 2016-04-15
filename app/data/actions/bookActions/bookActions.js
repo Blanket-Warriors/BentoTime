@@ -1,5 +1,5 @@
-import { getBook$ } from 'app/data/services/mangaEdenApi';
-import * as ActionTypes from 'app/data/actions/ActionTypes';
+import { getBook$ } from "app/data/services/mangaEdenApi";
+import * as ActionTypes from "app/data/actions/ActionTypes";
 
 function fetchBookRequest(book) {
   return {

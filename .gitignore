@@ -1,5 +1,8 @@
+# Ignore these folders to decrease download size of project
 /node_modules
 /public/build
 /public/package
+
+# Ignore system-created files
 .DS_Store
 npm-debug.log

@@ -66,7 +66,7 @@ Starting at React v.0.14, Facebook split out React's DOM functionality into [Rea
 These are dependencies that are not used much in the actual application, but facilitate it in building and using the application. This notably includes Electron, our compliation dependencies, and testing dependencies.
 
 - #### Babel-Core
-We use [Babel](https://babeljs.io/) to compile our Javascript with new features into plain old ES5. This helps us maintain compatibility with the Chrome runtime, while simultaneously letting us use all the new Javascript features.
+We use [Babel](https://babeljs.io/) to compile our Javascript with new features into plain old ES5. This helps us maintain compatibility with the Chrome runtime, while simultaneously letting us use all the new Javascript features. All of our Babel settings are found in our `package.json`.
 
 - #### Babel-ESLint
 Lets our ESLint understand our Babel ways. Basically, ESLint is just a platform, and [Babel-ESLint](https://github.com/babel/babel-eslint) tells ESLint what to look for.

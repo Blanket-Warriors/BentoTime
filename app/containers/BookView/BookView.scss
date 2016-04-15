@@ -1,0 +1,7 @@
+.book-view,
+.book-view__loading,
+.book-view__title,
+.book-view__description,
+.book-view__back {
+  @include fadeIn(0.5s);
+}

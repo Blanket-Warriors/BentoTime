@@ -1,4 +1,4 @@
 Services
 =============
 
-Our services folder is where we store out files that help with API requests. All they do is send requests, and respond with formatted results.
+Our services folder is where we store modules that help us interact with the outside world (read api requests and storage). Not much to say here, as these things are rather self-explanitory.

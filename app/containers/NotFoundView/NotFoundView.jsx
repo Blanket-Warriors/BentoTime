@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const NotFoundView = function NotFoundView() {
   return <h1>NotFound View</h1>;

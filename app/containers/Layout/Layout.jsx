@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
-import { isEmpty, cloneDeep, find } from 'lodash';
-import { connect } from 'react-redux';
-import { Observable } from 'rx';
+import React, { Component, PropTypes } from "react";
+import { isEmpty, cloneDeep, find } from "lodash";
+import { connect } from "react-redux";
+import { Observable } from "rx";
 
-import { fetchLibrary, fetchBook, fetchChapter } from 'app/data/actions';
+import { fetchLibrary, fetchBook, fetchChapter } from "app/data/actions";
 
 class Layout extends Component {
   constructor(props) {
@@ -81,7 +81,6 @@ class Layout extends Component {
 
     return (
       <div className="layout">
-        <h1 className="layout__title">Bentotime</h1>
         {React.cloneElement(this.props.children, { library, user, book, chapter, page })}
       </div>
     );

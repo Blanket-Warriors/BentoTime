@@ -1,6 +1,6 @@
-import { reduce } from 'lodash';
-import { getLibrary$ } from 'app/data/services/mangaEdenApi';
-import * as ActionTypes from 'app/data/actions/ActionTypes';
+import { reduce } from "lodash";
+import { getLibrary$ } from "app/data/services/mangaEdenApi";
+import * as ActionTypes from "app/data/actions/ActionTypes";
 
 function fetchLibraryRequest() {
   return {

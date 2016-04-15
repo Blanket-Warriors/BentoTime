@@ -1,17 +1,17 @@
 /* Development Configuration
 ======================================================================= */
-var developmentConfig = require('./webpack.base.js');
-var path = require('path');
+var developmentConfig = require("./webpack.base.js");
+var path = require("path");
 var baseDir = developmentConfig.baseDir;
 
 Object.assign(developmentConfig, {
-  devtool: 'source-map',
+  devtool: "source-map",
 
   devServer: {
-    contentBase: path.join(baseDir, 'public'),
+    contentBase: path.join(baseDir, "public"),
     port: 8080,
     historyApiFallback: {
-      index: '/'
+      index: "/"
     }
   }
 });

@@ -1,6 +1,6 @@
-import { merge } from 'lodash';
-import * as ActionTypes from 'app/data/actions/ActionTypes';
-import chapterReducer from 'app/data/reducers/chapterReducer';
+import { merge } from "lodash";
+import * as ActionTypes from "app/data/actions/ActionTypes";
+import chapterReducer from "app/data/reducers/chapterReducer";
 
 const initialState = {
   alias: undefined,

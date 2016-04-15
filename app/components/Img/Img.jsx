@@ -1,11 +1,11 @@
-import React from 'react';
-import { bindAll } from 'lodash';
+import React from "react";
+import { bindAll } from "lodash";
 
 class Img extends React.Component {
   constructor(props) {
     super(props);
     this.state = { src: this.props.src };
-    bindAll(this, ['_handleError']);
+    bindAll(this, ["_handleError"]);
   }
 
   _handleError() {
@@ -14,7 +14,7 @@ class Img extends React.Component {
 
   render() {
     return (
-      <img src={ this.state.src } onError={ this._handleError } {...this.props} />
+      <img className="image" src={ this.state.src } onError={ this._handleError } {...this.props} />
     );
   }
 }

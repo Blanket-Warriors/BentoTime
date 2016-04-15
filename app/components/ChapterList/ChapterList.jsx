@@ -1,6 +1,6 @@
-import React from 'react';
-import { map } from 'lodash';
-import ChapterListItem from 'app/components/ChapterListItem';
+import React from "react";
+import { map } from "lodash";
+import ChapterListItem from "app/components/ChapterListItem";
 
 const ChapterList = function({ book }) {
   const mappedChapters = map(book.chapters, chapter => {
@@ -11,7 +11,7 @@ const ChapterList = function({ book }) {
         book={book}
       />
     );
-  });
+  }).reverse();
   return <ul className="chapter-list">{mappedChapters}</ul>;
 };
 

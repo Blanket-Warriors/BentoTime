@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React from "react";
+import { Link } from "react-router";
 
-const ChapterListItem = function({ key, book, chapter }) {
+const ChapterListItem = function({ book, chapter }) {
   return (
-    <li className="chapter-list-item" key={key}>
+    <li className="chapter-list-item">
       <Link
         className="chapter-list-item__name"
-        to={'/book/' + book.id + '/chapter/' + chapter.id}
+        to={"/book/" + book.id + "/chapter/" + chapter.id}
       >
-        {`${chapter.number} - ${chapter.title}`}
+        {chapter.number}
       </Link>
     </li>
   );

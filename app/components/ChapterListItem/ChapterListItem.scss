@@ -1,0 +1,17 @@
+.chapter-list-item {
+  @include fadeIn(0.5s);
+  @include transition(0.25s);
+  display: inline-block;
+  padding: 0 3px 0 3px;
+  margin: 5px 5px 5px 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: rgba(256, 256, 256, 0.4);
+  }
+}
+
+.chapter-list-item a {
+  border: none;
+}

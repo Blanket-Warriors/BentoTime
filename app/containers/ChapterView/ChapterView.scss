@@ -1,0 +1,5 @@
+.chapter-view,
+.chapter-view__title,
+.chapter-view__back {
+  @include fadeIn(0.5s);
+}
