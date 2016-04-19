@@ -1,6 +1,4 @@
-import Rx from "rx";
-import { forEach } from "lodash";
-import { getData, getData$, getLibrary$, getBook$, getChapter$ } from "./mangaEdenApi";
+import { getLibrary$, getBook$, getChapter$ } from "./mangaEdenApi";
 import listApiFixture from "test/fixtures/mangaEden/listApiFixture.js";
 import mangaApiFixture from "test/fixtures/mangaEden/mangaApiFixture.js";
 import chapterApiFixture from "test/fixtures/mangaEden/chapterApiFixture.js";
@@ -19,12 +17,8 @@ describe("Data", function() {
       });
 
       it("should get the manga library", function() {
-        const observableAction = {
-          onNext: sinon.spy(),
-          onError: sinon.spy(),
-          onCompleted: sinon.spy()
-        };
-        getLibrary$().forEach(observableAction);
+        const callback = sinon.spy();
+        getLibrary$().then(callback);
 
         this.request.respond(
           200,
@@ -32,19 +26,13 @@ describe("Data", function() {
           JSON.stringify(listApiFixture)
         );
 
-        expect(observableAction.onNext.calledOnce);
-        expect(observableAction.onCompleted.calledOnce);
+        expect(callback.calledOnce);
       });
 
       it("should get manga book information", function() {
+        const callback = sinon.spy();
         const mangaID = "4e70e9f6c092255ef7004336";
-        const observableAction = {
-          onNext: sinon.spy(),
-          onError: sinon.spy(),
-          onCompleted: sinon.spy()
-        };
-
-        getBook$(mangaID).forEach(observableAction);
+        getBook$(mangaID).then(callback);
 
         this.request.respond(
           200,
@@ -52,18 +40,13 @@ describe("Data", function() {
           JSON.stringify(mangaApiFixture)
         );
 
-        expect(observableAction.onNext.calledOnce);
-        expect(observableAction.onCompleted.calledOnce);
+        expect(callback.calledOnce);
       });
 
       it("should get a chapter\'s pages", function() {
+        const callback = sinon.spy();
         const chapterID = "4e711cb0c09225616d037cc2";
-        const observableAction = {
-          onNext: sinon.spy(),
-          onError: sinon.spy(),
-          onCompleted: sinon.spy()
-        };
-        getChapter$(chapterID).forEach(observableAction);
+        getChapter$(chapterID).then(callback);
 
         this.request.respond(
           200,
@@ -71,8 +54,7 @@ describe("Data", function() {
           JSON.stringify(chapterApiFixture)
         );
 
-        expect(observableAction.onNext.calledOnce);
-        expect(observableAction.onCompleted.calledOnce);
+        expect(callback.calledOnce);
       });
     });
   });

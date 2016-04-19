@@ -56,9 +56,6 @@ Starting at React v.0.14, Facebook split out React's DOM functionality into [Rea
 - #### Redux-Thunk
 [Redux-Thunk](https://github.com/gaearon/redux-thunk) helps us deal with asynchronous tasks using action creators that return functions instead of actions.
 
-- #### Rx
-[RxJs](http://reactivex.io/) is a library that allows us to deal with asynchronous problems using the concept of observables. This is awesome because it allows us to deal with one interface when using asynchronous tasks that might normally be handled in different ways, such as api requests, streams, and listener events. Admittedly, it is not used to its fullest potential in this project because we mainly deal with simple api requests. However we thought it was a good learning opportunity and think that observables are just kinda cool. If you would like to get more into programming in this style, we'd recommend taking a look at [Jafar Husain's tutorial](http://reactivex.io/learnrx/), which is just awesome.
-
 - #### Superagent
 [Superagent](https://github.com/visionmedia/superagent) is an abstraction over javascript AJAX tools, and just makes dealing with requests really easy. We use it whenever we ping an api for Manga data.
 

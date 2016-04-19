@@ -29,8 +29,8 @@ export function fetchBook(book) {
   return dispatch => {
     dispatch(fetchBookRequest(book));
     return getBook$(book.id)
-      .map(function(book) {
-        return dispatch(fetchBookSuccess(book));
+      .then(function(book) {
+        return Promise.resolve(dispatch(fetchBookSuccess(book)));
       })
       .catch(function(error) {
         dispatch(fetchBookFailure(error));

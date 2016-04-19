@@ -13,7 +13,7 @@
     "dev-build": "export NODE_ENV='development'; npm run clean && webpack --config webpack/webpack.development.js --progress --colors --inline",
     "dev-electron": "export NODE_ENV='development'; electron ./public/",
     "dev-server": "export NODE_ENV='development'; webpack-dev-server --config webpack/webpack.development.js --progress --colors --inline",
-    "clean": "rm -rf public/build"
+    "clean": "rm -rf public/build && rm -rf public/packages"
   },
   "babel": {
     "presets": [
@@ -36,7 +36,6 @@
     "redux-devtools": "^3.1.1",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.0.1",
-    "rx": "^4.1.0",
     "superagent": "^1.8.3"
   },
   "devDependencies": {
@@ -49,11 +48,11 @@
     "chai": "^3.5.0",
     "css-loader": "^0.23.1",
     "electron-debug": "^0.6.0",
-    "electron-packager": "^6.0.0",
+    "electron-packager": "^7.0.0",
     "electron-prebuilt": "^0.37.3",
     "eslint": "^2.5.3",
     "eslint-loader": "^1.3.0",
-    "eslint-plugin-react": "^4.2.3",
+    "eslint-plugin-react": "^5.0.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "inject-loader": "^2.0.1",
     "karma": "^0.13.22",
