@@ -12,7 +12,7 @@ Chapter.createFromMangaEdenChapterApi = function(response, chapterID) {
 };
 
 Chapter.createFromMangaEdenMangaApi = function([number, date, title, id]) {
-  return { id, number, date, title };
+  return assign(new Chapter(), { id, number, date, title });
 };
 
 Chapter.formatPage = function([pageNumber, imageUrl, width, height]) {

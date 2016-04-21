@@ -1,6 +1,5 @@
 import React from "react";
 import { find } from "lodash";
-import { Observable } from "rx";
 import TestUtils from "react/lib/ReactTestUtils";
 
 describe("Containers", function() {
@@ -17,7 +16,7 @@ describe("Containers", function() {
 
       this.props = {
         library: { lastUpdated: "12345" },
-        dispatch: sinon.stub().returns(Observable.just({})),
+        dispatch: sinon.stub().returns(Promise.resolve()),
         params: {},
         routing: {},
         user: {}
@@ -28,6 +27,11 @@ describe("Containers", function() {
           <div className="layout__child" />
         </this.Layout>
       );
+    });
+
+    afterEach(function afterEach() {
+      this.props = null;
+      this.component = null;
     });
 
     it("Should render a div with a `layout` class", function shouldRenderLayout() {
@@ -60,7 +64,7 @@ describe("Containers", function() {
       expect(this.mockActions.fetchChapter.callCount).to.equal(0);
     });
 
-    it("Should fetch any books that need to be updated", function shouldFetchBook() {
+    it("Should fetch any books that need to be updated", function shouldFetchBook(done) {
       this.props.params.bookid = "some-book";
       this.props.library.books = {
         "some-book": {
@@ -75,12 +79,15 @@ describe("Containers", function() {
       );
 
       const book = this.props.library.books["some-book"];
-      expect(this.mockActions.fetchBook.calledWithExactly(book)).to.be.true;
       expect(this.mockActions.fetchLibrary.callCount).to.equal(0);
       expect(this.mockActions.fetchChapter.callCount).to.equal(0);
+      setTimeout(() => {
+        expect(this.mockActions.fetchBook.callCount).to.equal(1);
+        done();
+      }, 0);
     });
 
-    it("Should fetch any chapters that need to be updated", function shouldFetchChapter() {
+    it("Should fetch any chapters that need to be updated", function shouldFetchChapter(done) {
       this.props.params.bookid = "some-book";
       this.props.params.chapterid = "some-chapter";
       this.props.library.books = {
@@ -99,9 +106,12 @@ describe("Containers", function() {
 
       const book = this.props.library.books["some-book"];
       const chapter = find(book.chapters, {id: "some-chapter"});
-      expect(this.mockActions.fetchChapter.calledWithExactly(book, chapter)).to.be.true;
       expect(this.mockActions.fetchLibrary.callCount).to.equal(0);
       expect(this.mockActions.fetchBook.callCount).to.equal(0);
+      setTimeout(() => {
+        expect(this.mockActions.fetchChapter.callCount).to.equal(1);
+        done();
+      }, 0);
     });
   });
 });

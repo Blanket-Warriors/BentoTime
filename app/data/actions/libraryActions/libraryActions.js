@@ -27,11 +27,11 @@ export function fetchLibrary(libraryPage) {
   return dispatch => {
     dispatch(fetchLibraryRequest());
     return getLibrary$(libraryPage)
-      .map(function(library) {
-        return dispatch(fetchLibrarySuccess(library));
+      .then(function(library) {
+        return Promise.resolve(dispatch(fetchLibrarySuccess(library)));
       })
       .catch(function(error) {
-        return dispatch(fetchLibraryFailure(error));
+        return Promise.reject(dispatch(fetchLibraryFailure(error)));
       });
   };
 }

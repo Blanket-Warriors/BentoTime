@@ -30,11 +30,11 @@ export function fetchChapter(book, chapter) {
   return dispatch => {
     dispatch(fetchChapterRequest(book, chapter));
     return getChapter$(chapter.id)
-      .map(function(chapter) {
-        return dispatch(fetchChapterSuccess(book, chapter));
+      .then(function(chapter) {
+        return Promise.resolve(dispatch(fetchChapterSuccess(book, chapter)));
       })
       .catch(function(error) {
-        return dispatch(fetchChapterFailure(error));
+        return Promise.reject(dispatch(fetchChapterFailure(error)));
       });
   };
 }

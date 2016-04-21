@@ -5,17 +5,6 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var baseDir = path.resolve(__dirname, "..");
 
-/* Inform webpack that our node modules are commonjs
-======================================================================= */
-var nodeModules = {};
-fs.readdirSync(path.join(baseDir, "node_modules"))
-  .filter(function(file) {
-    return [".bin"].indexOf(file) === -1;
-  })
-  .forEach(function(module) {
-    nodeModules[module] = "commonjs " + module;
-  });
-
 /* Set default resolution path to the same name as the folder
  * eg `app/components/Button` finds `app/components/Button/Button.js`
 ======================================================================= */
