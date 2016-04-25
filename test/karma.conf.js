@@ -2,6 +2,7 @@ var webpackConfig = require("../webpack/webpack.test.js");
 
 module.exports = function(config) {
   configuration = {
+    // Bentotime's root directory is up one
     basePath: "..",
 
     // Load all "tests" files into the browser
@@ -40,7 +41,7 @@ module.exports = function(config) {
       "/build/": "/test/fixtures/public/build/"
     },
 
-    // Style our test output
+    // Format our test output
     colors: true,
     reporters: ["mocha"],
     mochaReporter: {
@@ -56,14 +57,16 @@ module.exports = function(config) {
     singleRun: true,
     watch: false,
 
-    // Grab the test config from our webpack config file
+    // Use our webpack test config to load our modules
     webpack: webpackConfig,
+
     webpackServer: {
       noInfo: true // Don't spam the console with logs!
     },
 
-    // Format the style our compilation output
+    // Format our compilation output
     webpackMiddleware: {
+      noInfo: true, // Don't spam the console with logs!
       stats: {
         colors: true,   // Use colors!
         assets: false,  // Don't display asset information

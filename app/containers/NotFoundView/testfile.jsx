@@ -1,18 +1,19 @@
 import React from "react";
-import TestUtils from "react/lib/ReactTestUtils";
+import { shallow } from "enzyme";
 import NotFoundView from "app/containers/NotFoundView";
 
 describe("Containers", function() {
   describe("NotFoundView", function() {
     beforeEach(function() {
-      const shallowRenderer = TestUtils.createRenderer();
-      shallowRenderer.render(<NotFoundView />);
-      this.component = shallowRenderer.getRenderOutput();
+      this.component = shallow(<NotFoundView />);
     });
 
     it("Should render a `h1`", function() {
-      expect(this.component.type).to.equal("h1");
-      expect(this.component.props.children).to.equal("NotFound View");
+      expect(this.component.type()).to.equal("h1");
+    });
+
+    it("Should render the text `NotFound View`", function() {
+      expect(this.component.text()).to.equal("NotFound View");
     });
   });
 });

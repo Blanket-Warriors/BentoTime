@@ -1,6 +1,5 @@
 import React from "react";
-import { find } from "lodash";
-import TestUtils from "react/lib/ReactTestUtils";
+import { shallow } from "enzyme";
 import ChapterView from "app/containers/ChapterView";
 
 describe("Containers", function() {
@@ -12,33 +11,32 @@ describe("Containers", function() {
         pages: [{ image: "theimage.src", id: "12355" }]
       };
 
-      const shallowRenderer = TestUtils.createRenderer();
-      shallowRenderer.render(<ChapterView chapter={this.chapter} book={this.book} />);
-      this.component = shallowRenderer.getRenderOutput();
+      this.component = shallow(<ChapterView chapter={this.chapter} book={this.book} />);
     });
 
     it("Should render a `div` with a class of `chapter-view`", function() {
-      expect(this.component.type).to.equal("div");
-      expect(this.component.props.className).to.equal("chapter-view");
-      expect(this.component.props.children.length).to.equal(3);
+      expect(this.component.type()).to.equal("div");
+      expect(this.component.hasClass("chapter-view")).to.be.true;
     });
 
-    it("Should render a back button", function() {
-      const backButton = this.component.props.children[0];
-      expect(backButton.props.className).to.equal("chapter-view__back");
-      expect(backButton.props.to).to.equal(`/book/${this.book.id}`);
+    it("Should render back buttons", function() {
+      const buttons = this.component.find(".chapter-view__back");
+      expect(buttons).to.have.length(2);
+      buttons.forEach( button => {
+        expect(button.is("Link")).to.be.true;
+        expect(button.shallow().text()).to.equal("Back");
+        expect(button.prop("to")).to.equal(`/book/${this.book.id}`);
+      });
     });
 
     it("Should render a PageList component, and pass it all of our pages", function() {
-      const pageList = this.component.props.children[1].props;
-      expect(pageList.pages).to.equal(this.chapter.pages);
+      const pageList = this.component.find("PageList");
+      expect(pageList.prop("pages")).to.equal(this.chapter.pages);
     });
 
     it("Should render a Loading component if no book is passed in as a prop", function() {
-      const shallowRenderer = TestUtils.createRenderer();
-      shallowRenderer.render(<ChapterView />);
-      this.component = shallowRenderer.getRenderOutput();
-      expect(this.component.props.children).to.equal("loading...");
+      this.component = shallow(<ChapterView />);
+      expect(this.component.text()).to.equal("loading...");
     });
   });
 });

@@ -1,20 +1,19 @@
 import React from "react";
-import TestUtils from "react/lib/ReactTestUtils";
+import { shallow } from "enzyme";
 import Button from "app/components/Button";
 
 describe("Components", function() {
   describe("Button", function() {
     beforeEach(function() {
-      this.shallowRenderer = TestUtils.createRenderer();
+      this.component = shallow(<Button awesome="hello" />);
     });
 
-    it("Should render a `button` tag with appropriate props", function renderButton() {
-      this.shallowRenderer.render(
-        <Button awesome="hello" />
-       );
-      const ButtonInstance = this.shallowRenderer.getRenderOutput();
-      expect(ButtonInstance.type).to.equal("button");
-      expect(ButtonInstance.props.awesome).to.equal("hello");
+    it("Should render a `button` tag", function renderButton() {
+      expect(this.component.type()).to.equal("button");
+    });
+
+    it("Should pass on props", function () {
+      expect(this.component.prop("awesome")).to.equal("hello");
     });
   });
 });

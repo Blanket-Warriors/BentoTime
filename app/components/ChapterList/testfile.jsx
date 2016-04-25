@@ -1,12 +1,10 @@
 import React from "react";
-import TestUtils from "react/lib/ReactTestUtils";
+import { shallow } from "enzyme";
 import ChapterList from "app/components/ChapterList";
 
 describe("Components", function() {
   describe("ChapterList", function() {
     beforeEach(function() {
-      this.node = document.createElement("div");
-      this.shallowRenderer = TestUtils.createRenderer();
       this.book = {
         id: "flappy-monkey-attack",
         title: "Flappy Monkey Attack!!!",
@@ -23,18 +21,16 @@ describe("Components", function() {
           }
         }
       };
+
+      this.component = shallow(<ChapterList book={this.book} />);
     });
 
     it("Should render an `ul` tag", function renderUl() {
-      this.shallowRenderer.render( <ChapterList book={this.book} /> );
-      const ChapterListInstance = this.shallowRenderer.getRenderOutput();
-      expect(ChapterListInstance.type).to.equal("ul");
+      expect(this.component.type()).to.equal("ul");
     });
 
-    it("Should display all chapters", function renderChapters() {
-      this.shallowRenderer.render( <ChapterList book={this.book} /> );
-      const ChapterListInstance = this.shallowRenderer.getRenderOutput();
-      expect(ChapterListInstance.props.children.length).to.equal(2);
+    it("Should display all chapter data as Chapter List Items", function renderChapters() {
+      expect(this.component.find("ChapterListItem")).to.have.length(2);
     });
   });
 });

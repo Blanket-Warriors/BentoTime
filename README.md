@@ -95,6 +95,9 @@ Lets us use Babel with Webpack. Basically, Webpack runs Babel whenever it sees a
 - #### Electron-Prebuilt
 [Electron](http://electron.atom.io/) lets us build native desktop applications using web technologies! [Electron-Prebuilt](https://github.com/electron-userland/electron-prebuilt), specifically, is for development, and lets us run our Electron application without compiling anything.
 
+- #### Enzyme
+[Enzyme](http://airbnb.io/enzyme/) is a "Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output", and has quickly become the defacto tool to use in these purposes. It basically makes writing and reading tests around react dead simple. This is super important to us because this means that our tests can serve as an additional source of documentation for anyone reading through the project code.
+
 - #### ESLint
 [ESLint](http://eslint.org/) is a great tool that catches our mistakes before we run our stuff. We integrate it with our Webpack process in order to catch mistakes before we compile all of our code. It also helps us keep our coding-styles in sync, so it's easier to read through our repository. You'll also notice our .eslintignore and .eslintrc.js files, which are simply configuration details for ESLint.
 
@@ -139,6 +142,9 @@ For testing! [Mocha](https://mochajs.org/) helps us describe the structure of ou
 
 - #### Node-Sass
 [Node-Sass](https://github.com/sass/node-sass) lets us use Sass by compiling our `.scss` files. Sass is dabes. Use Sass.
+
+- #### React-Addons-Test-Utils
+[React-Addons-Test-Utils](https://facebook.github.io/react/docs/test-utils.html) is a library of utilities for testing React components. This is a dependency for [Enzyme](http://airbnb.io/enzyme/), which is why we have it.  However, we don't use this dependency much directly, as we prefer the further-abstracted tool of Enzyme.
 
 - #### Sass-Loader
 [Sass-Loader](https://github.com/jtangelder/sass-loader) integrates our Node-Sass compilation to run inside Webpack. Aww yeee.

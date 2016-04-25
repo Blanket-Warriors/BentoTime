@@ -1,6 +1,5 @@
 import React from "react";
-import { find } from "lodash";
-import TestUtils from "react/lib/ReactTestUtils";
+import { shallow } from "enzyme";
 import BookView from "app/containers/BookView";
 
 describe("Containers", function() {
@@ -11,39 +10,41 @@ describe("Containers", function() {
         description: "A book about a train that tried so hard and finally succeeded"
       };
 
-      const shallowRenderer = TestUtils.createRenderer();
-      shallowRenderer.render(<BookView book={this.book} />);
-      this.component = shallowRenderer.getRenderOutput();
+      this.component = shallow(<BookView book={this.book} />);
     });
 
     it("Should render a `div` with a class of `book-view`", function() {
-      expect(this.component.type).to.equal("div");
-      expect(this.component.props.className).to.equal("book-view");
-      expect(this.component.props.children.length).to.equal(4);
+      expect(this.component.is("div.book-view")).to.be.true;
     });
 
     it("Should render the title of the book", function() {
-      const title = find(this.component.props.children, { type: "h1" }).props;
-      expect(title.className).to.equal("book-view__title");
-      expect(title.children).to.equal(this.book.title);
+      const title = this.component.find(".book-view__title");
+      expect(title).to.exist;
+      expect(title.type()).to.equal("h1");
+      expect(title.text()).to.equal(this.book.title);
+    });
+
+    it("Should render a book description", function() {
+      const description = this.component.find(".book-view__description");
+      expect(description.type()).to.equal("p");
+      expect(description.text()).to.equal(this.book.description);
     });
 
     it("Should render a back button", function() {
-      const backButton = this.component.props.children[0];
-      expect(backButton.props.className).to.equal("book-view__back");
-      expect(backButton.props.to).to.equal("/");
+      const backButton = this.component.find(".book-view__back");
+      expect(backButton.is("Link")).to.be.true;
+      expect(backButton.shallow().text()).to.equal("Back");
+      expect(backButton.prop("to")).to.equal("/");
     });
 
     it("Should render a `ChapterList` component", function() {
-      const chapterList = this.component.props.children[3];
-      expect(chapterList.props.book).to.equal(this.book);
+      const chapterList = this.component.find("ChapterList");
+      expect(chapterList.prop("book")).to.equal(this.book);
     });
 
     it("Should render a Loading component if no book is passed in as a prop", function() {
-      const shallowRenderer = TestUtils.createRenderer();
-      shallowRenderer.render(<BookView />);
-      this.component = shallowRenderer.getRenderOutput();
-      expect(this.component.props.children).to.equal("loading...");
+      this.component = shallow(<BookView />);
+      expect(this.component.text()).to.equal("loading...");
     });
   });
 });

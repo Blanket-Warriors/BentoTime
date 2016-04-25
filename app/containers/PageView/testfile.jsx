@@ -1,17 +1,15 @@
 import React from "react";
-import TestUtils from "react/lib/ReactTestUtils";
+import { shallow } from "enzyme";
 import PageView from "app/containers/PageView";
 
 describe("Containers", function() {
   describe("PageView", function() {
     beforeEach(function() {
-      this.shallowRenderer = TestUtils.createRenderer();
+      this.component = shallow(<PageView />);
     });
 
     xit("Should render a `div`", function renderBookView() {
-      this.shallowRenderer.render(<PageView />);
-      const PageViewinstance = this.shallowRenderer.getRenderOutput();
-      expect(PageViewinstance.type).to.equal("div");
+      expect(this.component.type()).to.equal("div");
     });
 
     it("Should render a PageList component, and pass it page data");

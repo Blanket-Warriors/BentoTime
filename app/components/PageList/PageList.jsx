@@ -13,7 +13,7 @@ const PageList = function({ pages }) {
 };
 
 PageList.defaultProps = {
-  pages: {}
+  pages: []
 };
 
 export default PageList;

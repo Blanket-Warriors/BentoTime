@@ -1,3 +1,5 @@
+import enzyme from "enzyme";
+
 import { getLibrary$, getBook$, getChapter$ } from "./mangaEdenApi";
 import listApiFixture from "test/fixtures/mangaEden/listApiFixture.js";
 import mangaApiFixture from "test/fixtures/mangaEden/mangaApiFixture.js";

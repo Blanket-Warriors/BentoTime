@@ -6,7 +6,7 @@ const ChapterListItem = function({ book, chapter }) {
     <li className="chapter-list-item">
       <Link
         className="chapter-list-item__name"
-        to={"/book/" + book.id + "/chapter/" + chapter.id}
+        to={`/book/${book.id}/chapter/${chapter.id}`}
       >
         {chapter.number}
       </Link>
