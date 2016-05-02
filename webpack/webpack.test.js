@@ -8,7 +8,7 @@ var testConfig = Object.assign({}, require("./webpack.base.js"), {
     "react/addons": true,
     "react/lib/ExecutionEnvironment": true,
     "react/lib/ReactContext": true
-  },
+  }
 });
 
 module.exports = testConfig;

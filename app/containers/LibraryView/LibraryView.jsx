@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import BookList from "app/components/BookList";
 import { bind, debounce } from "lodash";
+
+import SearchBar from "app/components/SearchBar";
+import BookList from "app/components/BookList";
 
 class LibraryView extends Component {
   constructor(props) {
@@ -28,13 +30,7 @@ class LibraryView extends Component {
 
     return (
       <div className="library-view">
-        <h1 className="library-view__title">Bentotime</h1>
-        <input
-          className="library-view__search"
-          type="search"
-          onChange={this.onSearch}
-          placeholder="Search..."
-        />
+        <SearchBar className="library-view__search" onChange={this.onSearch} />
         <BookList books={library.books} filter={this.state.searchFilter} />
       </div>
     );

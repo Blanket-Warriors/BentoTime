@@ -1,0 +1,33 @@
+.search-bar {
+  background-color: #222;
+  height: 4rem;
+}
+
+.search-bar__input {
+  border-radius: 0;
+  border: 0;
+  color: white;
+  width: 100%;
+  background-color: #222;
+  float: left;
+  height: 100%;
+  font-size: 2em;
+  font-style: light;
+  outline: none;
+  padding-right: 0.5em;
+
+  &:focus {
+    background-color: #333545;
+  }
+}
+
+
+select, input[type="search"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  border: none;
+}
+

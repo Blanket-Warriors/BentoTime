@@ -92,6 +92,11 @@ p {
   font-family:  $font-family-serif;
 }
 
+input {
+  line-height:  $line-height-body;
+  font-family:  $font-family-sans;
+}
+
 a {
   font-size:    $font-size-nav;
   line-height:  $line-height-nav;
