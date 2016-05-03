@@ -1,8 +1,9 @@
 import React from "react";
 import { map } from "lodash";
 import ChapterListItem from "app/components/ChapterListItem";
+import combine from "app/utilities/combineClasses";
 
-const ChapterList = function({ book }) {
+const ChapterList = function({ book, className }) {
   const mappedChapters = map(book.chapters, chapter => {
     return (
       <ChapterListItem
@@ -12,11 +13,16 @@ const ChapterList = function({ book }) {
       />
     );
   }).reverse();
-  return <ul className="chapter-list">{mappedChapters}</ul>;
+
+  return <ul className={combine("chapter-list", className)}>{mappedChapters}</ul>;
 };
 
 ChapterList.propTypes = {
   book: React.PropTypes.object.isRequired
+};
+
+ChapterList.defaultProps = {
+  className: ""
 };
 
 export default ChapterList;

@@ -1,8 +1,9 @@
 import React from "react";
 import _ from "lodash";
 import BookListItem from "app/components/BookListItem";
+import combine from "app/utilities/combineClasses";
 
-const BookList = function({ books, filter }) {
+const BookList = function({ books, filter, className }) {
 
   const mappedBooks = _(books)
     .filter(function filterBookList(book) {
@@ -30,7 +31,11 @@ const BookList = function({ books, filter }) {
     })
     .value();
 
-  return <ul className="book-list">{mappedBooks}</ul>;
+  return (
+    <ul className={combine("book-list", className)}>
+      {mappedBooks.length ? mappedBooks : <h3 className={"book-list--empty"}>No Manga</h3>}
+    </ul>
+  );
 };
 
 BookList.propTypes = {

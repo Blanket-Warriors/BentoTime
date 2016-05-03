@@ -25,13 +25,13 @@ class LibraryView extends Component {
     const searchFilter = this.state.searchFilter;
 
     if(!library.lastUpdated) {
-      return <div className="library-view__loading">loading...</div>;
+      return <h3 className="library-view__loading">loading...</h3>;
     }
 
     return (
       <div className="library-view">
         <SearchBar className="library-view__search" onChange={this.onSearch} />
-        <BookList books={library.books} filter={this.state.searchFilter} />
+        <BookList className="library-view__books" books={library.books} filter={this.state.searchFilter} />
       </div>
     );
   }

@@ -23,8 +23,8 @@ app.on("window-all-closed", function allWindowsAreClosed() {
 app.on("ready", function initializeElectron() {
   var server = null;
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1100,
+    height: 850,
     "web-preferences": {"web-security": false}
   });
 

@@ -1,19 +1,21 @@
 import React from "react";
 import { map, isEmpty } from "lodash";
 import PageListItem from "app/components/PageListItem";
+import combine from "app/utilities/combineClasses";
 
-const PageList = function({ pages }) {
+const PageList = function({ pages, className }) {
   var mappedPages = "Loading...";
   if(!isEmpty(pages)) {
     mappedPages = map(pages.reverse(), page => {
       return <PageListItem id={page.id} src={page.image} key={page.id} />;
     });
   }
-  return <ul className="page-list">{mappedPages}</ul>;
+  return <ul className={combine("page-list", className)}>{mappedPages}</ul>;
 };
 
 PageList.defaultProps = {
-  pages: []
+  pages: [],
+  className: ""
 };
 
 export default PageList;

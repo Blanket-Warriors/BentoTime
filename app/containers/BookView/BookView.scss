@@ -1,7 +1,25 @@
-.book-view,
+.book-view {
+  @include fadeIn(0.5s);
+  text-align: left;
+  padding: 2rem;
+}
+
 .book-view__loading,
 .book-view__title,
 .book-view__description,
+.book-view__chapters {
+  @include fadeIn(0.5s);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.book-view__loading {
+  padding-top: 30%;
+  opacity: 0.5;
+}
+
 .book-view__back {
   @include fadeIn(0.5s);
+  opacity: 0.7;
 }
+

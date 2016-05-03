@@ -1,7 +1,17 @@
+.library-view {
+  height: 100%;
+  width: 100%;
+}
+
 .library-view__search {
   @include fadeIn(0.5s);
 }
 
 .library-view__loading {
-  @include fadeIn(0.5s);
+  margin-top: 30%;
+  opacity: 0.5;
+}
+
+.library-view__books.book-list {
+  display: block;
 }

@@ -1,22 +1,29 @@
 .book-list-item {
-  @include row();
-  @include columns(6);
+  @include fullColumns(4);
   @include fadeIn(0.5s);
   list-style: none;
   text-align: center;
-  padding: auto;
-  margin: auto;
+  margin: 0;
+  background-color: $black;
+  border: 1px solid $gray-darker;
+}
+
+.book-list-item__link {
+  display: inline-block;
+  padding: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
+}
+
+.book-list-item__title {
+  white-space: nowrap;
+  display: absolute;
 }
 
 .book-list-item__image {
-  @include columns(4);
-  float: none;
   height: 300px;
-}
-
-.book-list-item__name {
-  display: block;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  opacity: 0.7;
+  background-color: $black;
+  width: 100%;
 }

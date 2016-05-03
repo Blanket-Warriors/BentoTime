@@ -1,0 +1,8 @@
+.book-list {
+  @include fadeIn(0.5s);
+}
+
+.book-list--empty {
+  margin-top: 20%;
+  opacity: 0.5;
+}
