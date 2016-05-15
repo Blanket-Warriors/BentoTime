@@ -10,8 +10,12 @@
   &:hover {
     background-color: rgba(256, 256, 256, 0.4);
   }
+
 }
 
 .chapter-list-item a {
   border: none;
+  &:visited {
+    color: #666;
+  }
 }
