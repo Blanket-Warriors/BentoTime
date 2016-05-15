@@ -23,9 +23,9 @@ describe("Components", function() {
       const to = `book/${this.book.id}`;
 
       expect(Link).to.exist;
-      expect(Link.hasClass("book-list-item__name")).to.be.true;
+      expect(Link.hasClass("book-list-item__link")).to.be.true;
       expect(Link.prop("to")).to.equal(to);
-      expect(Link.shallow().text()).to.equal(this.book.title);
+      expect(this.component.find("img")).to.exist;
     });
   });
 });

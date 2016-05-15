@@ -40,19 +40,16 @@ describe("Containers", function() {
       expect(this.component.text()).to.equal("loading...");
     });
 
-    it("Should render an `input` with the correct props", function() {
+    it("Should render a searchBar with the correct props", function() {
       const input = this.component.find(".library-view__search");
-      expect(input.type()).to.equal("input");
-      expect(input.prop("type")).to.equal("search");
-      expect(input.prop("placeholder")).to.equal("Search...");
-      expect(input.prop("onChange")).to.be.a.function;
+      expect(input.is("SearchBar")).to.be.true;
     });
 
     it("Should change the `searchFilter` state on input", function(done) {
       expect(this.component.state().searchFilter).to.equal(this.searchFilterText);
 
       // Simulate keyboard input into our <input />
-      this.component.find("input").simulate("change", { target: { value: "weewoo" } });
+      this.component.find("SearchBar").simulate("change", { target: { value: "weewoo" } });
 
       setTimeout(() => {
         expect(this.component.state().searchFilter).to.equal("weewoo");

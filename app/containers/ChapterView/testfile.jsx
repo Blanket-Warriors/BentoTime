@@ -21,7 +21,7 @@ describe("Containers", function() {
 
     it("Should render back buttons", function() {
       const buttons = this.component.find(".chapter-view__back");
-      expect(buttons).to.have.length(2);
+      expect(buttons).to.have.length(1);
       buttons.forEach( button => {
         expect(button.is("Link")).to.be.true;
         expect(button.shallow().text()).to.equal("Back");

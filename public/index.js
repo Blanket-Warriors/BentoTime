@@ -5,7 +5,12 @@ const crashReporter = electron.crashReporter;
 const http = require("http");
 const path = require("path");
 const fs = require("fs");
-crashReporter.start();
+crashReporter.start({
+  companyName: "Blanket Warriors",
+  productName: "BentoTime",
+  submitURL: "https://www.blanketwarriors.com/api/defects",
+  autoSubmit: true
+});
 
 if(process.env["NODE_ENV"] === "development") {
   require("electron-debug")();
