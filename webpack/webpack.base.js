@@ -31,15 +31,8 @@ DirectoryDefaultFilePlugin.prototype.apply = function(resolver) {
 
 /* Default Configuration
 ======================================================================= */
-module.exports = {
+baseConfig = {
   baseDir: baseDir, // Needed because our webpack files are in a folder
-  entry: path.join(baseDir, "app/app.jsx"),
-  output: {
-    path: path.join(baseDir, "public", "build"),
-    publicPath: "/build/",
-    filename: "main.js"
-  },
-
   resolve: {
     // Using this we can import `Button`, rather than `Button.jsx`
     extensions: ["", ".js", ".jsx", ".css", ".scss"],
@@ -65,7 +58,12 @@ module.exports = {
       },
       {
         test: /\.scss$/,        // Find all files that end with `.scss`
-        loader: ExtractTextPlugin.extract("css!sass") // Compile the styles!
+        loader: ExtractTextPlugin.extract("css!sass"), // Compile the styles!
+        exclude: /node_modules/
+      },
+      {
+        test: /\.json$/,
+        loader: "json"
       }
     ]
   },
@@ -78,6 +76,50 @@ module.exports = {
     new webpack.ResolverPlugin([ new DirectoryDefaultFilePlugin() ])
   ],
 
-  node: { fs: "empty" },  // Ignore node features. Electron will supply these for us.
+  target: "electron-renderer",
   eslint: { configFile: path.join(baseDir, ".eslintrc.js") }
 };
+
+switch(process.env["NODE_ENV"]) {
+  case "test":
+    Object.assign(baseConfig, {
+      target: "web", // We test in Chrome, which doesn't natively support electron
+      devtool: "inline-source-map",
+      node: { fs: "empty" },
+      externals: {
+        "cheerio": "window",
+        "react/addons": true,
+        "react/lib/ExecutionEnvironment": true,
+        "react/lib/ReactContext": true,
+        "electron": true
+      }
+    });
+    break;
+
+  case "production":
+    // Shrinks our code for production to reduce download size.
+    baseConfig.plugins = baseConfig.plugins.concat([
+      new webpack.optimize.UglifyJsPlugin(),
+      new webpack.optimize.OccurenceOrderPlugin(),
+      new webpack.optimize.DedupePlugin(),
+    ]);
+    break;
+
+  case "development":
+  default:
+    Object.assign(baseConfig, {
+      devtool: "source-map",
+
+      devServer: {
+        contentBase: path.join(baseDir, "public"),
+        port: 8080,
+        historyApiFallback: {
+          index: "/"
+        }
+      }
+    });
+    console.log(baseDir);
+    break;
+}
+
+module.exports = baseConfig;

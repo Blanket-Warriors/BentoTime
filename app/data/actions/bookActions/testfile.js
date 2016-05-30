@@ -1,4 +1,4 @@
-import bookActions from "app/data/actions/bookActions";
+import bookActions from "./bookActions";
 
 describe("Data", function() {
   describe("Actions", function() {

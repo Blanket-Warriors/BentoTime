@@ -4,7 +4,7 @@
   "description": "An application to read manga",
   "author": "Blanket Warriors",
   "license": "ISC",
-  "main": "index.js",
+  "main": "main.js",
   "build": {
     "name": "BentoTime",
     "arch": "x64",

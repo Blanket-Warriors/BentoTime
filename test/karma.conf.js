@@ -1,4 +1,4 @@
-var webpackConfig = require("../webpack/webpack.test.js");
+var webpackConfig = require("../webpack/webpack.window.js");
 
 module.exports = function(config) {
   configuration = {
