@@ -32,7 +32,7 @@ describe("Containers", function() {
     it("Should render a BookList component, and pass it our books and filter state", function() {
       const bookList = this.component.find("BookList");
       expect(bookList.prop("books")).to.equal(this.library.books);
-      expect(bookList.prop("filter")).to.equal(this.searchFilterText);
+      expect(bookList.prop("searchFilter")).to.equal(this.searchFilterText);
     });
 
     it("Should render a Loading component if no book is passed in as a prop", function() {

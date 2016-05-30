@@ -46,7 +46,8 @@ BookList.propTypes = {
 };
 
 BookList.defaultProps = {
-  filter: null
+  searchFilter: null,
+  dateFilter: null
 };
 
 export default BookList;
