@@ -11,7 +11,7 @@ describe("Containers", function() {
       };
 
       this.mockProps = {
-        library: { lastUpdated: "12345" },
+        library: { lastUpdated: "1275542373.0" },
         dispatch: sinon.stub().returns(Promise.resolve()),
         params: {},
         routing: {},

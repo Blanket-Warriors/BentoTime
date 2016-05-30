@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import { isEmpty, cloneDeep, find } from "lodash";
 import { connect } from "react-redux";
+import moment from "moment";
 
 import { fetchLibrary, fetchBook, fetchChapter } from "app/data/actions";
 
@@ -10,7 +11,12 @@ class Layout extends Component {
   }
 
   componentWillMount() {
-    this.updateLibrary(this.props.params);
+    const library = this.props.library;
+    const now = moment();
+    const lastUpdate = moment.unix(library.lastUpdated);
+    if(isEmpty(library) || !library.lastUpdated || lastUpdate.isBefore(now, "hour")){
+      this.updateLibrary(this.props.params);
+    }
   }
 
   // Update our library whenever our location changes
