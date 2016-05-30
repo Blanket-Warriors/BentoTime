@@ -1,4 +1,4 @@
-import request from "superagent";
+import "isomorphic-fetch";
 
 import Library from "app/data/models/Library";
 import Book from "app/data/models/Book";
@@ -8,15 +8,15 @@ export const baseHost = "http://www.mangaeden.com/";
 export const imgHost = "http://cdn.mangaeden.com/mangasimg/";
 
 function getData(url) {
-  return new Promise(function(resolve, reject) {
-    request
-      .get(url)
-      .end(function(error, response) {
-        if(error) { return reject(error); }
-        resolve(response.body);
-      });
-  });
+  return fetch(url)
+    .then(function(response) {
+      if(response.status >= 400) {
+        throw new Error(response);
+      }
+      return response.json();
+    });
 }
+
 
 export function getLibrary$(pageId) {
   if(pageId !== undefined) {
