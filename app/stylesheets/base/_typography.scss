@@ -104,9 +104,6 @@ a {
   text-decoration: none;
   border-bottom: 2px solid $transparent;
   transition: all 0.2s ease;
-  &:hover {
-    border-bottom: 2px solid $white;
-  }
 }
 
 nav a {

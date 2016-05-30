@@ -1,3 +1,4 @@
+import moment from "moment";
 import { assign, map } from "lodash";
 import { imgHost } from "app/data/services/mangaEdenApi";
 import Chapter from "app/data/models/Chapter";
@@ -16,8 +17,8 @@ Book.createFromMangaEdenMangaApi = function(response, bookID) {
     image: imgHost + response.image,
     artist: decodeEntities(response.artist),
     author: decodeEntities(response.author),
-    created: response.created,
-    lastChapterDate: response.last_chapter_date,
+    created: moment.unix(response.created),
+    lastChapterDate: moment.unix(response.last_chapter_date),
     lastUpdated: undefined,
     status: response.status,
     chapters: chapters,
@@ -33,7 +34,7 @@ Book.createFromMangaEdenListApi = function(response) {
     id: response.i,
     title: decodeEntities(response.t),
     image: imgHost + response.im,
-    lastChapterDate: response.ld,
+    lastChapterDate: moment.unix(response.ld),
     lastUpdated: undefined,
     alias: response.a,
     status: response.s,

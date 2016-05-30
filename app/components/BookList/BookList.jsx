@@ -1,31 +1,34 @@
 import React from "react";
 import _ from "lodash";
+import moment from "moment";
 import BookListItem from "app/components/BookListItem";
 import combine from "app/utilities/combineClasses";
 
-const BookList = function({ books, filter, className }) {
+const BookList = function({ books, searchFilter, dateFilter, className }) {
+  const today = moment();
+  const matchFromBeginning = new RegExp("^" + searchFilter, "gi");
+  const matchAnywhere = new RegExp(searchFilter, "gi");
 
   const mappedBooks = _(books)
     .filter(function filterBookList(book) {
-      if(typeof filter === "boolean") {
-        return filter;
+      if(dateFilter && !book.lastChapterDate.isSameOrAfter(today, dateFilter)) {
+        return false;
       }
 
-      if(typeof filter === "string" && filter.length > 0) {
+      if(typeof searchFilter === "boolean") { return searchFilter; }
+
+      if(typeof searchFilter === "string") {
         // Assume that if a user only types in `n`, they want something that starts with `n`.
         // Cut-off point for filtering from the beginning is 3 characters.
-        if(filter.length <= 3) {
-          const matchFromBeginning = new RegExp("^" + filter, "gi");
+        if(searchFilter.length <= 3) {
           return Boolean(book.title.match(matchFromBeginning));
         } else {
-          const matchAnywhere = new RegExp(filter, "gi");
           return Boolean(book.title.match(matchAnywhere));
         }
       }
-
       return false;
     })
-    .sortBy("alias")
+    .sortBy(book => -book.lastChapterDate )
     .map(function createBookListItem(book) {
       return <BookListItem key={book.id} book={book} />;
     })

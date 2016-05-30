@@ -6,6 +6,9 @@
   margin: 0;
   background-color: $black;
   border: 1px solid $gray-darker;
+  &:hover {
+    background-color: $gray-darker;
+  }
 }
 
 .book-list-item__link {
