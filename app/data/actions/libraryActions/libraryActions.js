@@ -1,6 +1,7 @@
 import { reduce } from "lodash";
 import { getLibrary$ } from "app/data/services/mangaEdenApi";
 import * as ActionTypes from "app/data/actions/ActionTypes";
+import moment from "moment";
 
 function fetchLibraryRequest() {
   return {
@@ -12,7 +13,7 @@ function fetchLibrarySuccess(library) {
   return {
     type: ActionTypes.FETCH_LIBRARY_SUCCESS,
     library: library,
-    receivedAt: Date.now()
+    receivedAt: moment()
   };
 }
 

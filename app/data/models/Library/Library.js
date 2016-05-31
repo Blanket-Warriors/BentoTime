@@ -1,5 +1,6 @@
 import { assign, reduce } from "lodash";
 import Book from "app/data/models/Book";
+import moment from "moment";
 
 const Library = function Library() {
   this.isFetching = false;

@@ -1,18 +1,15 @@
 import { app, ipcMain, BrowserWindow, crashReporter } from "electron";
 import path from "path";
 
+const appPath = app.getAppPath();
 const environment = process.env["NODE_ENV"];
 
-if(environment === "development") {
-  require("electron-debug")();
-} else {
-  crashReporter.start({
-    companyName: "Blanket Warriors",
-    productName: "BentoTime",
-    submitURL: "https://www.blanketwarriors.com/api/defects",
-    autoSubmit: true
-  });
-}
+crashReporter.start({
+  companyName: "Blanket Warriors",
+  productName: "BentoTime",
+  submitURL: "https://www.blanketwarriors.com/api/defects",
+  autoSubmit: true
+});
 
 var win = null;
 
@@ -20,6 +17,8 @@ app.on("ready", function initializeElectron() {
   win = new BrowserWindow({
     width: 1100,
     height: 850,
+    frame: false,
+    titleBarStyle: "hidden",
     webPreferences: {"web-security": false}
   });
 
@@ -29,7 +28,6 @@ app.on("ready", function initializeElectron() {
     const port = 8080;
     win.loadURL(`http://localhost:${port}`);
   } else {
-    const appPath = app.getAppPath();
     win.loadURL(`file://${appPath}/index.html`);
   }
 

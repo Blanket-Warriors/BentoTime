@@ -13,8 +13,7 @@ class Layout extends Component {
   componentWillMount() {
     const library = this.props.library;
     const now = moment();
-    const lastUpdate = moment.unix(library.lastUpdated);
-    if(isEmpty(library) || !library.lastUpdated || lastUpdate.isBefore(now, "hour")){
+    if(isEmpty(library) || !library.lastUpdated || moment(library.lastUpdated).isBefore(now, "hour")){
       this.updateLibrary(this.props.params);
     }
   }
@@ -32,7 +31,7 @@ class Layout extends Component {
     const { dispatch, library } = this.props;
     const bookid = params.bookid || this.props.params.bookid;
     const chapterid = params.chapterid || this.props.params.chapterid;
-    return (!library.lastUpdated ? dispatch(fetchLibrary()) : Promise.resolve())
+    return dispatch(fetchLibrary())
       .then(() => this.updateBook(this.props, bookid))
       .then(() => this.updateChapter(this.props, bookid, chapterid));
   }

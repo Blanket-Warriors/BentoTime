@@ -11,8 +11,8 @@ const BookList = function({ books, searchFilter, dateFilter, className }) {
 
   const mappedBooks = _(books)
     .filter(function filterBookList(book) {
-      const lastChapterDate = moment(book.lastChapterDate, "YYYY-MM-DDTHH:mm:ss.SSSZ");
-      if(dateFilter && !lastChapterDate.isSameOrAfter(today, dateFilter)) {
+      //const lastChapterDate = moment(book.lastChapterDate, "YYYY-MM-DDTHH:mm:ss.SSSZ");
+      if(dateFilter && !moment(book.lastChapterDate).isSameOrAfter(today, dateFilter)) {
         return false;
       }
 

@@ -11,6 +11,7 @@
     "platform": "darwin",
     "app-bundle-id": "BentoTime",
     "app-category-type": "Entertainment",
+    "icon": "assets/images/bentobox.icns",
     "asar": false,
     "overwrite": true,
     "out": "dist/",

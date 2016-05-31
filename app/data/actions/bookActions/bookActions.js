@@ -1,5 +1,6 @@
 import { getBook$ } from "app/data/services/mangaEdenApi";
 import * as ActionTypes from "app/data/actions/ActionTypes";
+import moment from "moment";
 
 function fetchBookRequest(book) {
   return {
@@ -13,7 +14,7 @@ function fetchBookSuccess(book) {
   return {
     type: ActionTypes.FETCH_BOOK_SUCCESS,
     book: book,
-    receivedAt: Date.now()
+    receivedAt: moment()
   };
 }
 
@@ -21,7 +22,7 @@ function fetchBookFailure(error) {
   return {
     type: ActionTypes.FETCH_BOOK_FAILURE,
     error: error,
-    receivedAt: Date.now()
+    receivedAt: moment()
   };
 }
 

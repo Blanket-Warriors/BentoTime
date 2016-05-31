@@ -1,5 +1,6 @@
 import { assign, map } from "lodash";
 import { imgHost } from "app/data/services/mangaEdenApi";
+import moment from "moment";
 
 const Chapter = function Chapter() {};
 
@@ -12,7 +13,12 @@ Chapter.createFromMangaEdenChapterApi = function(response, chapterID) {
 };
 
 Chapter.createFromMangaEdenMangaApi = function([number, date, title, id]) {
-  return assign(new Chapter(), { id, number, date, title });
+  return assign(new Chapter(), {
+    id,
+    number,
+    date: moment.unix(parseInt(date)),
+    title
+  });
 };
 
 Chapter.formatPage = function([pageNumber, imageUrl, width, height]) {
