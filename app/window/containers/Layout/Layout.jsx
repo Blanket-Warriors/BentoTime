@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import { isEmpty, cloneDeep, find } from "lodash";
+import { find, debounce, cloneDeep } from "lodash";
 import { connect } from "react-redux";
 import shouldUpdate from "app/utilities/shouldUpdate";
 
@@ -8,6 +8,14 @@ import { fetchLibrary, fetchBook, fetchChapter } from "app/data/actions";
 class Layout extends Component {
   constructor(props) {
     super(props);
+
+    this.update = debounce(function update(params) {
+      const bookid = params.bookid || this.props.params.bookid;
+      const chapterid = params.chapterid || this.props.params.chapterid;
+      this.updateLibrary(this.props.library)
+        .then(() => this.updateBook(this.props, bookid))
+        .then(() => this.updateChapter(this.props, bookid, chapterid));
+    }, 100);
   }
 
   componentWillMount() {
@@ -21,14 +29,6 @@ class Layout extends Component {
     if(currentLocation !== nextLocation) {
       this.update(nextProps.params);
     }
-  }
-
-  update(params) {
-    const bookid = params.bookid || this.props.params.bookid;
-    const chapterid = params.chapterid || this.props.params.chapterid;
-    this.updateLibrary(this.props.library)
-      .then(() => this.updateBook(this.props, bookid))
-      .then(() => this.updateChapter(this.props, bookid, chapterid));
   }
 
   updateLibrary(params) {
