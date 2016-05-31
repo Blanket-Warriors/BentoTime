@@ -11,28 +11,28 @@ describe("Components", function() {
     it("Should render an `img` tag with appropriate props", function renderImg() {
       this.component = shallow(
         <Img
-          src="assets/images/phant.svg"
-          alt="Phant"
-          fallback="assets/images/phant.png"
+          src="assets/images/bentobox.svg"
+          alt="bentobox"
+          fallback="assets/images/bentobox.png"
         />
       );
       expect(this.component.type()).to.equal("img");
-      expect(this.component.prop("src")).to.equal("assets/images/phant.svg");
-      expect(this.component.prop("alt")).to.equal("Phant");
-      expect(this.component.prop("fallback")).to.equal("assets/images/phant.png");
+      expect(this.component.prop("src")).to.equal("assets/images/bentobox.svg");
+      expect(this.component.prop("alt")).to.equal("bentobox");
+      expect(this.component.prop("fallback")).to.equal("assets/images/bentobox.png");
     });
 
     it("Should make the src match the fallback if onError is fired", function matchImgSrc() {
       this.component = shallow(
         <Img
           src="moop"
-          alt="Phant"
-          fallback="assets/images/phant.png"
+          alt="bentobox"
+          fallback="assets/images/bentobox.png"
         />
       );
       expect(this.component.state().src).to.equal("moop");
       this.component.find("img").simulate("error");
-      expect(this.component.state().src).to.equal("assets/images/phant.png");
+      expect(this.component.state().src).to.equal("assets/images/bentobox.png");
     });
   });
 });

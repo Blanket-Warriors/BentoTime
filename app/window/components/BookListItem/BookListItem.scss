@@ -1,11 +1,13 @@
 .book-list-item {
-  @include fullColumns(4);
   @include fadeIn(0.5s);
   list-style: none;
   text-align: center;
   margin: 0;
   background-color: $black;
   border: 1px solid $gray-darker;
+  width: 200px;
+  display: inline-block;
+  height: 300px;
   &:hover {
     background-color: $gray-darker;
   }

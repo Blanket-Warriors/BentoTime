@@ -19,7 +19,7 @@
     "build:window": "webpack --config webpack/webpack.window.js --progress --colors --inline",
     "watch:main":   "webpack --config webpack/webpack.main.js   --progress --colors --inline --watch",
     "watch:window": "webpack --config webpack/webpack.window.js --progress --colors --inline --watch",
-    "clean": "rm -rf public/build && rm -rf public/packages && rm -f public/main.js && rm -f public/main.js.map"
+    "clean": "rm -rf public/build && rm -rf public/packages"
   },
   "babel": {
     "presets": [

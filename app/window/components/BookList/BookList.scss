@@ -1,5 +1,7 @@
 .book-list {
   @include fadeIn(0.5s);
+  overflow: hidden;
+  margin: 0 auto;
 }
 
 .book-list--empty {

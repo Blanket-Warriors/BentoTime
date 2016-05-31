@@ -1,113 +1,59 @@
-/* Fonts
-======================================================================= */
-$font-family-sans: "Fira Sans", "Lucida Grande", "Helvetica", "sans-serif";
-$font-family-serif: "Palatino Linotype", "Georgia", "serif";
-$font-family-code: "Consolas", "Monaco", "Andale Mono", "Monospace";
+/* Fonts Defaults
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+$font-family-sans: "Fira Sans", "Lucida Grande", "Helvetica", "sans-serif" !default;
+$font-family-serif: "Palatino Linotype", "Georgia", "serif" !default;
+$font-family-code: "Consolas", "Monaco", "Andale Mono", "Monospace" !default;
 
-/* Typographic Scale (http://www.modularscale.com/?1&em&1.5&sass&text)
-======================================================================= */
-$font-size-super-massive: 4.882rem;
-$font-size-jumbo:         2.441rem;
-$font-size-largest:       1.953rem;
-$font-size-larger:        1.563rem;
-$font-size-large:         1.25rem;
-$font-size-base:          1rem;
-$font-size-small:         0.9rem;
-$font-size-smaller:       0.8rem;
-$font-size-smallest:      0.72rem;
-$font-size-micro:         0.64rem;
+/* Typographic Scale
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+$font-size-h1: 4.0rem;
+$font-size-h2: 3.6rem;
+$font-size-h3: 3.0rem;
+$font-size-h4: 2.4rem;
+$font-size-h5: 1.8rem;
+$font-size-h6: 1.5rem;
+$font-size-p:  1rem;
 
-/* Font Size
-======================================================================= */
-$font-size-nav:             $font-size-base;
-$font-size-body:            $font-size-base;
-$font-size-home-title:      $font-size-super-massive;
-$font-size-heading-1:       $font-size-jumbo;
-$font-size-heading-2:       $font-size-largest;
-$font-size-heading-3:       $font-size-larger;
-$font-size-heading-4:       $font-size-large;
-$font-size-monospace:       $font-size-smallest;
-$font-size-monospace-title: $font-size-base;
+$line-height-h1: 1.20;
+$line-height-h2: 1.25;
+$line-height-h3: 1.30;
+$line-height-h4: 1.35;
+$line-height-h5: 1.50;
+$line-height-h6: 1.60;
+$line-height-p:     1;
 
-/* Font Weight
-======================================================================= */
-$font-weight-nav:               normal;
-$font-weight-heading-1:         normal;
-$font-weight-heading-2:         normal;
-$font-weight-heading-3:         normal;
-$font-weight-heading-4:         normal;
+$letter-spacing-h1: -0.10rem;
+$letter-spacing-h2: -0.10rem;
+$letter-spacing-h3: -0.10rem;
+$letter-spacing-h4: -0.08rem;
+$letter-spacing-h5: -0.05rem;
+$letter-spacing-h6:     0rem;
+$letter-spacing-p:      0rem;
 
-/* Line Height
-======================================================================= */
-$line-height-heading-1:   1.125;
-$line-height-heading-2:   1.2;
-$line-height-heading-3:   1.25;
-$line-height-heading-4:   1.25;
-$line-height-monospace:   1.4;
-$line-height-body:        1.6;
-$line-height-nav:         1.25;
+$paragraph-spacing-p: 1rem;
 
-/* Paragraph Spacing
-======================================================================= */
-$paragraph-spacing-p:  $font-size-small;
-$paragraph-spacing-h1: $font-size-large;
-$paragraph-spacing-h2: $font-size-large;
-$paragraph-spacing-h3: $font-size-large;
-$paragraph-spacing-h4: $font-size-large;
-
-/* Typography Global Styles
-======================================================================= */
-html {
-  font-size:    20px;
-  font-family:  $font-family-sans;
-  color:        $font-color;
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: 200;
 }
 
-h1 {
-  font-size:    $font-size-heading-1;
-  line-height:  $line-height-heading-1;
-  font-weight:  $font-weight-heading-1;
+@mixin font-size-gen($size, $line-height, $letter-spacing) {
+  font-size: $size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
 }
 
-h2 {
-  font-size:    $font-size-heading-2;
-  line-height:  $line-height-heading-2;
-  font-weight:  $font-weight-heading-2;
-}
-
-h3 {
-  font-size:    $font-size-heading-3;
-  line-height:  $line-height-heading-3;
-  font-weight:  $font-weight-heading-3;
-}
-
-h4 {
-  font-size:    $font-size-heading-4;
-  line-height:  $line-height-heading-4;
-  font-weight:  $font-weight-heading-4;
-}
-
-p {
-  line-height:  $line-height-body;
-  font-family:  $font-family-serif;
-}
-
-input {
-  line-height:  $line-height-body;
-  font-family:  $font-family-sans;
-}
+h1 { @include font-size-gen($font-size-h1, $line-height-h1, $letter-spacing-h1); }
+h2 { @include font-size-gen($font-size-h2, $line-height-h2, $letter-spacing-h2); }
+h3 { @include font-size-gen($font-size-h3, $line-height-h3, $letter-spacing-h3); }
+h4 { @include font-size-gen($font-size-h4, $line-height-h4, $letter-spacing-h4); }
+h5 { @include font-size-gen($font-size-h5, $line-height-h5, $letter-spacing-h5); }
+h6 { @include font-size-gen($font-size-h6, $line-height-h6, $letter-spacing-h6); }
+p, a, input { @include font-size-gen($font-size-p, $line-height-p, $letter-spacing-p); }
 
 a {
-  font-size:    $font-size-nav;
-  line-height:  $line-height-nav;
-  font-weight:  $font-weight-nav;
   text-decoration: none;
   border-bottom: 2px solid $transparent;
   transition: all 0.2s ease;
-}
-
-nav a {
-  font-size:    $font-size-nav;
-  line-height:  $line-height-nav;
-  font-weight:  $font-weight-nav;
 }

@@ -1,7 +1,6 @@
-import { app, ipcMain, BrowserWindow, crashReporter } from "electron";
+import { app, BrowserWindow, crashReporter } from "electron";
 import path from "path";
 
-const appPath = app.getAppPath();
 const environment = process.env["NODE_ENV"];
 
 crashReporter.start({
@@ -15,7 +14,7 @@ var win = null;
 
 app.on("ready", function initializeElectron() {
   win = new BrowserWindow({
-    width: 1100,
+    width: 1250,
     height: 850,
     frame: false,
     titleBarStyle: "hidden",
@@ -23,12 +22,12 @@ app.on("ready", function initializeElectron() {
   });
 
   if(environment === "development") {
-    // in development, the webpack dev server serves resources from memory
-    // http://goo.gl/SGwTdJ
+    // Serve resources from memory if in development
     const port = 8080;
     win.loadURL(`http://localhost:${port}`);
+    win.openDevTools();
   } else {
-    win.loadURL(`file://${appPath}/index.html`);
+    win.loadURL(`file://${__dirname}/../index.html`);
   }
 
   win.on("closed", function exitApplication() {

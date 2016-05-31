@@ -15,7 +15,7 @@ class LibraryView extends Component {
     this.onSearch = bind(this.onSearch, this);
     this.updateSearchState = debounce( searchFilter => {
       this.setState({searchFilter: searchFilter});
-    }, 350);
+    }, 750);
   }
 
   onSearch(event) {

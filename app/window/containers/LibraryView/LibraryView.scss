@@ -1,6 +1,7 @@
 .library-view {
   height: 100%;
   width: 100%;
+  display: block;
 }
 
 .library-view__search {
@@ -10,8 +11,4 @@
 .library-view__loading {
   margin-top: 30%;
   opacity: 0.5;
-}
-
-.library-view__books.book-list {
-  display: block;
 }

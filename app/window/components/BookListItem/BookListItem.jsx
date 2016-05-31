@@ -10,7 +10,12 @@ const BookListItem = function({ book }) {
         to={`book/${book.id}`}
       >
       <span className="book-list-item__title">{book.title}</span>
-      <Img src={book.image} alt={book.title} className="book-list-item__image"/>
+      <Img
+        src={book.image}
+        fallback="/assets/images/book_placeholder.png"
+        alt={book.title}
+        className="book-list-item__image"
+      />
       </Link>
     </li>
   );

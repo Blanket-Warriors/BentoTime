@@ -1,5 +1,5 @@
 /* Color Scale (private vars)
-======================================================================= */
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
 // Grayscale
 $black:         rgb(0,   0,   0);
 $gray-darker:   rgb(33,  33,  33);
@@ -16,19 +16,8 @@ $blue-darker:   rgba(0, 1, 127, .7);
 $transparent:   rgba(0, 0, 0, 0);
 
 /* Color Applications
-======================================================================= */
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
 $font-color:               $gray-lighter;
 $background-color-main-1:  $blue;
 $background-color-main-2:  $blue-darker;
-$background-gradient-main: linear-gradient(45deg, $black 10%, $background-color-main-2);
-
-/* Color Global Styles
-======================================================================= */
-body {
-  background-color: $black;
-  background-image: $background-gradient-main;
-}
-
-a {
-  color: $font-color;
-}
+$background-gradient-main: linear-gradient(45deg, $gray-darker, $black 10%);

@@ -1,0 +1,47 @@
+/* Fade-In
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+@keyframes fadeIn {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+@mixin transition($transition: all 500ms ease-in-out) {
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: $transition;
+  -moz-transition:    $transition;
+  -ms-transition:     $transition;
+  -o-transition:      $transition;
+  transition:         $transition;
+}
+
+@mixin fadeIn($duration: 0.5s) {
+  opacity: 0;
+  animation: fadeIn ease-in 1;
+  animation-fill-mode: forwards;
+  animation-duration: $duration;
+}
+
+/* Positioning
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+@mixin size($width, $height: $width) {
+  height: $height;
+  width: $width;
+}
+
+@mixin vertical-align($position: relative) {
+  @include transform(translateY(-50%));
+  position: $position;
+  top: 50%;
+}
+
+@mixin absolute-align($horizontal, $vertical) {
+  @include transform(translateX(-50%) translateY(-50%));
+  left: $horizontal;
+  position: absolute;
+  top: $vertical;
+}
+
+@mixin vertical-align-text($height) {
+  height: $height;
+  line-height: $height - 1;
+}

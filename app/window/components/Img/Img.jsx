@@ -1,21 +1,24 @@
 import React from "react";
-import { bindAll } from "lodash";
+import { bindAll, omit } from "lodash";
 
 class Img extends React.Component {
   constructor(props) {
     super(props);
     this.state = { src: this.props.src };
-    bindAll(this, ["_handleError"]);
   }
 
   _handleError() {
-    this.setState({ src: this.props.fallback });
+    if(this.state.src !== this.props.fallback) {
+      this.setState({ src: this.props.fallback });
+    }
   }
 
   render() {
-    return (
-      <img className="image" src={ this.state.src } onError={ this._handleError } {...this.props} />
-    );
+    const props = omit(this.props, ["src", "onError"]);
+    props.src = this.state.src;
+    props.onError = this._handleError.bind(this);
+    props.className = this.props.className + " image";
+    return <img {...props} />;
   }
 }
 

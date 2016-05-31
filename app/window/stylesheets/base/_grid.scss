@@ -1,0 +1,91 @@
+/* Variables
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+$container-width:                     960px !default;
+$container-width-larger-than-mobile:  85%   !default;
+$container-width-larger-than-phablet: 80%   !default;
+$total-columns:                       12    !default;
+
+// Calculate individual column width based off of # of columns
+$column-width: 100 / $total-columns !default;
+
+// Space between columns
+$column-margin: 4% !default;
+
+// Breakpoints
+$bp-larger-than-mobile:     "min-width: 400px"  !default;
+$bp-larger-than-phablet:    "min-width: 550px"  !default;
+$bp-larger-than-tablet:     "min-width: 750px"  !default;
+$bp-larger-than-desktop:    "min-width: 1000px" !default;
+$bp-larger-than-desktophd:  "min-width: 1200px" !default;
+
+/* Base Container
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+@mixin _container-mobile() {
+  position: relative;
+  width: 100%;
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+@mixin container() {
+  @include _container-mobile();
+  @media (#{$bp-larger-than-mobile}) {
+    width: $container-width-larger-than-mobile;
+    padding: 0;
+  }
+  @media (#{$bp-larger-than-phablet}) {
+    width: $container-width-larger-than-phablet;
+    padding: 0;
+  }
+  @include clear();
+}
+
+/* Base Column Private Mixins
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+@mixin _column-mobile() {
+  width: 100%;
+  float: left;
+  box-sizing: border-box;
+}
+
+@mixin columns($num: 1) {
+  @include _column-mobile();
+  @media (#{$bp-larger-than-mobile}) {
+    margin-left: $column-margin;
+    width: grid-column-width($num);
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  @include clear();
+}
+
+@mixin fullWidth() {
+  @include _column-mobile();
+  margin-left: 0;
+}
+
+@mixin offset($num: 1) {
+  margin-left: 0;
+  &:first-child { margin-left: 0; }
+  @media (#{$bp-larger-than-mobile}) {
+    margin-left: grid-offset-length($num);
+    &:first-child { margin-left: grid-offset-length($num); }
+  }
+}
+
+/* Public Grid Mixins
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+@mixin clear {
+  &:after {
+    clear: both;
+    display: table;
+    content: "\0020";
+  }
+}
+
+@mixin row() {
+  @include clear();
+}

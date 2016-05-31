@@ -54,7 +54,7 @@ describe("Containers", function() {
       setTimeout(() => {
         expect(this.component.state().searchFilter).to.equal("weewoo");
         done();
-      }, 500);
+      }, 1000);
     });
   });
 });
