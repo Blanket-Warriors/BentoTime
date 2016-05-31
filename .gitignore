@@ -3,6 +3,8 @@
 /public/build
 /public/package
 /public/packages
+/public/main.js
+/public/main.js.map
 
 # Ignore system-created files
 .DS_Store
