@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import { isEmpty, cloneDeep, find } from "lodash";
 import { connect } from "react-redux";
-import moment from "moment";
+import shouldUpdate from "app/utilities/shouldUpdate";
 
 import { fetchLibrary, fetchBook, fetchChapter } from "app/data/actions";
 
@@ -11,11 +11,7 @@ class Layout extends Component {
   }
 
   componentWillMount() {
-    const library = this.props.library;
-    const now = moment();
-    if(isEmpty(library) || !library.lastUpdated || moment(library.lastUpdated).isBefore(now, "hour")){
-      this.updateLibrary(this.props.params);
-    }
+    this.update(this.props.params);
   }
 
   // Update our library whenever our location changes
@@ -23,17 +19,21 @@ class Layout extends Component {
     const currentLocation = this.props.location.pathname;
     const nextLocation = nextProps.location.pathname;
     if(currentLocation !== nextLocation) {
-      this.updateLibrary(nextProps.params);
+      this.update(nextProps.params);
     }
+  }
+
+  update(params) {
+    const bookid = params.bookid || this.props.params.bookid;
+    const chapterid = params.chapterid || this.props.params.chapterid;
+    this.updateLibrary(this.props.library)
+      .then(() => this.updateBook(this.props, bookid))
+      .then(() => this.updateChapter(this.props, bookid, chapterid));
   }
 
   updateLibrary(params) {
     const { dispatch, library } = this.props;
-    const bookid = params.bookid || this.props.params.bookid;
-    const chapterid = params.chapterid || this.props.params.chapterid;
-    return dispatch(fetchLibrary())
-      .then(() => this.updateBook(this.props, bookid))
-      .then(() => this.updateChapter(this.props, bookid, chapterid));
+    return shouldUpdate(library) ? dispatch(fetchLibrary()) : Promise.resolve();
   }
 
   updateBook(state, bookid) {
@@ -43,8 +43,7 @@ class Layout extends Component {
 
     const { dispatch } = this.props;
     const book = find(state.library.books, { id: bookid });
-    const bookNeedsUpdate = !book || !book.lastUpdated;
-    return bookNeedsUpdate ? dispatch(fetchBook(book)) : Promise.resolve();
+    return shouldUpdate(book) ? dispatch(fetchBook(book)) : Promise.resolve();
   }
 
   updateChapter(state, bookid, chapterid) {
@@ -55,8 +54,7 @@ class Layout extends Component {
     const { dispatch } = this.props;
     const book = find(state.library.books, { id: bookid });
     const chapter = find(book.chapters, { id: chapterid });
-    const chapterNeedsUpdate = Boolean(chapter && !chapter.lastUpdated);
-    return chapterNeedsUpdate ? dispatch(fetchChapter(book, chapter)) : Promise.resolve();
+    return shouldUpdate(chapter) ? dispatch(fetchChapter(book, chapter)) : Promise.resolve();
   }
 
   render() {
