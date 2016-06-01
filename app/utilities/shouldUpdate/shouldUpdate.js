@@ -10,7 +10,7 @@ export default function shouldUpdate(toCheck) {
   if(isMoment(toCheck.lastUpdated)) {
     lastUpdated = toCheck.lastUpdated;
   } else {
-    lastUpdated = moment(toCheck.lastUpdated);
+    lastUpdated = moment(toCheck.lastUpdated, "YYYY-MM-DDTHH:mm:ss.SSSZ");
   }
 
   const threeHoursAgo = moment().add(-2, "hours");
