@@ -5,20 +5,24 @@
 # BentoTime
 A native pc/mac/linux app for reading and saving manga.
 
-## Getting Started
-  - install dependencies - `npm install`
-  - Make sure all the tests are running - `npm test`
-  - Run Webpack dev server and electron - `npm start`
-  - Refresh the electron app when the development server has started.
+## Getting Started With Development
+  1. install dependencies - `npm install`
+  2. Make sure all the tests are running - `npm test`
+  3. Run Webpack dev server and electron - `npm start`
+  4. Refresh the electron app when the development server has started.
 
-#### Other CLI Commands
-  - **`npm run build`** - Builds a production copy of BentoTime into `/public/build`
-  - **`npm run packager`** - Builds distributable copies of BentoTime into `/public/packages`
-  - **`npm run prod-electron`** - Runs electron as if it is running from a package. An external server is not necessary to do this.
-  - **`npm run dev-build`** - Builds a development copy of BentoTime (aka un-minified and with source-maps)
-  - **`npm run dev-electron`** - Runs electron in development mode. This depends on a development server running on port `8080`
-  - **`npm run dev-server`** - Runs our development server. We can use this if we just want to test in Chrome.  `npm start` runs both `dev-server` and `dev-electron`
-  - **`npm run clean`** Simply removes the build folder.
+#### Other Useful CLI Commands
+
+Command                     |Description
+----------------------------|---------------
+**`npm run packager`**      | Builds distributable copies of BentoTime into `/public/packages`.
+**`npm run electron:prod`** | Builds a production copy of BentoTime into `/public/build` and runs electron based on it.
+**`npm run dev-build`**     | Builds a development copy of BentoTime (aka un-minified and with source-maps).
+**`npm run server:window`** | Runs our development server. We can use this if we just want to test in Chrome.
+**`npm run clean`**         | Simply removes the build and packages folder.
+**`npm run build:prod`**    | Builds a production copy of BentoTime.
+**`npm run build:dev`**     | Builds a development copy of BentoTime.
+**`electron ./public/`**    | Run electron, using the current build and public files.  Needs Electron installed with `-g`.
 
 ## Contributing
 Use our [contribution repo](https://github.com/Blanket-Warriors/Style-Guide/tree/master/Contribution) to get an idea of the format we expect for PR's, commits, and issues.
@@ -29,8 +33,14 @@ MIT © [Blanket Warriors](http://blanketwarriors.com)
 ## Dependencies
 These are the main dependencies of BentoTime, and if you intend to use this repository to learn, these are the technologies you should be focusing on. Have fun and good luck!
 
-- #### Lodash
+- #### Isomorphic-Fetch
+[Isomorphic-Fetch](https://github.com/matthew-andrews/isomorphic-fetch) gives us the same interface for dealing with api requests from the client and server. We use it whenever we ping an api for Manga data, because it just simplifies api calls.
+
+- #### Lodash 
 [Lodash](https://lodash.com/docs) is a very solid and fast library of utility functions. Their documentation is fantastic, and we supply links in our readmes whenever possible.
+
+- #### Moment
+[Moment.js](http://momentjs.com/) is a time library. This is useful because we plan to use multiple sources for gathering manga titles, and it's useful to have a library that can keep all of our time-related data in the same format. As a plus, it also gives us methods for dealing with time and comparing dates, etc.
 
 - #### React
 [React](https://facebook.github.io/react/) helps us structure the views of our application.
@@ -55,9 +65,6 @@ Starting at React v.0.14, Facebook split out React's DOM functionality into [Rea
 
 - #### Redux-Thunk
 [Redux-Thunk](https://github.com/gaearon/redux-thunk) helps us deal with asynchronous tasks using action creators that return functions instead of actions.
-
-- #### Superagent
-[Superagent](https://github.com/visionmedia/superagent) is an abstraction over javascript AJAX tools, and just makes dealing with requests really easy. We use it whenever we ping an api for Manga data.
 
 ## DevDependencies
 These are dependencies that are not used much in the actual application, but facilitate it in building and using the application. This notably includes Electron, our compliation dependencies, and testing dependencies.
