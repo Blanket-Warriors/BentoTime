@@ -12,7 +12,7 @@ const BookListItem = function({ book }) {
       <span className="book-list-item__title">{book.title}</span>
       <Img
         src={book.image}
-        fallback="/assets/images/book_placeholder.png"
+        fallback="assets/images/book_placeholder.png"
         alt={book.title}
         className="book-list-item__image"
       />
