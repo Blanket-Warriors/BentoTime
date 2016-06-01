@@ -3,13 +3,12 @@ var path = require("path");
 var baseDir = baseConfig.baseDir;
 
 Object.assign(baseConfig, {
-  entry: path.join(baseDir, "app/main-process/main-process.js"),
+  entry: path.join(baseDir, "app/renderer-process/renderer-process.jsx"),
   output: {
     path: path.join(baseDir, "public", "build"),
-    filename: "main.js"
+    publicPath: "/build/",
+    filename: "index.js"
   },
-
-  node: { __dirname: false }
 });
 
 module.exports = baseConfig;

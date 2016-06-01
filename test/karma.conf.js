@@ -1,4 +1,4 @@
-var webpackConfig = require("../webpack/webpack.window.js");
+var webpackConfig = require("../webpack/webpack.renderer.js");
 
 module.exports = function(config) {
   configuration = {
@@ -7,8 +7,8 @@ module.exports = function(config) {
 
     // Load all "tests" files into the browser
     files: [
-      "./app/**/testfile.js",
-      "./app/**/testfile.jsx"
+      "./app/**/*_Tests.js",
+      "./app/**/*_Tests.jsx"
     ],
 
     // Testing frameworks to use
@@ -16,8 +16,8 @@ module.exports = function(config) {
 
     // Run webpack with a sourcemap on all "tests" files
     preprocessors: {
-      "./app/**/testfile.js": ["webpack", "sourcemap"],
-      "./app/**/testfile.jsx": ["webpack", "sourcemap"]
+      "./app/**/*_Tests.js": ["webpack", "sourcemap"],
+      "./app/**/*_Tests.jsx": ["webpack", "sourcemap"]
     },
 
     // Open the files in Chrome without security so we can send cross-site API requests
