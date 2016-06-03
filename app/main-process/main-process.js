@@ -1,4 +1,5 @@
-import { app, BrowserWindow, crashReporter } from "electron";
+import { app, Menu, BrowserWindow, crashReporter } from "electron";
+import createMenuTemplate from "./createMenuTemplate";
 import path from "path";
 
 const environment = process.env["NODE_ENV"];
@@ -10,32 +11,33 @@ crashReporter.start({
   autoSubmit: true
 });
 
-var win = null;
-
-app.on("ready", function initializeElectron() {
-  win = new BrowserWindow({
+app.on("ready", function onAppReady() {
+  var win = new BrowserWindow({
     width: 1250,
     height: 850,
     frame: false,
+    scrollBounce: true,
     titleBarStyle: "hidden",
     webPreferences: {"web-security": false}
   });
 
   if(environment === "development") {
-    // Serve resources from memory if in development
-    const port = 8080;
-    win.loadURL(`http://localhost:${port}`);
+    win.loadURL("http://localhost:8080"); // Serve resources from memory if in development
     win.openDevTools();
   } else {
     win.loadURL(`file://${__dirname}/../index.html`);
   }
 
-  win.on("closed", function exitApplication() {
+  win.on("closed", function onWindowClosed() {
     win = null;
   });
+
+  const template = createMenuTemplate(app, win);
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
 });
 
-app.on("window-all-closed", function allWindowsAreClosed() {
+app.on("window-all-closed", function onAppWindowsClosed() {
   if(process.platform !== "darwin") {
     app.quit();
   }

@@ -1,13 +1,13 @@
-var fs = require("fs");
-var path = require("path");
-var webpack = require("webpack");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var DirectoryDefaultFilePlugin = require("./plugins/DirectoryDefaultFilePlugin.js");
+const fs = require("fs");
+const path = require("path");
+const webpack = require("webpack");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const DirectoryDefaultFilePlugin = require("./plugins/DirectoryDefaultFilePlugin.js");
 
 // The root directory of Bentotime
-var baseDir = path.resolve(__dirname, "..");
+const baseDir = path.resolve(__dirname, "..");
 
-defaultConfiguration = {
+const defaultConfiguration = {
   baseDir: baseDir, // Needed because our webpack files are in a folder
   resolve: {
 
