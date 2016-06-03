@@ -32,7 +32,7 @@ app.on("ready", function onAppReady() {
     win = null;
   });
 
-  const template = createMenuTemplate(app, win);
+  const template = createMenuTemplate();
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
 });

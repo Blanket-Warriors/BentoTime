@@ -15,7 +15,7 @@ function fetchChapterSuccess(book, chapter) {
     type: ActionTypes.FETCH_CHAPTER_SUCCESS,
     chapter: chapter,
     book: book,
-    receivedAt: moment()
+    receivedAt: moment.unix()
   };
 }
 
@@ -23,7 +23,7 @@ function fetchChapterFailure(error) {
   return {
     type: ActionTypes.FETCH_CHAPTER_FAILURE,
     error: error,
-    receivedAt: moment()
+    receivedAt: moment.unix()
   };
 }
 

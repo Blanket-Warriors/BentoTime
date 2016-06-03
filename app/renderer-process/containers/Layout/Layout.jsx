@@ -15,7 +15,7 @@ class Layout extends Component {
       this.updateLibrary(this.props.library)
         .then(() => this.updateBook(this.props, bookid))
         .then(() => this.updateChapter(this.props, bookid, chapterid));
-    }, 300);
+    }.bind(this), 300);
   }
 
   componentWillMount() {

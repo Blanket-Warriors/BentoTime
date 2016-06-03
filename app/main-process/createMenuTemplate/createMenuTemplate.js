@@ -1,6 +1,6 @@
-import electron from "electron";
+import electron, { app, BrowserWindow, shell, autoUpdater } from "electron";
 
-export default function createMenuTemplate(app, win) {
+export default function createMenuTemplate() {
   const template = [{
     label: "Edit",
     submenu: [{
@@ -40,7 +40,7 @@ export default function createMenuTemplate(app, win) {
           // on reload, start fresh and close any old
           // open secondary windows
           if(focusedWindow.id === 1) {
-            focusedWindow.getAllWindows().forEach(function(win) {
+            BrowserWindow.getAllWindows().forEach(function(win) {
               if(win.id > 1) {
                 win.close();
               }
@@ -84,7 +84,7 @@ export default function createMenuTemplate(app, win) {
     submenu: [{
       label: "Learn More",
       click: function() {
-        electron.shell.openExternal("https://github.com/Blanket-Warriors/BentoTime");
+        shell.openExternal("https://github.com/Blanket-Warriors/BentoTime");
       }
     }, {
       label: "Toggle Developer Tools",
@@ -97,7 +97,7 @@ export default function createMenuTemplate(app, win) {
   }];
 
   function addUpdateMenuItems(items, position) {
-    const version = electron.app.getVersion();
+    const version = app.getVersion();
     let updateItems = [{
       label: `Version ${version}`,
       enabled: false
@@ -110,7 +110,7 @@ export default function createMenuTemplate(app, win) {
       visible: false,
       key: "checkForUpdate",
       click: function() {
-        require("electron").autoUpdater.checkForUpdates();
+        autoUpdater.checkForUpdates();
       }
     }, {
       label: "Restart and Install Update",
@@ -118,7 +118,7 @@ export default function createMenuTemplate(app, win) {
       visible: false,
       key: "restartToUpdate",
       click: function() {
-        require("electron").autoUpdater.quitAndInstall();
+        autoUpdater.quitAndInstall();
       }
     }];
 
@@ -126,7 +126,7 @@ export default function createMenuTemplate(app, win) {
   }
 
   if(process.platform === "darwin") {
-    const name = electron.app.getName();
+    const name = app.getName();
     template.unshift({
       label: name,
       submenu: [{
