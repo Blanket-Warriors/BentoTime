@@ -1,4 +1,4 @@
-import { merge } from "lodash";
+import { defaultsDeep, forEach } from "lodash";
 import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
 import bookReducer from "app/renderer-process/data/reducers/bookReducer";
 
@@ -12,22 +12,25 @@ const initialState = {
 export default function libraryReducer(state = initialState, action) {
   switch(action.type) {
     case ActionTypes.FETCH_LIBRARY_REQUEST:
-      return merge({}, state, {
+      return defaultsDeep({}, state, {
         isFetching: true
       });
 
     case ActionTypes.FETCH_LIBRARY_SUCCESS:
-      return merge({}, state, {
-        // Should merge if lastChapterDate is different in new request
-        // Should run book reducer to update.
-        books: merge({}, state.books, action.library.books),
+      var books = {};
+      forEach(state.books, function(book, bookid) {
+        books[bookid] = defaultsDeep({}, state.books[bookid], action.library.books[bookid]);
+      });
+
+      return defaultsDeep({}, state, {
+        books: books,
         isFetching: false,
         lastUpdated: action.receivedAt,
         totalBooks: action.library.totalBooks
       });
 
     case ActionTypes.FETCH_LIBRARY_FAILURE:
-      return merge({}, state, {
+      return defaultsDeep({}, state, {
         isFetching: false
       });
 
@@ -39,8 +42,8 @@ export default function libraryReducer(state = initialState, action) {
     case ActionTypes.FETCH_CHAPTER_REQUEST:
     case ActionTypes.FETCH_CHAPTER_SUCCESS:
     case ActionTypes.FETCH_CHAPTER_FAILURE:
-      return merge({}, state, {
-        books: merge({}, state.books, {
+      return defaultsDeep({}, state, {
+        books: defaultsDeep({}, state.books, {
           [action.book.id]: bookReducer(state.books[action.book.id], action)
         })
       });
