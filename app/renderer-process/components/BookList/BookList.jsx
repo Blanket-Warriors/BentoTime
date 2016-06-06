@@ -32,7 +32,7 @@ const BookList = function({ books, searchFilter, dateFilter, bookmarkFilter, cla
       }
       return false;
     })
-    .sortBy(book => -book.lastChapterDate )
+    .sortBy(book => -moment(book.lastChapterDate).unix())
     .map(function createBookListItem(book) {
       return <BookListItem key={book.id} book={book} />;
     })
