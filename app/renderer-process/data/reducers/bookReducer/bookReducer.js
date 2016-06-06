@@ -17,11 +17,17 @@ const initialState = {
   lastChapterDate: undefined,
   lastUpdated: undefined,
   status: undefined,
-  title: undefined
+  title: undefined,
+  bookmarked: false
 };
 
 export default function bookReducer(state = initialState, action) {
   switch(action.type) {
+    case ActionTypes.SET_BOOKMARK:
+      return merge({}, state, {
+        bookmarked: action.bookmarkState
+      });
+
     case ActionTypes.FETCH_BOOK_REQUEST:
       return merge({}, state, {
         isFetching: true
@@ -38,6 +44,7 @@ export default function bookReducer(state = initialState, action) {
         isFetching: false
       });
 
+    case ActionTypes.SET_CHAPTER_VIEWED:
     case ActionTypes.FETCH_CHAPTER_REQUEST:
     case ActionTypes.FETCH_CHAPTER_SUCCESS:
     case ActionTypes.FETCH_CHAPTER_FAILURE:

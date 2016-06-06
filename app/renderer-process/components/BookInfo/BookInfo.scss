@@ -1,0 +1,11 @@
+.book-info {
+  @include fadeIn(0.5s, 0.8);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: $black;
+}
+
+.book-info__description {
+  display: none;
+}

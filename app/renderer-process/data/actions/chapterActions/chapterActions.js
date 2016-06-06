@@ -27,6 +27,15 @@ function fetchChapterFailure(error) {
   };
 }
 
+export function setChapterViewed(book, chapter, viewedState) {
+  return {
+    type: ActionTypes.SET_CHAPTER_VIEWED,
+    book: book,
+    chapter: chapter,
+    viewedState: viewedState
+  };
+}
+
 export function fetchChapter(book, chapter) {
   return dispatch => {
     dispatch(fetchChapterRequest(book, chapter));

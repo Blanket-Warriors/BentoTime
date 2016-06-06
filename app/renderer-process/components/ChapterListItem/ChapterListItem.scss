@@ -1,16 +1,47 @@
+$chapterListItemSize: 2.2em;
+
 .chapter-list-item {
   @include fadeIn(0.5s);
   @include transition(0.25s);
   display: inline-block;
-  padding: 0 3px 0 3px;
-  margin: 5px 5px 5px 5px;
-  border: 1px solid rgba(256, 256, 256, 0.4);
-  border-radius: 5px;
-
+  height: $chapterListItemSize;
+  width: $chapterListItemSize;
+  line-height: $chapterListItemSize;
+  margin: 0.5em;
+  border: 0.1em solid rgba(256, 256, 256, 0.4);
+  border-radius: 0.1em;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  font-weight: bold;
+  overflow: hidden;
   &:hover {
     background-color: rgba(256, 256, 256, 0.4);
   }
+}
 
+.chapter-list-item.viewed:before {
+  content: '';
+  border: 0.1em solid rgba(256, 256, 256, 0.4);
+  height:0px;
+  border-width:1px;
+  width:$chapterListItemSize;
+  position: absolute;
+  top: 1em;
+  left: -0.05em;
+  transform: rotate(45deg);
+}
+
+.chapter-list-item.viewed:after {
+  content: '';
+  border: 0.1em solid rgba(256, 256, 256, 0.4);
+  height:0px;
+  border-width:1px;
+  width:$chapterListItemSize;
+  position: absolute;
+  top: 1em;
+  left: -0.05em;
+  transform: rotate(-45deg);
 }
 
 .chapter-list-item a {

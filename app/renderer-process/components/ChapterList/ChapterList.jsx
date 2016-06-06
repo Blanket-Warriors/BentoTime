@@ -12,7 +12,7 @@ const ChapterList = function({ book, className }) {
         book={book}
       />
     );
-  }).reverse();
+  });
 
   return <ul className={combine("chapter-list", className)}>{mappedChapters}</ul>;
 };

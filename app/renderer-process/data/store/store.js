@@ -1,20 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { routerMiddleware } from "react-router-redux";
 import reducers from "app/renderer-process/data/reducers";
+import localStorageMiddleware from "app/renderer-process/data/store/middleware/localStorageMiddleware";
 import thunkMiddleware from "redux-thunk";
 import createLogger from "redux-logger";
 import moment from "moment";
-
-const localStorageMiddleware = store => next => action => {
-  if(action.type.match(/SUCCESS/)) {
-    let result = next(action);
-    if(process.env["NODE_ENV"] === "development") { console.log("saving state!"); }
-    const state = store.getState();
-    window.localStorage.setItem("bentotime", JSON.stringify(state || {}));
-    return result;
-  }
-  return next(action);
-};
 
 export default function storeCreator(initialState = {}, options = {}) {
   const middleware = [];

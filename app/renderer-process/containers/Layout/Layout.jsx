@@ -58,7 +58,7 @@ class Layout extends Component {
   }
 
   render() {
-    const { library, user } = this.props;
+    const { library, user, dispatch } = this.props;
     const { bookid, chapterid, pageid } = this.props.params;
 
     const hasBook = Boolean(library.books && bookid);
@@ -69,7 +69,7 @@ class Layout extends Component {
 
     return (
       <div className="layout">
-        {React.cloneElement(this.props.children, { library, user, book, chapter })}
+        {React.cloneElement(this.props.children, { library, user, book, chapter, dispatch })}
       </div>
     );
   }

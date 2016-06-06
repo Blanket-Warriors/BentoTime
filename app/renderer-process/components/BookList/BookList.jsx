@@ -4,14 +4,17 @@ import moment from "moment";
 import BookListItem from "app/renderer-process/components/BookListItem";
 import combine from "app/renderer-process/utilities/combineClasses";
 
-const BookList = function({ books, searchFilter, dateFilter, className }) {
+const BookList = function({ books, searchFilter, dateFilter, bookmarkFilter, className }) {
   const today = moment();
   const matchFromBeginning = new RegExp("^" + searchFilter, "gi");
   const matchAnywhere = new RegExp(searchFilter, "gi");
 
   const mappedBooks = _(books)
     .filter(function filterBookList(book) {
-      //const lastChapterDate = moment(book.lastChapterDate, "YYYY-MM-DDTHH:mm:ss.SSSZ");
+      if(bookmarkFilter && !book.bookmarked) {
+        return false;
+      }
+
       if(dateFilter && !moment(book.lastChapterDate).isSameOrAfter(today, dateFilter)) {
         return false;
       }

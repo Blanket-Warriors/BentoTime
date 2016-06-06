@@ -27,6 +27,7 @@ class LibraryView extends Component {
     const library = this.props.library;
     const searchFilter = this.state.searchFilter;
     const searchFilterExists = searchFilter.length > 0;
+    const bookmarkFilter = !searchFilterExists;
     const dateFilter = searchFilterExists ? this.state.dateFilter : "week";
 
     if(!library.lastUpdated) {
@@ -40,7 +41,8 @@ class LibraryView extends Component {
           className="library-view__books"
           books={library.books}
           searchFilter={searchFilter}
-          dateFilter={dateFilter}
+          bookmarkFilter={bookmarkFilter}
+          dateFilter={null}
         />
       </div>
     );

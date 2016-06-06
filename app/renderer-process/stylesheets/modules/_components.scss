@@ -1,8 +1,11 @@
 /* COMPONENTS - Imports all component styles
 ======================================================================= */
 
+@import "~app/renderer-process/components/BookHero/BookHero.scss";
+@import "~app/renderer-process/components/BookInfo/BookInfo.scss";
 @import "~app/renderer-process/components/BookList/BookList.scss";
 @import "~app/renderer-process/components/BookListItem/BookListItem.scss";
+@import "~app/renderer-process/components/BookmarkIcon/BookmarkIcon.scss";
 @import "~app/renderer-process/components/Button/Button.scss";
 @import "~app/renderer-process/components/ChapterList/ChapterList.scss";
 @import "~app/renderer-process/components/ChapterListItem/ChapterListItem.scss";

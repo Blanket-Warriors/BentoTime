@@ -31,9 +31,11 @@ export default function libraryReducer(state = initialState, action) {
         isFetching: false
       });
 
+    case ActionTypes.SET_BOOKMARK:
     case ActionTypes.FETCH_BOOK_REQUEST:
     case ActionTypes.FETCH_BOOK_SUCCESS:
     case ActionTypes.FETCH_BOOK_FAILURE:
+    case ActionTypes.SET_CHAPTER_VIEWED:
     case ActionTypes.FETCH_CHAPTER_REQUEST:
     case ActionTypes.FETCH_CHAPTER_SUCCESS:
     case ActionTypes.FETCH_CHAPTER_FAILURE:

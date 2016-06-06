@@ -26,6 +26,14 @@ function fetchBookFailure(error) {
   };
 }
 
+export function setBookmark(book, bookmarkState) {
+  return {
+    type: ActionTypes.SET_BOOKMARK,
+    book: book,
+    bookmarkState: bookmarkState
+  };
+}
+
 export function fetchBook(book) {
   return dispatch => {
     dispatch(fetchBookRequest(book));
