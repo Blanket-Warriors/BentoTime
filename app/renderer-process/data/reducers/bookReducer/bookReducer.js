@@ -1,4 +1,4 @@
-import { defaultsDeep } from "lodash";
+import { merge, defaultsDeep } from "lodash";
 import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
 import chapterReducer from "app/renderer-process/data/reducers/chapterReducer";
 
@@ -18,29 +18,29 @@ const initialState = {
   lastUpdated: undefined,
   status: undefined,
   title: undefined,
-  bookmarked: false
+  bookmarked: undefined
 };
 
 export default function bookReducer(state = initialState, action) {
   switch(action.type) {
     case ActionTypes.SET_BOOKMARK:
-      return defaultsDeep({}, state, {
+      return merge({}, state, {
         bookmarked: action.bookmarkState
       });
 
     case ActionTypes.FETCH_BOOK_REQUEST:
-      return defaultsDeep({}, state, {
+      return merge({}, state, {
         isFetching: true
       });
 
     case ActionTypes.FETCH_BOOK_SUCCESS:
-      return defaultsDeep({}, state, action.book, {
+      return merge({}, state, action.book, {
         isFetching: false,
         lastUpdated: action.receivedAt
       });
 
     case ActionTypes.FETCH_BOOK_FAILURE:
-      return defaultsDeep({}, state, {
+      return merge({}, state, {
         isFetching: false
       });
 

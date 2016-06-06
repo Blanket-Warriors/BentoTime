@@ -1,4 +1,4 @@
-import { defaultsDeep, forEach } from "lodash";
+import { merge, defaultsDeep, forEach } from "lodash";
 import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
 import bookReducer from "app/renderer-process/data/reducers/bookReducer";
 
@@ -12,17 +12,19 @@ const initialState = {
 export default function libraryReducer(state = initialState, action) {
   switch(action.type) {
     case ActionTypes.FETCH_LIBRARY_REQUEST:
-      return defaultsDeep({}, state, {
+      return merge({}, state, {
         isFetching: true
       });
 
     case ActionTypes.FETCH_LIBRARY_SUCCESS:
+      var previousBooks = state.books;
+      var nextBooks = action.library.books;
       var books = {};
-      forEach(state.books, function(book, bookid) {
-        books[bookid] = defaultsDeep({}, state.books[bookid], action.library.books[bookid]);
+      forEach(nextBooks, function(book, bookid) {
+        books[bookid] = defaultsDeep({}, previousBooks[bookid], nextBooks[bookid]);
       });
 
-      return defaultsDeep({}, state, {
+      return merge({}, state, {
         books: books,
         isFetching: false,
         lastUpdated: action.receivedAt,
@@ -30,7 +32,7 @@ export default function libraryReducer(state = initialState, action) {
       });
 
     case ActionTypes.FETCH_LIBRARY_FAILURE:
-      return defaultsDeep({}, state, {
+      return merge({}, state, {
         isFetching: false
       });
 

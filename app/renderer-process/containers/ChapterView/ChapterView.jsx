@@ -25,7 +25,7 @@ class ChapterView extends Component {
 
     return (
       <div className="chapter-view">
-        <Link to={"/book/" + book.id} className="chapter-view__back">X</Link>
+        <Link to={"/book/" + book.id} className="chapter-view__back">Back</Link>
         <PageList className="chapter-view__chapters" pages={chapter.pages} />
       </div>
     );

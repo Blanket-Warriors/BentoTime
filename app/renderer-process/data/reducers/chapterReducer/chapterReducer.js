@@ -1,4 +1,4 @@
-import { defaultsDeep } from "lodash";
+import { merge } from "lodash";
 import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
 
 const initialState = {
@@ -12,17 +12,17 @@ const initialState = {
 export default function chapter(state = initialState, action) {
   switch(action.type) {
     case ActionTypes.SET_CHAPTER_VIEWED:
-      return defaultsDeep({}, state, {
+      return merge({}, state, {
         viewed: action.viewedState
       });
 
     case ActionTypes.FETCH_CHAPTER_REQUEST:
-      return defaultsDeep({}, state, {
+      return merge({}, state, {
         isFetching: true
       });
 
     case ActionTypes.FETCH_CHAPTER_SUCCESS:
-      return defaultsDeep({}, state, {
+      return merge({}, state, {
         id: action.chapter.id,
         isFetching: false,
         lastUpdated: action.receivedAt,
@@ -30,7 +30,7 @@ export default function chapter(state = initialState, action) {
       });
 
     case ActionTypes.FETCH_CHAPTER_FAILURE:
-      return defaultsDeep({}, state, {
+      return merge({}, state, {
         isFetching: false
       });
 
