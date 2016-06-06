@@ -8,6 +8,7 @@ $chapterListItemSize: 2.2em;
   width: $chapterListItemSize;
   line-height: $chapterListItemSize;
   margin: 0.5em;
+  backface-visibility: visible;
   border: 0.1em solid rgba(256, 256, 256, 0.4);
   border-radius: 0.1em;
   text-align: center;
@@ -23,11 +24,4 @@ $chapterListItemSize: 2.2em;
 .chapter-list-item--viewed {
   @include fadeIn(0.5s, 0.6);
   opacity: 0.6;
-}
-
-.chapter-list-item a {
-  border: none;
-  &:visited {
-    color: #666;
-  }
 }

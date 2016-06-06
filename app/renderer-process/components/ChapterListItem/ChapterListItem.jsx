@@ -7,14 +7,12 @@ const ChapterListItem = function({ book, chapter }) {
   const viewed = chapter.viewed ? "chapter-list-item--viewed" : "";
   const classes = combineClasses("chapter-list-item", viewed);
   return (
-    <li className={classes}>
-      <Link
-        className="chapter-list-item__name"
-        to={`/book/${book.id}/chapter/${chapter.id}`}
-      >
-        {chapter.number}
-      </Link>
-    </li>
+    <Link
+      className={classes}
+      to={`/book/${book.id}/chapter/${chapter.id}`}
+    >
+      {chapter.number}
+    </Link>
   );
 };
 
