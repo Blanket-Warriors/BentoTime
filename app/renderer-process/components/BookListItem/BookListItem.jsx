@@ -4,7 +4,7 @@ import Img from "app/renderer-process/components/Img";
 import combineClasses from "app/renderer-process/utilities/combineClasses";
 
 const BookListItem = function({ book, newChapter }) {
-  const newChapterFlag = <div className="new-chapter">New Chapter!</div>;
+  const newChapterFlag = <div className="book-list__new-chapter">New Chapter!</div>;
 
   return (
     <li className="book-list-item">

@@ -31,7 +31,7 @@ class LibraryView extends Component {
     const dateFilter = searchFilterExists ? this.state.dateFilter : "week";
 
     if(!library.lastUpdated) {
-      return <h3 className="library-view__loading">loading...</h3>;
+      return <h3 className="library-view--loading">loading...</h3>;
     }
 
     return (

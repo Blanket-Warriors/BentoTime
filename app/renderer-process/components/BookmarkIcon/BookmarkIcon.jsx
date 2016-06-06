@@ -21,9 +21,10 @@ class BookmarkIcon extends Component {
   render() {
     const isBookmarked = this.state.bookmarked;
     const icon = isBookmarked ? "full_heart.svg" : "empty_heart.svg";
+    const classes = combineClasses("bookmark-icon", isBookmarked ? "bookmarkicon--bookmarked" : "");
 
     return <img
-      className={combineClasses("bookmark-icon", isBookmarked ? "bookmarked" : "")}
+      className={classes}
       src={`assets/images/bookmark/${icon}`}
       onClick={this.onClick.bind(this)}
     />;

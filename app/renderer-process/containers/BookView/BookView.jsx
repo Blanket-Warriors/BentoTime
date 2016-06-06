@@ -4,7 +4,7 @@ import BookHero from "app/renderer-process/components/BookHero";
 import BookInfo from "app/renderer-process/components/BookInfo";
 
 const BookView = function BookView({ book, dispatch }) {
-  if(!book) { return <h3 className="book-view__loading">loading...</h3>; }
+  if(!book) { return <h3 className="book-view--loading">loading...</h3>; }
 
   return (
     <div className="book-view">

@@ -4,9 +4,8 @@ import { Link } from "react-router";
 import combineClasses from "app/renderer-process/utilities/combineClasses";
 
 const ChapterListItem = function({ book, chapter }) {
-  const viewed = chapter.viewed ? "viewed" : "";
+  const viewed = chapter.viewed ? "chapter-list-item--viewed" : "";
   const classes = combineClasses("chapter-list-item", viewed);
-  if(chapter.title === "Revenge"){ console.log(chapter); }
   return (
     <li className={classes}>
       <Link
