@@ -14,6 +14,7 @@
 }
 
 .book-list-item__link {
+  position: relative;
   padding: 0;
   border: 0;
   overflow: hidden;
@@ -36,7 +37,14 @@
   background-color: $book-list-item-options-color;
 }
 
-.book-list-item__title {}
+.book-list-item .new-chapter {
+  position: absolute;
+  background-color: orange;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  width: 100%;
+}
 
 .book-list-item__image {
   width: 100%;
