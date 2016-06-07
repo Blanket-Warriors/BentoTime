@@ -1,28 +1,24 @@
-import { merge } from "lodash";
 import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
+import Chapter from "app/renderer-process/data/models/Chapter";
 
-const initialState = {
-  id: undefined,
-  isFetching: false,
-  lastUpdated: undefined,
-  viewed: undefined,
-  pages: []
-};
+const initialState = {};
 
 export default function chapter(state = initialState, action) {
+  const chapter = new Chapter(state);
+
   switch(action.type) {
     case ActionTypes.SET_CHAPTER_VIEWED:
-      return merge({}, state, {
+      return chapter.merge({
         viewed: action.viewedState
       });
 
     case ActionTypes.FETCH_CHAPTER_REQUEST:
-      return merge({}, state, {
+      return chapter.merge({
         isFetching: true
       });
 
     case ActionTypes.FETCH_CHAPTER_SUCCESS:
-      return merge({}, state, {
+      return chapter.merge({
         id: action.chapter.id,
         isFetching: false,
         lastUpdated: action.receivedAt,
@@ -30,11 +26,11 @@ export default function chapter(state = initialState, action) {
       });
 
     case ActionTypes.FETCH_CHAPTER_FAILURE:
-      return merge({}, state, {
+      return chapter.merge({
         isFetching: false
       });
 
     default:
-      return state;
+      return chapter;
   }
 }

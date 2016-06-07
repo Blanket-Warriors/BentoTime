@@ -1,46 +1,32 @@
-import { merge, defaultsDeep } from "lodash";
+import { merge, find } from "lodash";
 import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
 import chapterReducer from "app/renderer-process/data/reducers/chapterReducer";
+import Book from "app/renderer-process/data/models/Book";
 
-const initialState = {
-  alias: undefined,
-  artist: undefined,
-  author: undefined,
-  categories: [],
-  chapters: [],
-  created: undefined,
-  description: undefined,
-  hits: undefined,
-  id: undefined,
-  image: undefined,
-  isFetching: false,
-  lastChapterDate: undefined,
-  lastUpdated: undefined,
-  status: undefined,
-  title: undefined,
-  bookmarked: undefined
-};
+const initialState = new Book();
 
 export default function bookReducer(state = initialState, action) {
+  const book = new Book(state);
+
   switch(action.type) {
     case ActionTypes.SET_BOOKMARK:
-      return merge({}, state, {
+      return book.merge({
         bookmarked: action.bookmarkState
       });
 
     case ActionTypes.FETCH_BOOK_REQUEST:
-      return merge({}, state, {
+      return book.merge({
         isFetching: true
       });
 
     case ActionTypes.FETCH_BOOK_SUCCESS:
-      return merge({}, state, action.book, {
+      return book.merge(merge({}, action.book, {
         isFetching: false,
         lastUpdated: action.receivedAt
-      });
+      }));
 
     case ActionTypes.FETCH_BOOK_FAILURE:
-      return merge({}, state, {
+      return book.merge({
         isFetching: false
       });
 
@@ -48,16 +34,16 @@ export default function bookReducer(state = initialState, action) {
     case ActionTypes.FETCH_CHAPTER_REQUEST:
     case ActionTypes.FETCH_CHAPTER_SUCCESS:
     case ActionTypes.FETCH_CHAPTER_FAILURE:
-      return defaultsDeep({}, state, {
-        chapters: state.chapters.map(function(chapter) {
-          if(chapter.id === action.chapter.id) {
-            return chapterReducer(state.chapters[chapter.id], action);
+      return book.merge({
+        chapters: book.chapters.map(function(chapter) {
+          if(chapter && action.chapter && chapter.id === action.chapter.id) {
+            return chapterReducer(chapter, action);
           }
           return chapter;
         })
       });
 
     default:
-      return state;
+      return book;
   }
 }

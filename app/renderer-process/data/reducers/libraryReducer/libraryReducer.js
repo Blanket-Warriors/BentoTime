@@ -1,6 +1,7 @@
-import { merge, defaultsDeep, forEach } from "lodash";
+import { merge, forEach } from "lodash";
 import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
 import bookReducer from "app/renderer-process/data/reducers/bookReducer";
+import Book from "app/renderer-process/data/models/Book";
 
 const initialState = {
   books: {},
@@ -20,8 +21,14 @@ export default function libraryReducer(state = initialState, action) {
       var previousBooks = state.books;
       var nextBooks = action.library.books;
       var books = {};
-      forEach(nextBooks, function(book, bookid) {
-        books[bookid] = defaultsDeep({}, previousBooks[bookid], nextBooks[bookid]);
+      forEach(nextBooks, function(book, index) {
+        const prevBookObj = previousBooks[index];
+        if(prevBookObj) {
+          const book = new Book(prevBookObj);
+          books[index] = book.merge(nextBooks[index]);
+        } else {
+          books[index] = nextBooks[index];
+        }
       });
 
       return merge({}, state, {
@@ -44,8 +51,8 @@ export default function libraryReducer(state = initialState, action) {
     case ActionTypes.FETCH_CHAPTER_REQUEST:
     case ActionTypes.FETCH_CHAPTER_SUCCESS:
     case ActionTypes.FETCH_CHAPTER_FAILURE:
-      return defaultsDeep({}, state, {
-        books: defaultsDeep({}, state.books, {
+      return merge({}, state, {
+        books: merge({}, state.books, {
           [action.book.id]: bookReducer(state.books[action.book.id], action)
         })
       });

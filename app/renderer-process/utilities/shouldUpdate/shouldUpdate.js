@@ -1,7 +1,11 @@
 import moment, { isMoment } from "moment";
 
 export default function shouldUpdate(toCheck) {
-  if(!toCheck || !toCheck.lastUpdated) {
+  if(!toCheck) {
+    return false;
+  }
+
+  if(!toCheck.lastUpdated) {
     return true;
   }
   var lastUpdated;
