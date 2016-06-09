@@ -1,5 +1,5 @@
 import { app, Menu, BrowserWindow, crashReporter } from "electron";
-import createMenuTemplate from "./createMenuTemplate";
+import createMenuTemplate from "./modules/createMenuTemplate";
 import path from "path";
 
 const environment = process.env["NODE_ENV"];
@@ -22,7 +22,8 @@ app.on("ready", function onAppReady() {
   });
 
   if(environment === "development") {
-    win.loadURL("http://localhost:8080"); // Serve resources from memory if in development
+    // Serve resources from memory if in development
+    win.loadURL("http://localhost:8080");
     win.openDevTools();
   } else {
     win.loadURL(`file://${__dirname}/../index.html`);
@@ -42,4 +43,3 @@ app.on("window-all-closed", function onAppWindowsClosed() {
     app.quit();
   }
 });
-
