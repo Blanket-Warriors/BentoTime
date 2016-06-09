@@ -2,9 +2,9 @@ import React, { Component, PropTypes } from "react";
 import { Link } from "react-router";
 import { map } from "lodash";
 
-import { setChapterViewed } from "app/renderer-process/data/actions/chapterActions";
-import combineClasses from "app/renderer-process/utilities/combineClasses";
-import PageList from "app/renderer-process/components/PageList";
+import { setChapterViewed } from "renderer/data/actions/chapterActions";
+import combineClasses from "renderer/utilities/combineClasses";
+import PageList from "renderer/components/PageList";
 
 class ChapterView extends Component {
   constructor(props) {

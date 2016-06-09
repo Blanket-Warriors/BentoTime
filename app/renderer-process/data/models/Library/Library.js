@@ -1,5 +1,5 @@
 import { assign, reduce } from "lodash";
-import Book from "app/renderer-process/data/models/Book";
+import Book from "renderer/data/models/Book";
 import moment from "moment";
 
 const Library = function Library() {

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react";
-import { setBookmark } from "app/renderer-process/data/actions/bookActions";
-import combineClasses from "app/renderer-process/utilities/combineClasses";
+import { setBookmark } from "renderer/data/actions/bookActions";
+import combineClasses from "renderer/utilities/combineClasses";
 
 class BookmarkIcon extends Component {
   constructor(props) {

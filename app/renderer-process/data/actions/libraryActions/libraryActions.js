@@ -1,6 +1,6 @@
 import { reduce } from "lodash";
-import { getLibrary$ } from "app/renderer-process/data/services/mangaEdenApi";
-import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
+import { getLibrary$ } from "renderer/data/services/mangaEdenApi";
+import * as ActionTypes from "renderer/data/actions/ActionTypes";
 import moment from "moment";
 
 function fetchLibraryRequest() {

@@ -1,5 +1,5 @@
-import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
-import Chapter from "app/renderer-process/data/models/Chapter";
+import * as ActionTypes from "renderer/data/actions/ActionTypes";
+import Chapter from "renderer/data/models/Chapter";
 
 const initialState = {};
 

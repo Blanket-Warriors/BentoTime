@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router";
 
-import BookmarkIcon from "app/renderer-process/components/BookmarkIcon";
-import Img from "app/renderer-process/components/Img";
+import BookmarkIcon from "renderer/components/BookmarkIcon";
+import Img from "renderer/components/Img";
 
 const BookHero = function BookHero({ book, dispatch }) {
   return (

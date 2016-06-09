@@ -17,6 +17,8 @@ const defaultConfiguration = {
     // Shortcuts to folders.  We can start an import path from `app`, `test`, and `public`.
     alias: {
       app: path.join(baseDir, "app"),
+      main: path.join(baseDir, "app/main-process"),
+      renderer: path.join(baseDir, "app/renderer-process"),
       test: path.join(baseDir, "test"),
       public: path.join(baseDir, "public")
     }

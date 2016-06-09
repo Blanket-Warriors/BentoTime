@@ -1,7 +1,7 @@
 import { merge, find } from "lodash";
-import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
-import chapterReducer from "app/renderer-process/data/reducers/chapterReducer";
-import Book from "app/renderer-process/data/models/Book";
+import * as ActionTypes from "renderer/data/actions/ActionTypes";
+import chapterReducer from "renderer/data/reducers/chapterReducer";
+import Book from "renderer/data/models/Book";
 
 const initialState = new Book();
 

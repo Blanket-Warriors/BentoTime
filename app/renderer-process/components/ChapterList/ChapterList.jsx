@@ -1,7 +1,7 @@
 import React from "react";
 import { map } from "lodash";
-import ChapterListItem from "app/renderer-process/components/ChapterListItem";
-import combine from "app/renderer-process/utilities/combineClasses";
+import ChapterListItem from "renderer/components/ChapterListItem";
+import combine from "renderer/utilities/combineClasses";
 
 const ChapterList = function({ book, className }) {
   const mappedChapters = map(book.chapters, chapter => {

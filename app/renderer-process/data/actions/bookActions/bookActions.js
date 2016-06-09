@@ -1,5 +1,5 @@
-import { getBook$ } from "app/renderer-process/data/services/mangaEdenApi";
-import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
+import { getBook$ } from "renderer/data/services/mangaEdenApi";
+import * as ActionTypes from "renderer/data/actions/ActionTypes";
 import moment from "moment";
 
 function fetchBookRequest(book) {

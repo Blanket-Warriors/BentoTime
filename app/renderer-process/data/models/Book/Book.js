@@ -1,8 +1,9 @@
 import moment from "moment";
 import { map } from "lodash";
-import Chapter from "app/renderer-process/data/models/Chapter";
-import { imgHost } from "app/renderer-process/data/services/mangaEdenApi";
-import decodeEntities from "app/renderer-process/utilities/decodeEntities";
+
+import Chapter from "renderer/data/models/Chapter";
+import { imgHost } from "renderer/data/services/mangaEdenApi";
+import decodeEntities from "renderer/utilities/decodeEntities";
 
 const Book = function Book(initialData = {}) {
   this.alias            = initialData.alias;

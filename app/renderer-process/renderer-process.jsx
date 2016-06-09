@@ -3,9 +3,9 @@ import { render } from "react-dom";
 import { Provider } from "react-redux";
 import { Router, hashHistory } from "react-router";
 
-import Routes from "app/renderer-process/containers/Routes";
-import storeCreator from "app/renderer-process/data/store";
-import "app/renderer-process/stylesheets/style";
+import Routes from "renderer/containers/Routes";
+import storeCreator from "renderer/data/store";
+import "renderer/stylesheets/style";
 
 const previousState = window.localStorage.getItem("bentotime");
 const initialState = previousState ? JSON.parse(previousState) : {};

@@ -1,8 +1,8 @@
 import "isomorphic-fetch";
 
-import Library from "app/renderer-process/data/models/Library";
-import Book from "app/renderer-process/data/models/Book";
-import Chapter from "app/renderer-process/data/models/Chapter";
+import Library from "renderer/data/models/Library";
+import Book from "renderer/data/models/Book";
+import Chapter from "renderer/data/models/Chapter";
 
 export const baseHost = "http://www.mangaeden.com/";
 export const imgHost = "http://cdn.mangaeden.com/mangasimg/";

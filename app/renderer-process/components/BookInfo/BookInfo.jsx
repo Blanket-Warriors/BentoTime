@@ -1,6 +1,6 @@
 import React from "react";
 
-import ChapterList from "app/renderer-process/components/ChapterList";
+import ChapterList from "renderer/components/ChapterList";
 
 const BookInfo = function BookInfo({ book }) {
   return (

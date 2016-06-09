@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { bind, debounce } from "lodash";
 
-import SearchBar from "app/renderer-process/components/SearchBar";
-import BookList from "app/renderer-process/components/BookList";
+import SearchBar from "renderer/components/SearchBar";
+import BookList from "renderer/components/BookList";
 
 class LibraryView extends Component {
   constructor(props) {

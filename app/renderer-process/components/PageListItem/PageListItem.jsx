@@ -1,5 +1,5 @@
 import React from "react";
-import Img from "app/renderer-process/components/Img";
+import Img from "renderer/components/Img";
 
 const PageListItem = function({ id, src }) {
   return (

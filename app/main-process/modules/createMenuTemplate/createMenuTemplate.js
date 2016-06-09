@@ -1,5 +1,5 @@
 import { app, BrowserWindow, shell, autoUpdater } from "electron";
-import submenus from "app/main-process/modules/submenus";
+import submenus from "main/modules/submenus";
 
 function addUpdateMenuItems(items, position) {
   items.splice.apply(items, [position, 0].concat(submenus.updateItems));

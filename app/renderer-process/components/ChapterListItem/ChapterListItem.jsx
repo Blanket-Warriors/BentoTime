@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 import { Link } from "react-router";
-import combineClasses from "app/renderer-process/utilities/combineClasses";
+import combineClasses from "renderer/utilities/combineClasses";
 
 const ChapterListItem = function({ book, chapter }) {
   const viewed = chapter.viewed ? "chapter-list-item--viewed" : "";

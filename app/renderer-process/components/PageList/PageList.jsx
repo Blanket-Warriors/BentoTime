@@ -1,7 +1,7 @@
 import React from "react";
 import { map, isEmpty } from "lodash";
-import PageListItem from "app/renderer-process/components/PageListItem";
-import combine from "app/renderer-process/utilities/combineClasses";
+import PageListItem from "renderer/components/PageListItem";
+import combine from "renderer/utilities/combineClasses";
 
 const PageList = function({ pages, className }) {
   var mappedPages = "Loading...";

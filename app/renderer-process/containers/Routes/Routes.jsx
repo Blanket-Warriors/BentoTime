@@ -1,12 +1,12 @@
 import React from "react";
 import { Route } from "react-router";
 
-import Layout from "app/renderer-process/containers/Layout";
-import BookView from "app/renderer-process/containers/BookView";
-import ChapterView from "app/renderer-process/containers/ChapterView";
-import LibraryView from "app/renderer-process/containers/LibraryView";
-import SettingsView from "app/renderer-process/containers/SettingsView";
-import NotFoundView from "app/renderer-process/containers/NotFoundView";
+import Layout from "renderer/containers/Layout";
+import BookView from "renderer/containers/BookView";
+import ChapterView from "renderer/containers/ChapterView";
+import LibraryView from "renderer/containers/LibraryView";
+import SettingsView from "renderer/containers/SettingsView";
+import NotFoundView from "renderer/containers/NotFoundView";
 
 const routes = (
   <Route component={Layout}>

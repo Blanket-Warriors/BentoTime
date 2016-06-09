@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from "react";
 import { find, debounce, cloneDeep } from "lodash";
 import { connect } from "react-redux";
-import shouldUpdate from "app/renderer-process/utilities/shouldUpdate";
+import shouldUpdate from "renderer/utilities/shouldUpdate";
 
-import { fetchLibrary, fetchBook, fetchChapter } from "app/renderer-process/data/actions";
+import { fetchLibrary, fetchBook, fetchChapter } from "renderer/data/actions";
 
 class Layout extends Component {
   constructor(props) {

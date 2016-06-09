@@ -1,5 +1,5 @@
 import { app, Menu, BrowserWindow, crashReporter } from "electron";
-import createMenuTemplate from "./modules/createMenuTemplate";
+import createMenuTemplate from "main/modules/createMenuTemplate";
 import path from "path";
 
 const environment = process.env["NODE_ENV"];

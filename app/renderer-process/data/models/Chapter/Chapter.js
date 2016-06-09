@@ -1,5 +1,5 @@
 import { map } from "lodash";
-import { imgHost } from "app/renderer-process/data/services/mangaEdenApi";
+import { imgHost } from "renderer/data/services/mangaEdenApi";
 import moment from "moment";
 
 const Chapter = function Chapter(initialData = {}) {

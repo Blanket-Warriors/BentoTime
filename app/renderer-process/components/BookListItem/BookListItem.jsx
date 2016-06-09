@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router";
-import Img from "app/renderer-process/components/Img";
-import combineClasses from "app/renderer-process/utilities/combineClasses";
+import Img from "renderer/components/Img";
+import combineClasses from "renderer/utilities/combineClasses";
 
 const BookListItem = function({ book, newChapter }) {
   const newChapterFlag = <div className="book-list__new-chapter">New Chapter!</div>;

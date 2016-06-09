@@ -1,24 +1,24 @@
 /* COMPONENTS - Imports all component styles
 ======================================================================= */
 
-@import "~app/renderer-process/components/BookHero/BookHero.scss";
-@import "~app/renderer-process/components/BookInfo/BookInfo.scss";
-@import "~app/renderer-process/components/BookList/BookList.scss";
-@import "~app/renderer-process/components/BookListItem/BookListItem.scss";
-@import "~app/renderer-process/components/BookmarkIcon/BookmarkIcon.scss";
-@import "~app/renderer-process/components/Button/Button.scss";
-@import "~app/renderer-process/components/ChapterList/ChapterList.scss";
-@import "~app/renderer-process/components/ChapterListItem/ChapterListItem.scss";
-@import "~app/renderer-process/components/Img/Img.scss";
-@import "~app/renderer-process/components/Link/Link.scss";
-@import "~app/renderer-process/components/PageList/PageList.scss";
-@import "~app/renderer-process/components/PageListItem/PageListItem.scss";
-@import "~app/renderer-process/components/SearchBar/SearchBar.scss";
+@import "~renderer/components/BookHero/BookHero.scss";
+@import "~renderer/components/BookInfo/BookInfo.scss";
+@import "~renderer/components/BookList/BookList.scss";
+@import "~renderer/components/BookListItem/BookListItem.scss";
+@import "~renderer/components/BookmarkIcon/BookmarkIcon.scss";
+@import "~renderer/components/Button/Button.scss";
+@import "~renderer/components/ChapterList/ChapterList.scss";
+@import "~renderer/components/ChapterListItem/ChapterListItem.scss";
+@import "~renderer/components/Img/Img.scss";
+@import "~renderer/components/Link/Link.scss";
+@import "~renderer/components/PageList/PageList.scss";
+@import "~renderer/components/PageListItem/PageListItem.scss";
+@import "~renderer/components/SearchBar/SearchBar.scss";
 
-@import "~app/renderer-process/containers/BookView/BookView.scss";
-@import "~app/renderer-process/containers/ChapterView/ChapterView.scss";
-@import "~app/renderer-process/containers/Layout/Layout.scss";
-@import "~app/renderer-process/containers/LibraryView/LibraryView.scss";
-@import "~app/renderer-process/containers/NotFoundView/NotFoundView.scss";
-@import "~app/renderer-process/containers/PageView/PageView.scss";
-@import "~app/renderer-process/containers/SettingsView/SettingsView.scss";
+@import "~renderer/containers/BookView/BookView.scss";
+@import "~renderer/containers/ChapterView/ChapterView.scss";
+@import "~renderer/containers/Layout/Layout.scss";
+@import "~renderer/containers/LibraryView/LibraryView.scss";
+@import "~renderer/containers/NotFoundView/NotFoundView.scss";
+@import "~renderer/containers/PageView/PageView.scss";
+@import "~renderer/containers/SettingsView/SettingsView.scss";

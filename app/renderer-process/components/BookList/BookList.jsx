@@ -1,8 +1,8 @@
 import React from "react";
 import _ from "lodash";
 import moment from "moment";
-import BookListItem from "app/renderer-process/components/BookListItem";
-import combine from "app/renderer-process/utilities/combineClasses";
+import BookListItem from "renderer/components/BookListItem";
+import combine from "renderer/utilities/combineClasses";
 
 const BookList = function({ books, searchFilter, dateFilter, bookmarkFilter, className }) {
   const today = moment();

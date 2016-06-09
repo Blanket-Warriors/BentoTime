@@ -1,5 +1,5 @@
 import React from "react";
-import combine from "app/renderer-process/utilities/combineClasses";
+import combine from "renderer/utilities/combineClasses";
 
 const SearchBar = function({ type, onChange, placeholder, className }) {
   return (

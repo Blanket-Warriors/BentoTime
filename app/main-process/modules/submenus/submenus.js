@@ -1,5 +1,5 @@
 import { app, shell, autoUpdater } from "electron";
-import helpers from "app/main-process/modules/windowHelpers";
+import helpers from "main/modules/windowHelpers";
 
 const isMac = process.platform === "darwin";
 const version = app.getVersion();
