@@ -2,15 +2,30 @@ import { map } from "lodash";
 import { imgHost } from "renderer/data/services/mangaEdenApi";
 import moment from "moment";
 
-const Chapter = function Chapter(initialData = {}) {
-  this.id           = initialData.id;
-  this.pages        = initialData.pages;
-  this.number       = initialData.number;
-  this.releaseDate  = initialData.releaseDate;
-  this.title        = initialData.title;
-  this.isFetching   = initialData.isFetching;
-  this.viewed       = initialData.viewed;
-};
+class Chapter {
+  constructor(initialData = {}) {
+    this.id           = initialData.id;
+    this.pages        = initialData.pages;
+    this.number       = initialData.number;
+    this.releaseDate  = initialData.releaseDate;
+    this.title        = initialData.title;
+    this.isFetching   = initialData.isFetching;
+    this.viewed       = initialData.viewed;
+  }
+
+  merge(nextChapter) {
+    var newChapter = new Chapter(this);
+    if(!nextChapter) { return newChapter; }
+
+    Object.keys(this).forEach(function(property) {
+      if(nextChapter[property] !== undefined) {
+        newChapter[property] = nextChapter[property];
+      }
+    });
+
+    return newChapter;
+  }
+}
 
 Chapter.createFromMangaEdenChapterApi = function(response, chapterID) {
   return new Chapter({
@@ -35,17 +50,6 @@ Chapter.formatPage = function([pageNumber, imageUrl, width, height]) {
     width: width,
     height: height
   };
-};
-
-Chapter.prototype.merge = function(nextChapter) {
-  var newChapter = new Chapter(this);
-  if(!nextChapter) { return newChapter; }
-
-  ["pages", "id", "title", "releaseDate", "lastUpdate", "viewed", "isFetching", "number"].forEach(function(property) {
-    if(nextChapter[property] !== undefined) { newChapter[property] = nextChapter[property]; }
-  });
-
-  return newChapter;
 };
 
 export default Chapter;

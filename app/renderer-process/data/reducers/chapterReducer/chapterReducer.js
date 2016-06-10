@@ -1,24 +1,22 @@
 import * as ActionTypes from "renderer/data/actions/ActionTypes";
 import Chapter from "renderer/data/models/Chapter";
 
-const initialState = {};
+const initialState = new Chapter();
 
 export default function chapter(state = initialState, action) {
-  const chapter = new Chapter(state);
-
   switch(action.type) {
     case ActionTypes.SET_CHAPTER_VIEWED:
-      return chapter.merge({
+      return state.merge({
         viewed: action.viewedState
       });
 
     case ActionTypes.FETCH_CHAPTER_REQUEST:
-      return chapter.merge({
+      return state.merge({
         isFetching: true
       });
 
     case ActionTypes.FETCH_CHAPTER_SUCCESS:
-      return chapter.merge({
+      return state.merge({
         id: action.chapter.id,
         isFetching: false,
         lastUpdated: action.receivedAt,
@@ -26,11 +24,11 @@ export default function chapter(state = initialState, action) {
       });
 
     case ActionTypes.FETCH_CHAPTER_FAILURE:
-      return chapter.merge({
+      return state.merge({
         isFetching: false
       });
 
     default:
-      return chapter;
+      return state;
   }
 }

@@ -1,14 +1,9 @@
 import { merge, forEach } from "lodash";
 import * as ActionTypes from "renderer/data/actions/ActionTypes";
 import bookReducer from "renderer/data/reducers/bookReducer";
-import Book from "renderer/data/models/Book";
+import Library from "renderer/data/models/Library";
 
-const initialState = {
-  books: {},
-  isFetching: false,
-  lastUpdated: null,
-  totalBooks: 0
-};
+const initialState = new Library();
 
 export default function libraryReducer(state = initialState, action) {
   switch(action.type) {
@@ -18,21 +13,20 @@ export default function libraryReducer(state = initialState, action) {
       });
 
     case ActionTypes.FETCH_LIBRARY_SUCCESS:
-      var previousBooks = state.books;
-      var nextBooks = action.library.books;
-      var books = {};
-      forEach(nextBooks, function(book, index) {
-        const prevBookObj = previousBooks[index];
-        if(prevBookObj) {
-          const book = new Book(prevBookObj);
-          books[index] = book.merge(nextBooks[index]);
+      var currentBooks = state.books;
+      var updatedBooks = action.library.books;
+      var nextBooks = {};
+      forEach(updatedBooks, function(book, index) {
+        const prevBook = currentBooks[index];
+        if(prevBook) {
+          nextBooks[index] = prevBook.merge(updatedBooks[index]);
         } else {
-          books[index] = nextBooks[index];
+          nextBooks[index] = book;
         }
       });
 
       return merge({}, state, {
-        books: books,
+        books: nextBooks,
         isFetching: false,
         lastUpdated: action.receivedAt,
         totalBooks: action.library.totalBooks
