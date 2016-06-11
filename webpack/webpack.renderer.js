@@ -11,11 +11,11 @@ module.exports = Object.assign({}, baseConfig, {
 
   entry: path.join(baseDir, "app/renderer-process/renderer-process.jsx"),
 
-  // Output an `index.js` file into [root]/public/build
+  // Output an `rebderer.js` file into [root]/public/build
   // publicPath lets webpack-dev-server know where to look for this file on run-time
   output: {
     path: path.join(baseDir, "public", "build"),
     publicPath: "/build/",
-    filename: "index.js"
+    filename: "rebderer.js"
   }
 });

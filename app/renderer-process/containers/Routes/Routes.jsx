@@ -5,7 +5,6 @@ import Layout from "renderer/containers/Layout";
 import BookView from "renderer/containers/BookView";
 import ChapterView from "renderer/containers/ChapterView";
 import LibraryView from "renderer/containers/LibraryView";
-import SettingsView from "renderer/containers/SettingsView";
 import NotFoundView from "renderer/containers/NotFoundView";
 
 const routes = (
@@ -15,7 +14,6 @@ const routes = (
     <Route path="/book/:bookid/chapter/:chapterid" component={ChapterView} />
     <Route path="/book/:bookid" component={BookView} />
 
-    <Route path="settings" component={SettingsView} />
     <Route path="*" component={NotFoundView} />
   </Route>
 );

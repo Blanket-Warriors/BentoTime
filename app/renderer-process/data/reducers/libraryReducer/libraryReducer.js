@@ -1,4 +1,4 @@
-import { merge, forEach } from "lodash";
+import { assign } from "lodash";
 import * as ActionTypes from "renderer/data/actions/ActionTypes";
 import bookReducer from "renderer/data/reducers/bookReducer";
 import Library from "renderer/data/models/Library";
@@ -8,32 +8,20 @@ const initialState = new Library();
 export default function libraryReducer(state = initialState, action) {
   switch(action.type) {
     case ActionTypes.FETCH_LIBRARY_REQUEST:
-      return merge({}, state, {
+      return state.merge({
         isFetching: true
       });
 
     case ActionTypes.FETCH_LIBRARY_SUCCESS:
-      var currentBooks = state.books;
-      var updatedBooks = action.library.books;
-      var nextBooks = {};
-      forEach(updatedBooks, function(book, index) {
-        const prevBook = currentBooks[index];
-        if(prevBook) {
-          nextBooks[index] = prevBook.merge(updatedBooks[index]);
-        } else {
-          nextBooks[index] = book;
-        }
-      });
-
-      return merge({}, state, {
-        books: nextBooks,
+      return state.merge({
+        books: action.library.books,
         isFetching: false,
         lastUpdated: action.receivedAt,
         totalBooks: action.library.totalBooks
       });
 
     case ActionTypes.FETCH_LIBRARY_FAILURE:
-      return merge({}, state, {
+      return state.merge({
         isFetching: false
       });
 
@@ -45,8 +33,8 @@ export default function libraryReducer(state = initialState, action) {
     case ActionTypes.FETCH_CHAPTER_REQUEST:
     case ActionTypes.FETCH_CHAPTER_SUCCESS:
     case ActionTypes.FETCH_CHAPTER_FAILURE:
-      return merge({}, state, {
-        books: merge({}, state.books, {
+      return state.merge({
+        books: assign({}, state.books, {
           [action.book.id]: bookReducer(state.books[action.book.id], action)
         })
       });

@@ -1,4 +1,4 @@
-import { reduce } from "lodash";
+import { reduce, forEach } from "lodash";
 import Book from "renderer/data/models/Book";
 import moment from "moment";
 
@@ -15,6 +15,28 @@ class Library {
         return books;
       }, {});
     }
+  }
+
+  merge(updateLibrary) {
+    var nextLibrary = new Library(this);
+    if(!updateLibrary) {
+      console.warn("Trying to merge with a non-existing library!");
+      return nextLibrary;
+    }
+
+    if(typeof updateLibrary.books == "object") {
+      nextLibrary.books = reduce(updateLibrary.books, (books, book, bookIndex) => {
+        const prevBook = this.books[bookIndex];
+        if(prevBook) {
+          books[bookIndex] = prevBook.merge(new Book(book));
+        } else {
+          books[bookIndex] = new Book(book);
+        }
+        return books;
+      }, {});
+    }
+
+    return nextLibrary;
   }
 }
 

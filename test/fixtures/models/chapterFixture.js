@@ -1,5 +1,8 @@
 export default {
   id: "4e711cb0c09225616d037cc2",
+  number: 5,
+  title: "5",
+  releaseDate: 1275542373,
   pages: [
     "http://cdn.mangaeden.com/mangasimg/87/87b1ac3ddea96bb953342829c3f74ac9f9409a4591aff77b5cf6c308.jpg",
     "http://cdn.mangaeden.com/mangasimg/78/788bd5eee87ec26032b7631d9f271d9b529adcccd38148668baa9f3f.jpg",

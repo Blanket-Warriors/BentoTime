@@ -5,8 +5,8 @@ import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
 
 describe("Data", function() {
   describe("Reducers", function() {
-    describe("Book", function() {
-      it("Should set `isFetching` to true when a request is initiated", function setIsFetching() {
+    describe("BookReducer", function() {
+      xit("Should set `isFetching` to true when a request is initiated", function setIsFetching() {
         const nextState = bookReducer(undefined, {
           type: ActionTypes.FETCH_BOOK_REQUEST
         });
@@ -14,7 +14,7 @@ describe("Data", function() {
         expect(nextState.isFetching).to.be.true;
       });
 
-      it("Should populate empty states correctly on success", function SetEmptyState() {
+      xit("Should populate empty states correctly on success", function SetEmptyState() {
         const nextState = bookReducer(undefined, {
           type: ActionTypes.FETCH_BOOK_SUCCESS,
           receivedAt: 12345,
@@ -28,7 +28,7 @@ describe("Data", function() {
         expect(nextState.chapters).to.deep.equal(bookFixture.chapters);
       });
 
-      it("Should merge state on successful update", function SetActiveState() {
+      xit("Should merge state on successful update", function SetActiveState() {
         const previousState = clone(bookFixture);
         previousState.propertyToRemain = "old state";
         previousState.id = "old id";
@@ -49,7 +49,7 @@ describe("Data", function() {
         expect(nextState.lastUpdated).to.equal(12345);
       });
 
-      it("Should set `isFetching` to false on a failed request", function respondToErrors() {
+      xit("Should set `isFetching` to false on a failed request", function respondToErrors() {
         const nextState = bookReducer(undefined, {
           type: ActionTypes.FETCH_BOOK_FAILURE
         });

@@ -11,7 +11,6 @@ import "renderer/stylesheets/style";
 const previousState = window.localStorage.getItem("bentotime");
 const initialState = previousState ? JSON.parse(previousState) : {};
 initialState.library = new Library(initialState.library);
-console.log(initialState);
 
 const store = storeCreator(initialState, {
   history: hashHistory
