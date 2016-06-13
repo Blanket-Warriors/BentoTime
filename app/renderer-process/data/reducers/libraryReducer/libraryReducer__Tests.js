@@ -2,6 +2,8 @@ import libraryReducer from "./libraryReducer";
 import libraryFixture from "test/fixtures/models/libraryFixture";
 import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
 
+// We should stub out Library() and Book()
+
 describe("Data", function() {
   describe("Reducers", function() {
     describe("library", function() {

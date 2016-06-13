@@ -12,8 +12,8 @@ describe("Data", function() {
           lastUpdated: "lastUpdatedState",
           totalBooks: 2,
           books: {
-            book1: "book1",
-            book2: "book2"
+            book1: new Book({ "title": "book1" }),
+            book2: new Book({ "title": "book2" })
           }
         });
 

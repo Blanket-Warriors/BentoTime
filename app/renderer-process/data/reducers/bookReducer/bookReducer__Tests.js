@@ -3,6 +3,8 @@ import bookReducer from "./bookReducer";
 import bookFixture from "test/fixtures/models/bookFixture";
 import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
 
+// We should stub out Book() and Chapter()
+
 describe("Data", function() {
   describe("Reducers", function() {
     describe("BookReducer", function() {

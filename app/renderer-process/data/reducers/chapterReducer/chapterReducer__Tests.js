@@ -3,6 +3,8 @@ import chapterReducer from "./chapterReducer";
 import * as ActionTypes from "app/renderer-process/data/actions/ActionTypes";
 import chapterFixture from "test/fixtures/models/chapterFixture";
 
+// We should stub out Chapter()
+
 describe("Data", function() {
   describe("Reducers", function() {
     describe("ChapterReducer", function() {

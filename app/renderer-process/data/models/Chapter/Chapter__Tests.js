@@ -55,9 +55,67 @@ describe("Data", function() {
         expect(chapter.pages).to.be.undefined;
       });
 
-      it("Should correctly merge two Chapters");
+      it("Should correctly merge two Chapters", function() {
+        const chapter1 = new Chapter({
+          id: "12345",
+          number: 5,
+          releaseDate: 1122334455,
+          title: "the lamb",
+          isFetching: false,
+          viewed: true
+        });
 
-      it("Should correctly merge a Chapter with an object containing new properties");
+        const chapter2 = new Chapter({id: "12345", pages: [1,2,3,4,5] });
+
+        const expectedProperties = {
+          id: "12345",
+          number: 5,
+          releaseDate: 1122334455,
+          title: "the lamb",
+          isFetching: false,
+          viewed: true
+        };
+
+        const mergedChapter = chapter1.merge(chapter2);
+        forEach(expectedProperties, function(property, index) {
+          if(index == "pages") {
+            expect(mergedChapter[index][0]).to.equal(property[0]);
+          } else {
+            expect(mergedChapter[index]).to.equal(property);
+          }
+        });
+      });
+
+      it("Should correctly merge a Chapter with an object containing new properties", function() {
+        const chapter1 = new Chapter({
+          number: 5,
+          releaseDate: 1122334455,
+          title: "the lamb",
+          isFetching: false,
+          viewed: false
+        });
+        const mergedChapter = chapter1.merge({
+          id: "12345",
+          pages: [1,2,3,4,5],
+          viewed: true
+        });
+        const expectedProperties = {
+          id: "12345",
+          number: 5,
+          releaseDate: 1122334455,
+          title: "the lamb",
+          isFetching: false,
+          viewed: true
+        };
+
+        forEach(expectedProperties, function(property, index) {
+          if(index == "pages") {
+            expect(mergedChapter[index][0]).to.equal(property[0]);
+          } else {
+            expect(mergedChapter[index]).to.equal(property);
+          }
+        });
+      });
     });
   });
 });
