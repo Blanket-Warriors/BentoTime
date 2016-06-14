@@ -1,3 +1,5 @@
+import { imgHost } from "test/stubs/mangaEdenServices";
+
 export default {
   "isFetching": false,
   "lastUpdated": null,
@@ -6,7 +8,7 @@ export default {
     "5372389645b9ef5a0b1d20d8": {
       "id":"5372389645b9ef5a0b1d20d8",
       "title":"Flower Dream",
-      "image":"http://cdn.mangaeden.com/mangasimg/ad/ad8dbe2c909de99899f1015a360f75e3ced31023672d6ff0d2b7547c.jpg",
+      "image": imgHost + "ad/ad8dbe2c909de99899f1015a360f75e3ced31023672d6ff0d2b7547c.jpg",
       "lastChapterDate":1416420134,
       "alias":"flower-dream",
       "status":1,
@@ -16,7 +18,7 @@ export default {
     "54430be945b9ef3a6d5818cc": {
       "id":"54430be945b9ef3a6d5818cc",
       "title":"Kanai-kun",
-      "image":"http://cdn.mangaeden.com/mangasimg/05/05d5df58e440371496b217f94cc4894abeba1671bd9edf0e7cd774a1.jpg",
+      "image": imgHost + "05/05d5df58e440371496b217f94cc4894abeba1671bd9edf0e7cd774a1.jpg",
       "lastChapterDate":1420483442,
       "alias":"kanai-kun",
       "status":2,
@@ -26,7 +28,7 @@ export default {
     "55ee01e8719a163764776642":{
       "id":"55ee01e8719a163764776642",
       "title":"Samishigariya no Love Letter",
-      "image":"http://cdn.mangaeden.com/mangasimg/82/8221a794b5a19b28b34497151533cf2114450768acbb9a6a6dd13a20.jpg",
+      "image": imgHost + "82/8221a794b5a19b28b34497151533cf2114450768acbb9a6a6dd13a20.jpg",
       "lastChapterDate":1442221828,
       "alias":"samishigariya-no-love-letter",
       "status":2,
@@ -36,7 +38,7 @@ export default {
     "56709f67719a16349215d5c3": {
       "id":"56709f67719a16349215d5c3",
       "title":"Silver Gravekeeper",
-      "image":"http://cdn.mangaeden.com/mangasimg/06/0652f9d4bc85cb4a06d964c81fd251a893bed2ceb89dc2cf9327eac7.jpg",
+      "image": imgHost + "06/0652f9d4bc85cb4a06d964c81fd251a893bed2ceb89dc2cf9327eac7.jpg",
       "lastChapterDate":1452836634,
       "alias":"silver-gravekeeper",
       "status":1,

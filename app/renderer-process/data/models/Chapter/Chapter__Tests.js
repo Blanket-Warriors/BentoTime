@@ -1,8 +1,7 @@
 import { forEach } from "lodash";
 
 import Chapter from "./Chapter";
-import mangaApiResponse from "test/fixtures/mangaEden/mangaApiFixture";
-import chapterApiResponse from "test/fixtures/mangaEden/chapterApiFixture";
+import mangaEdenApi from "test/fixtures/mangaEden";
 import expectedOutput from "test/fixtures/models/chapterFixture";
 
 describe("Data", function() {
@@ -29,7 +28,7 @@ describe("Data", function() {
       });
 
       it("Should create a Chapter from Manga Eden Chapter Api data", function() {
-        const responseData = chapterApiResponse;
+        const responseData = mangaEdenApi.chapter;
         const chapterId = expectedOutput.id;
         const chapter = Chapter.createFromMangaEdenChapterApi(responseData, chapterId);
         expect(chapter instanceof Chapter).to.be.true;
@@ -44,7 +43,7 @@ describe("Data", function() {
       });
 
       it("Should create a Chapter from Manga Eden Manga Api data", function() {
-        const responseData = mangaApiResponse.chapters[0];
+        const responseData = mangaEdenApi.manga.chapters[0];
         const chapterId = expectedOutput.id;
         const chapter = Chapter.createFromMangaEdenMangaApi(responseData, chapterId);
         expect(chapter instanceof Chapter).to.be.true;

@@ -36,7 +36,7 @@ These are the main dependencies of BentoTime, and if you intend to use this repo
 - #### Isomorphic-Fetch
 [Isomorphic-Fetch](https://github.com/matthew-andrews/isomorphic-fetch) gives us the same interface for dealing with api requests from the client and server. We use it whenever we ping an api for Manga data, because it just simplifies api calls.
 
-- #### Lodash 
+- #### Lodash
 [Lodash](https://lodash.com/docs) is a very solid and fast library of utility functions. Their documentation is fantastic, and we supply links in our readmes whenever possible.
 
 - #### Moment
@@ -77,6 +77,9 @@ Lets our ESLint understand our Babel ways. Basically, ESLint is just a platform,
 
 - #### Babel-Loader
 Lets us use Babel with Webpack. Basically, Webpack runs Babel whenever it sees a `.js` or `.jsx` module. [Babel-Loader](https://github.com/babel/babel-loader) just tells Webpack how to use Babel. Yay loaders.
+
+- #### Babel-plugin-add-module-exports
+[Babel-plugin-add-module-exports](https://github.com/59naga/babel-plugin-add-module-exports) is an unfortunate co-dependency of [inject-loader](https://github.com/plasticine/inject-loader). It might be worth it to send a PR to them in order to fix that as well...
 
 - #### Babel-preset-es2015
 [Babel-preset-es2015](http://babeljs.io/docs/plugins/preset-es2015/) makes sure we have all the standart es2015 features like arrow fun-ctions, lets, consts, etc.

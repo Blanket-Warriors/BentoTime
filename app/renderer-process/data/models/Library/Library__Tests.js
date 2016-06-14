@@ -1,7 +1,18 @@
-import Library from "./Library";
-import Book from "renderer/data/models/Book";
-import apiResponse from "test/fixtures/mangaEden/listApiFixture";
-import exampleOutput from "test/fixtures/models/libraryFixture";
+import { forEach } from "lodash";
+import { isMoment } from "moment";
+
+
+import mangaEdenApi from "test/fixtures/mangaEden";
+import expectedOutput from "test/fixtures/models/libraryFixture";
+
+import mangaEdenStubs from "test/stubs/mangaEdenServices";
+import Book from "test/stubs/Book";
+
+var libraryInjector = require("inject!renderer/data/models/Library");
+var Library = libraryInjector({
+  "renderer/data/models/Book": Book,
+  "renderer/data/services/mangaEdenApi": mangaEdenStubs
+});
 
 describe("Data", function() {
   describe("Models", function() {
@@ -30,7 +41,8 @@ describe("Data", function() {
       });
 
       it("Should create a Library from Manga Eden Api data", function() {
-        const library = Library.createFromMangaEdenListApi(apiResponse);
+        const responseData = mangaEdenApi.list;
+        const library = Library.createFromMangaEdenListApi(responseData);
         expect(library.totalBooks).to.be.a.number;
         expect(library.books).to.be.an.object;
         expect(library.lastUpdated).to.be.undefined;

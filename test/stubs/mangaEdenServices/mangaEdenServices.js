@@ -52,5 +52,6 @@ function getPages$(chapterID) {
 export default {
   getList$,
   getManga$,
-  getPages$
+  getPages$,
+  imgHost: "http://myimagehost.com/"
 };

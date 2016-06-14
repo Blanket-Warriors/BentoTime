@@ -1,8 +1,6 @@
 import fetchMock from "fetch-mock";
 import { getLibrary$, getBook$, getChapter$ } from "./mangaEdenApi";
-import listApiFixture from "test/fixtures/mangaEden/listApiFixture.js";
-import mangaApiFixture from "test/fixtures/mangaEden/mangaApiFixture.js";
-import chapterApiFixture from "test/fixtures/mangaEden/chapterApiFixture.js";
+import mangaEdenFixtures from "test/fixtures/mangaEden";
 
 describe("Data", function() {
   describe("Services", function() {
@@ -12,9 +10,9 @@ describe("Data", function() {
         this.chapterID = "4e711cb0c09225616d037cc2";
 
         fetchMock
-          .mock("http://www.mangaeden.com/api/list/0/", JSON.stringify(listApiFixture))
-          .mock(`http://www.mangaeden.com/api/manga/${this.mangaID}/`, JSON.stringify(mangaApiFixture))
-          .mock(`http://www.mangaeden.com/api/chapter/${this.chapterID}/`, JSON.stringify(chapterApiFixture));
+          .mock("http://www.mangaeden.com/api/list/0/", JSON.stringify(mangaEdenFixtures.list))
+          .mock(`http://www.mangaeden.com/api/manga/${this.mangaID}/`, JSON.stringify(mangaEdenFixtures.manga))
+          .mock(`http://www.mangaeden.com/api/chapter/${this.chapterID}/`, JSON.stringify(mangaEdenFixtures.chapter));
       });
 
       afterEach(function() {
