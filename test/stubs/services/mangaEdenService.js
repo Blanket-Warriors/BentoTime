@@ -15,7 +15,7 @@ function getList$() {
   ]);
 }
 
-function getManga$(mangaID) {
+function getBook$(mangaID) {
   const mappedChapters = map([1,2,3], chapter => {
     return {
       id: "55a1a17b719a1609004ad58f",
@@ -51,7 +51,7 @@ function getPages$(chapterID) {
 
 export default {
   getList$,
-  getManga$,
+  getBook$,
   getPages$,
   imgHost: "http://myimagehost.com/"
 };
