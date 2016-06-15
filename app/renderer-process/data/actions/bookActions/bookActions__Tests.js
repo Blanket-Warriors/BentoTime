@@ -19,7 +19,7 @@ describe("Data", function() {
         const fetchBookThunk = bookActions.fetchBook(book);
         const dispatchFunction = sinon.stub();
         return fetchBookThunk(dispatchFunction)
-          .then(function(book) {
+          .then(function() {
             const firstCallArgs = dispatchFunction.args[0];
             const secondCallArgs = dispatchFunction.args[1];
 

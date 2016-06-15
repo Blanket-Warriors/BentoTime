@@ -1,6 +1,6 @@
 import { map } from "lodash";
 
-function getList$() {
+function getLibrary$() {
   return Promise.resolve([
     {
       id: "55a1a17b719a1609004ad58f",
@@ -41,6 +41,10 @@ function getBook$(mangaID) {
   });
 }
 
+function getChapter$() {
+  return Promise.resolve({});
+}
+
 function getPages$(chapterID) {
   return Promise.resolve([
     "adsfasdfsd",
@@ -50,8 +54,9 @@ function getPages$(chapterID) {
 }
 
 export default {
-  getList$,
+  getLibrary$,
   getBook$,
+  getChapter$,
   getPages$,
   imgHost: "http://myimagehost.com/"
 };
