@@ -10,11 +10,12 @@ class Layout extends Component {
     super(props);
 
     this.update = debounce(function update(params) {
+      const library = this.props.library;
       const bookid = params.bookid || this.props.params.bookid;
       const chapterid = params.chapterid || this.props.params.chapterid;
-      this.updateLibrary(this.props.library)
-        .then(() => this.updateBook(this.props, bookid))
-        .then(() => this.updateChapter(this.props, bookid, chapterid));
+      this.updateLibrary(library)
+        .then(() => this.updateBook(library, bookid))
+        .then(() => this.updateChapter(library, bookid, chapterid));
     }.bind(this), 300);
   }
 
@@ -31,28 +32,28 @@ class Layout extends Component {
     }
   }
 
-  updateLibrary(params) {
-    const { dispatch, library } = this.props;
+  updateLibrary(library) {
+    const { dispatch } = this.props;
     return shouldUpdate(library) ? dispatch(fetchLibrary()) : Promise.resolve();
   }
 
-  updateBook(state, bookid) {
-    if(!state.library.books || !bookid) {
+  updateBook(library, bookid) {
+    if(!library.books || !bookid) {
       return Promise.resolve();
     }
 
     const { dispatch } = this.props;
-    const book = find(state.library.books, { id: bookid });
+    const book = find(library.books, { id: bookid });
     return shouldUpdate(book) ? dispatch(fetchBook(book)) : Promise.resolve();
   }
 
-  updateChapter(state, bookid, chapterid) {
-    if(!state.library.books || !bookid || !chapterid) {
+  updateChapter(library, bookid, chapterid) {
+    if(!library.books || !bookid || !chapterid) {
       return Promise.resolve();
     }
 
     const { dispatch } = this.props;
-    const book = find(state.library.books, { id: bookid });
+    const book = find(library.books, { id: bookid });
     const chapter = find(book.chapters, { id: chapterid });
     return shouldUpdate(chapter) ? dispatch(fetchChapter(book, chapter)) : Promise.resolve();
   }
