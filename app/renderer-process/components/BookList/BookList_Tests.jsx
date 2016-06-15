@@ -53,7 +53,6 @@ describe("Components", function() {
       expect(this.component.find("BookListItem")).to.have.length(0);
     });
 
-    it("Should be able to filter by date");
     it("Should sort with newest updates at the top");
   });
 });
