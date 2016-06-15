@@ -16,6 +16,6 @@ module.exports = Object.assign({}, baseConfig, {
   output: {
     path: path.join(baseDir, "public", "build"),
     publicPath: "/build/",
-    filename: "rebderer.js"
+    filename: "renderer.js"
   }
 });

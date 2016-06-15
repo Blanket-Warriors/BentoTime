@@ -14,6 +14,8 @@ class Library {
         books[bookIndex] = new Book(book);
         return books;
       }, {});
+    } else {
+      this.books = {};
     }
   }
 
@@ -23,6 +25,14 @@ class Library {
       console.warn("Trying to merge with a non-existing library!");
       return nextLibrary;
     }
+
+    Object.keys(this).forEach(function(property) {
+      if(property === "books") {
+        return;
+      } else if(updateLibrary[property] !== undefined) {
+        nextLibrary[property] = updateLibrary[property];
+      }
+    });
 
     if(typeof updateLibrary.books == "object") {
       nextLibrary.books = reduce(updateLibrary.books, (books, book, bookIndex) => {
