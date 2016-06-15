@@ -5,8 +5,8 @@ import Chapter from "renderer/data/models/Chapter";
 import mangaEdenApi from "test/fixtures/mangaEden";
 import bookFixture from "test/fixtures/models/bookFixture";
 
-import mangaEdenStubs from "test/stubs/mangaEdenServices";
-import ChapterStub from "test/stubs/Chapter";
+import mangaEdenStubs from "test/stubs/services/mangaEdenService";
+import ChapterStub from "test/stubs/models/ChapterModel";
 
 var bookInjector = require("inject!renderer/data/models/Book");
 var Book = bookInjector({

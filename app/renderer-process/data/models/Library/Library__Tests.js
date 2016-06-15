@@ -4,8 +4,8 @@ import { isMoment } from "moment";
 import mangaEdenApi from "test/fixtures/mangaEden";
 import expectedOutput from "test/fixtures/models/libraryFixture";
 
-import mangaEdenStubs from "test/stubs/mangaEdenServices";
-import Book from "test/stubs/Book";
+import mangaEdenStubs from "test/stubs/services/mangaEdenService";
+import Book from "test/stubs/models/BookModel";
 
 var Library;
 
@@ -22,8 +22,8 @@ describe("Data", function() {
 
       it("Should create a new Library with initial state", function() {
         const initialState = {
-          isFetching: "fetchState",
-          lastUpdated: "lastUpdatedState",
+          isFetching: false,
+          lastUpdated: 12345,
           totalBooks: 2,
           books: {
             book1: new Book({ "title": "book1" }),
@@ -34,8 +34,8 @@ describe("Data", function() {
         const myNewLibrary = new Library(initialState);
 
         expect(myNewLibrary instanceof Library).to.be.true;
-        expect(myNewLibrary.isFetching).to.equal("fetchState");
-        expect(myNewLibrary.lastUpdated).to.equal("lastUpdatedState");
+        expect(myNewLibrary.isFetching).to.equal(false);
+        expect(myNewLibrary.lastUpdated).to.equal(12345);
         expect(myNewLibrary.totalBooks).to.equal(2);
         expect(myNewLibrary.books.book1.title).to.equal("book1");
         expect(myNewLibrary.books.book2.title).to.equal("book2");
@@ -58,8 +58,7 @@ describe("Data", function() {
       it("Should correctly merge a library properties into an empty library", function() {
         const library = new Library();
         const mergedLibrary = library.merge({
-          isFetching: "fetchState",
-          lastUpdated: "lastUpdatedState",
+          lastUpdated: 12345,
           totalBooks: 2,
           books: {
             book1: { "title": "book1" },
@@ -67,16 +66,41 @@ describe("Data", function() {
           }
         });
 
-        expect(mergedLibrary.isFetching).to.equal("fetchState");
-        expect(mergedLibrary.lastUpdated).to.equal("lastUpdatedState");
+        expect(mergedLibrary.lastUpdated).to.equal(12345);
         expect(mergedLibrary.totalBooks).to.equal(2);
         expect(mergedLibrary.books.book1 instanceof Book).to.be.true;
         expect(mergedLibrary.books.book1.title).to.equal("book1");
       });
 
-      it("Should correctly merge two full libraries");
+      it("Should correctly merge two full libraries", function() {
+        const library = new Library({
+          isFetching: false,
+          lastUpdated: 12345,
+          totalBooks: 2,
+          books: {
+            book1: new Book({ "title": "book1" }),
+            book2: new Book({ "title": "book2"})
+          }
+        });
 
-      it("Should not merge a library with a more up-to-date library");
+        const mergedLibrary = library.merge({
+          isFetching: true,
+          lastUpdated: 1122334455,
+          totalBooks: 3,
+          books: {
+            book1: { "title": "book1" },
+            book2: { "title": "b0ok2" },
+            book3: { "title": "book3" }
+          }
+        });
+
+        expect(mergedLibrary.isFetching).to.equal(true);
+        expect(mergedLibrary.lastUpdated).to.equal(1122334455);
+        expect(mergedLibrary.totalBooks).to.equal(3);
+        expect(mergedLibrary.books.book1).to.exist;
+        expect(mergedLibrary.books.book2).to.exist;
+        expect(mergedLibrary.books.book3).to.exist;
+      });
     });
   });
 });

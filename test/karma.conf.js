@@ -1,7 +1,7 @@
 var webpackConfig = require("../webpack/webpack.renderer.js");
 
 module.exports = function(config) {
-  configuration = {
+  var configuration = {
     // Bentotime's root directory is up one
     basePath: "..",
 

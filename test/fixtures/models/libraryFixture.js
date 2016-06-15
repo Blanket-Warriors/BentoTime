@@ -1,4 +1,4 @@
-import { imgHost } from "test/stubs/mangaEdenServices";
+import { imgHost } from "test/stubs/services/mangaEdenService";
 
 export default {
   "isFetching": false,

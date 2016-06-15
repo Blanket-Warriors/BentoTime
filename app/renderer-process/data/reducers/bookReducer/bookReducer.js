@@ -1,4 +1,4 @@
-import { merge, find } from "lodash";
+import { merge } from "lodash";
 import * as ActionTypes from "renderer/data/actions/ActionTypes";
 import chapterReducer from "renderer/data/reducers/chapterReducer";
 import Book from "renderer/data/models/Book";

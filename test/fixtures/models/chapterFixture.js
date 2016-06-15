@@ -1,4 +1,4 @@
-import { imgHost } from "test/stubs/mangaEdenServices";
+import { imgHost } from "test/stubs/services/mangaEdenService";
 
 export default {
   id: "4e711cb0c09225616d037cc2",
