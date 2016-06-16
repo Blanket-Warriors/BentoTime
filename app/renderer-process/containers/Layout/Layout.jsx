@@ -16,7 +16,7 @@ class Layout extends Component {
       this.updateLibrary(library)
         .then(() => this.updateBook(library, bookid))
         .then(() => this.updateChapter(library, bookid, chapterid))
-        .then(() => this.updateBookmarks(library));
+        .then(() => this.updateBookmarks(library, !bookid && !chapterid));
     }.bind(this), 1000);
   }
 
@@ -38,8 +38,10 @@ class Layout extends Component {
     return shouldUpdate(library) ? dispatch(fetchLibrary()) : Promise.resolve();
   }
 
-  updateBookmarks(library) {
+  updateBookmarks(library, shouldUpdateBookmarks) {
     const { dispatch } = this.props;
+    if(!shouldUpdateBookmarks){ return Promise.resolve(); }
+
     const bookmarks = _(library.books)
       .filter(book => book.bookmarked && shouldUpdate(book))
       .map(book => dispatch(fetchBook(book)))
