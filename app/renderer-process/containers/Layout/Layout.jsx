@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import { find, debounce, cloneDeep } from "lodash";
+import _, { find, debounce, cloneDeep } from "lodash";
 import { connect } from "react-redux";
 import shouldUpdate from "renderer/utilities/shouldUpdate";
 
@@ -15,8 +15,9 @@ class Layout extends Component {
       const chapterid = params.chapterid || this.props.params.chapterid;
       this.updateLibrary(library)
         .then(() => this.updateBook(library, bookid))
-        .then(() => this.updateChapter(library, bookid, chapterid));
-    }.bind(this), 300);
+        .then(() => this.updateChapter(library, bookid, chapterid))
+        .then(() => this.updateBookmarks(library));
+    }.bind(this), 1000);
   }
 
   componentWillMount() {
@@ -35,6 +36,15 @@ class Layout extends Component {
   updateLibrary(library) {
     const { dispatch } = this.props;
     return shouldUpdate(library) ? dispatch(fetchLibrary()) : Promise.resolve();
+  }
+
+  updateBookmarks(library) {
+    const { dispatch } = this.props;
+    const bookmarks = _(library.books)
+      .filter(book => book.bookmarked && shouldUpdate(book))
+      .map(book => dispatch(fetchBook(book)))
+      .value();
+    return Promise.all(bookmarks);
   }
 
   updateBook(library, bookid) {

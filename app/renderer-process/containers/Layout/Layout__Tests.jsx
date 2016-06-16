@@ -47,13 +47,19 @@ describe("Containers", function() {
     it("Should not fetch anything if nothing needs to be updated", function(done) {
       const layout = this.component.find(".layout");
       expect(layout.type()).to.equal("div");
+      this.mockProps.library.books = {
+        "some-book": {
+          id: "some-book",
+          lastUpdated: undefined
+        }
+      };
 
       setTimeout(() => {
         expect(this.mockActions.fetchLibrary.called).to.be.false;
         expect(this.mockActions.fetchBook.called).to.be.false;
         expect(this.mockActions.fetchChapter.called).to.be.false;
         done();
-      }, 500);
+      }, 1000);
     });
 
     it("Should fetch Library if it needs to be updated", function(done) {
@@ -65,7 +71,7 @@ describe("Containers", function() {
         expect(this.mockActions.fetchBook.called).to.be.false;
         expect(this.mockActions.fetchChapter.called).to.be.false;
         done();
-      }, 500);
+      }, 1000);
     });
 
     it("Should fetch any books that need to be updated", function(done) {
@@ -83,10 +89,10 @@ describe("Containers", function() {
         expect(this.mockActions.fetchChapter.called).to.be.false;
         expect(this.mockActions.fetchBook.callCount).to.equal(1);
         done();
-      }, 500);
+      }, 1000);
     });
 
-    it("Should fetch any chapters that need to be updated", function shouldFetchChapter(done) {
+    it("Should fetch any chapters that need to be updated", function(done) {
       this.mockProps.library.books = {
         "some-book": {
           id: "some-book",
@@ -108,7 +114,24 @@ describe("Containers", function() {
         expect(this.mockActions.fetchBook.called).to.be.false;
         expect(this.mockActions.fetchChapter.callCount).to.equal(1);
         done();
-      }, 500);
+      }, 1000);
+    });
+
+    it("Should fetch all bookmarks when fetching library (regardless of params)", function(done) {
+      this.mockProps.library.books = {
+        "some-book": {
+          id: "some-book",
+          lastUpdated: undefined,
+          bookmarked: true
+        }
+      };
+
+      setTimeout(() => {
+        expect(this.mockActions.fetchLibrary.called).to.be.false;
+        expect(this.mockActions.fetchChapter.called).to.be.false;
+        expect(this.mockActions.fetchBook.callCount).to.equal(1);
+        done();
+      }, 1000);
     });
   });
 });
