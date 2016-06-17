@@ -26,10 +26,11 @@ class Library {
       return nextLibrary;
     }
 
-    Object.keys(this).forEach(function(property) {
-      var propertyExists = nextLibrary[property] !== undefined && nextLibrary[property] !== null;
-      if(property != "books" && propertyExists) {
-        nextLibrary[property] = updateLibrary[property];
+    Object.keys(this).forEach(function(propertyName) {
+      var updateProperty = updateLibrary[propertyName];
+      var propertyExists = updateProperty !== undefined && updateProperty !== null;
+      if(propertyName != "books" && propertyExists) {
+        nextLibrary[propertyName] = updateProperty;
       }
     });
 

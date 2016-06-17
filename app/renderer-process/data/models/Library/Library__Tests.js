@@ -55,7 +55,7 @@ describe("Data", function() {
         expect(library.isFetching).to.be.undefined;
       });
 
-      it("Should correctly merge a library properties into an empty library", function() {
+      it("Should correctly merge library properties into an empty library", function() {
         const library = new Library();
         const mergedLibrary = library.merge({
           lastUpdated: 12345,
