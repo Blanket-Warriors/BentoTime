@@ -34,9 +34,10 @@ class Book {
     if(!nextBook) { return newBook; }
 
     const bookPropertiesToMerge = without(Object.keys(this), "chapters");
-    bookPropertiesToMerge.forEach(function(property) {
-      if(nextBook[property] !== undefined && nextBook[property] !== null) {
-        newBook[property] = nextBook[property];
+    bookPropertiesToMerge.forEach(function(propertyName) {
+      var nextProperty = nextBook[propertyName];
+      if(nextProperty !== undefined && nextProperty !== null) {
+        newBook[propertyName] = nextProperty;
       }
     });
 
@@ -46,8 +47,8 @@ class Book {
       const chapterLengthDifference = nextBook.chapters.length - currentChapters.length;
       newBook.chapters = nextBook.chapters.map(function(nextChapter, nextIndex) {
         const currentIndex = nextIndex + chapterLengthDifference;
-        const chapter = new Chapter(currentChapters[currentIndex]);
-        return chapter.merge(nextChapter);
+        const currentChapter = currentChapters[currentIndex];
+        return currentChapter.merge(nextChapter);
       });
     }
     return newBook;

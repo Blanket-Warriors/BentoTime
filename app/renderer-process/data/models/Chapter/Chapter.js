@@ -18,7 +18,7 @@ class Chapter {
     if(!nextChapter) { return newChapter; }
 
     Object.keys(this).forEach(function(property) {
-      if(nextChapter[property] !== undefined) {
+      if(nextChapter[property] !== undefined && nextChapter[property] !== null) {
         newChapter[property] = nextChapter[property];
       }
     });

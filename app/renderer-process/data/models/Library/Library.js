@@ -27,9 +27,8 @@ class Library {
     }
 
     Object.keys(this).forEach(function(property) {
-      if(property === "books") {
-        return;
-      } else if(updateLibrary[property] !== undefined) {
+      var propertyExists = nextLibrary[property] !== undefined && nextLibrary[property] !== null;
+      if(property != "books" && propertyExists) {
         nextLibrary[property] = updateLibrary[property];
       }
     });
@@ -37,11 +36,7 @@ class Library {
     if(typeof updateLibrary.books == "object") {
       nextLibrary.books = reduce(updateLibrary.books, (books, book, bookIndex) => {
         const prevBook = this.books[bookIndex];
-        if(prevBook) {
-          books[bookIndex] = prevBook.merge(new Book(book));
-        } else {
-          books[bookIndex] = new Book(book);
-        }
+        books[bookIndex] = prevBook ? prevBook.merge(new Book(book)) : new Book(book);
         return books;
       }, {});
     }
