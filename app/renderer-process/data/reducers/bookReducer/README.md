@@ -1,17 +1,14 @@
 Book Reducer
-==========
-
+------------
 `bookReducer` is a  [reducer](http://rackt.org/redux/docs/basics/Reducers.html) nested within our [libraryReducer](../libraryReducer). Book reducer allows us to keep track of the state of a single book within our library. It takes actions from [bookActions](../../actions/bookActions) to build our book's state, and passes on [chapterActions](../../actions/chapterActions) to be handled by our [chapterReducer](../chapterReducer).
 
-#### Action Types that this Reducer Handles
-
+## Action Types
 - `FETCH_BOOK_REQUEST` is a [book action](../../actions/bookActions) sent when we start an api request
 - `FETCH_BOOK_SUCCESS` is a [book action](../../actions/bookActions)sent an api request responds with a positive status
 - `FETCH_BOOK_FAILURE` is a [book action](../../actions/bookActions) sent when an api responds with an error
 - `FETCH_CHAPTER_XXXX` are [chapter actions](../../actions/chapterActions) that get passed on and handled by our [chapterReducer](../chapterReducer)
 
-#### Book Action Usage Example
-
+## How to Use
 Say we fire an action `FETCH_BOOK_REQUEST` by calling our `fetchBook` method in [bookActions](../../actions/bookActions). This action is dispatched through our [libraryReducer](../libraryReducer), before being delegated to this file. Since the action type is `'FETCH_BOOK_REQUEST'`, it gets caught by this switch case:
 
 ```js

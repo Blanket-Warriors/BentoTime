@@ -1,6 +1,5 @@
 Store
-==========
-
+------
 This file is technically more of a store creator than an actual store. It takes in our browser history, and reducers, and creates a store that listens to both. Our store holds our state, and listens for our dispatch functions to send our actions.
 
 It uses a few things to accomplish this:

@@ -1,12 +1,10 @@
 mangaEdenApi
-=============
-
+------------
 [mangaEdenApi](./mangaEdenApi.js) sends api requests to the [Manga Eden Api](https://www.mangaeden.com/api). It sends requests using the [Superagent](https://github.com/visionmedia/superagent) http tool wrapped as an observable with [RxJS](https://github.com/Reactive-Extensions/RxJS). It then formats the responses as either a [Library](), [Book](), or [Chapter]().
 
 
-#### How to use
-
-There are a few basic functions exported by `mangaEdenApi.js`.
+## How to use
+There are a few basic functions exported by `mangaEdenApi.js`:
 
 - `getLibrary$([pageId])`
   A function that takes an optional pageId (for paginated results), and responds with an observable containing a [Library]()
@@ -17,8 +15,7 @@ There are a few basic functions exported by `mangaEdenApi.js`.
 - `getChapter$(chapterid)`
   A function that takes in a `chapterId` argument and responds with an observable containing an array of [Chapters]()
 
-#### How it works
-
+## How it works
 The flow of a generic request is in our `getData` function:
 
 ```js
