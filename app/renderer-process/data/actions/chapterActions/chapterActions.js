@@ -13,16 +13,18 @@ function fetchChapterRequest(book, chapter) {
 function fetchChapterSuccess(book, chapter) {
   return {
     type: ActionTypes.FETCH_CHAPTER_SUCCESS,
-    chapter: chapter,
     book: book,
+    chapter: chapter,
     receivedAt: moment().format("x")
   };
 }
 
-function fetchChapterFailure(error) {
+function fetchChapterFailure(book, chapter, error) {
   return {
     type: ActionTypes.FETCH_CHAPTER_FAILURE,
     error: error,
+    book: book,
+    chapter: chapter,
     receivedAt: moment().format("x")
   };
 }
@@ -44,7 +46,7 @@ export function fetchChapter(book, chapter) {
         return Promise.resolve(dispatch(fetchChapterSuccess(book, chapter)));
       })
       .catch(function(error) {
-        return Promise.reject(dispatch(fetchChapterFailure(error)));
+        return Promise.reject(dispatch(fetchChapterFailure(book, chapter, error)));
       });
   };
 }

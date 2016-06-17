@@ -18,8 +18,9 @@ function fetchBookSuccess(book) {
   };
 }
 
-function fetchBookFailure(error) {
+function fetchBookFailure(book, error) {
   return {
+    book: book,
     type: ActionTypes.FETCH_BOOK_FAILURE,
     error: error,
     receivedAt: moment().format("x")
@@ -42,7 +43,7 @@ export function fetchBook(book) {
         return Promise.resolve(dispatch(fetchBookSuccess(book)));
       })
       .catch(function(error) {
-        dispatch(fetchBookFailure(error));
+        dispatch(fetchBookFailure(book, error));
       });
   };
 }

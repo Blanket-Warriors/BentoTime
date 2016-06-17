@@ -47,7 +47,7 @@ class Book {
       const chapterLengthDifference = nextBook.chapters.length - currentChapters.length;
       newBook.chapters = nextBook.chapters.map(function(nextChapter, nextIndex) {
         const currentIndex = nextIndex + chapterLengthDifference;
-        const currentChapter = currentChapters[currentIndex];
+        const currentChapter = new Chapter(currentChapters[currentIndex]);
         return currentChapter.merge(nextChapter);
       });
     }
