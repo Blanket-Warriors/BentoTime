@@ -35,7 +35,7 @@ class Book {
 
     const bookPropertiesToMerge = without(Object.keys(this), "chapters");
     bookPropertiesToMerge.forEach(function(property) {
-      if(nextBook[property] !== undefined) {
+      if(nextBook[property] !== undefined && nextBook[property] !== null) {
         newBook[property] = nextBook[property];
       }
     });

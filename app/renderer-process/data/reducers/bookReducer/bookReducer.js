@@ -18,7 +18,7 @@ export default function bookReducer(state = initialState, action) {
       });
 
     case ActionTypes.FETCH_BOOK_SUCCESS:
-      return state.merge(merge({}, action.book, {
+      return state.merge(merge(action.book, {
         isFetching: false,
         lastUpdated: action.receivedAt
       }));

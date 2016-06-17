@@ -14,7 +14,7 @@ function fetchBookSuccess(book) {
   return {
     type: ActionTypes.FETCH_BOOK_SUCCESS,
     book: book,
-    receivedAt: moment.unix()
+    receivedAt: moment().format("x")
   };
 }
 
@@ -22,7 +22,7 @@ function fetchBookFailure(error) {
   return {
     type: ActionTypes.FETCH_BOOK_FAILURE,
     error: error,
-    receivedAt: moment.unix()
+    receivedAt: moment().format("x")
   };
 }
 

@@ -15,7 +15,7 @@ const BookList = function({ books, searchFilter, dateFilter, bookmarkFilter, cla
         return false;
       }
 
-      if(dateFilter && !moment(book.lastChapterDate).isSameOrAfter(today, dateFilter)) {
+      if(dateFilter && !moment.unix(book.lastChapterDate).isSameOrAfter(today, dateFilter)) {
         return false;
       }
 
@@ -32,7 +32,7 @@ const BookList = function({ books, searchFilter, dateFilter, bookmarkFilter, cla
       }
       return false;
     })
-    .sortBy(book => -moment(book.lastChapterDate).unix())
+    .sortBy(book => -moment(book.lastChapterDate).format("x"))
     .map(function createBookListItem(book) {
       const newChapter = book.chapters && book.bookmarked && book.chapters[0] && !book.chapters[0].viewed;
       return <BookListItem key={book.id} book={book} newChapter={newChapter} />;

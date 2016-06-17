@@ -2,15 +2,20 @@ import moment, { isMoment } from "moment";
 
 export default function shouldUpdate(toCheck) {
   if(!toCheck) { return false; }
-  if(!toCheck.lastUpdated) { return true; }
+  var lastUpdated = formatDate(toCheck.lastUpdated);
+  var lastChapterDate = formatDate(toCheck.lastChapterDate);
 
-  var lastUpdated;
-  if(isMoment(toCheck.lastUpdated)) {
-    lastUpdated = toCheck.lastUpdated;
-  } else {
-    lastUpdated = moment.unix(toCheck.lastUpdated);
+  if(!lastUpdated) { return true; }
+
+  if(lastChapterDate && lastChapterDate.isBefore(lastUpdated)) {
+    return false;
   }
-
-  const threeHoursAgo = moment().add(-2, "hours");
+  var threeHoursAgo = moment().add(-2, "hours");
   return lastUpdated.isBefore(threeHoursAgo, "hour");
+}
+
+function formatDate(rawDate) {
+  if(!rawDate) { return null; }
+  if(isMoment(rawDate)) { return rawDate; }
+  return moment.unix(rawDate);
 }

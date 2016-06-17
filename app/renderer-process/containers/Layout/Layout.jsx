@@ -43,7 +43,9 @@ class Layout extends Component {
     if(!shouldUpdateBookmarks){ return Promise.resolve(); }
 
     const bookmarks = _(library.books)
-      .filter(book => book.bookmarked && shouldUpdate(book))
+      .filter(book => {
+        return book.bookmarked && shouldUpdate(book);
+      })
       .map(book => dispatch(fetchBook(book)))
       .value();
     return Promise.all(bookmarks);

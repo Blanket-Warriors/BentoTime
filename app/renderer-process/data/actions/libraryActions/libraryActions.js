@@ -13,7 +13,7 @@ function fetchLibrarySuccess(library) {
   return {
     type: ActionTypes.FETCH_LIBRARY_SUCCESS,
     library: library,
-    receivedAt: moment().unix()
+    receivedAt: moment().format("x")
   };
 }
 
