@@ -4,9 +4,9 @@ export default function shouldUpdate(toCheck) {
   if(!toCheck) { return false; }
   var lastUpdated = formatDate(toCheck.lastUpdated);
   var lastChapterDate = formatDate(toCheck.lastChapterDate);
-
   if(!lastUpdated) { return true; }
 
+  console.log(lastChapterDate && lastChapterDate.isBefore(lastUpdated));
   if(lastChapterDate && lastChapterDate.isBefore(lastUpdated)) {
     return false;
   }
