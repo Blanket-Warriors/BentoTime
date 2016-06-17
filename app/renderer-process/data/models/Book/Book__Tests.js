@@ -1,4 +1,4 @@
-import { forEach } from "lodash";
+import { forEach, includes } from "lodash";
 import { isMoment } from "moment";
 
 import Chapter from "renderer/data/models/Chapter";
@@ -40,7 +40,7 @@ describe("Data", function() {
         expect(myNewBook instanceof Book).to.be.true;
 
         forEach(initialState, function(item, index) {
-          if(!["chapters", "categories"].includes(index)) {
+          if(!includes(["chapters", "categories"], index)) {
             expect(myNewBook[index]).to.equal(item);
           }
         });
@@ -70,9 +70,9 @@ describe("Data", function() {
         expect(book instanceof Book).to.be.true;
 
         forEach(expectedOutput, function(item, index) {
-          if(["lastChapterDate"].includes(index)) {
+          if(includes(["lastChapterDate"], index)) {
             expect(isMoment(book[index])).to.be.true;
-          } else if(["categories"].includes(index)) {
+          } else if(includes(["categories"], index)) {
             expect(book[index]).to.be.an.array;
           } else {
             expect(book[index]).to.equal(item);
@@ -90,9 +90,9 @@ describe("Data", function() {
         expect(book instanceof Book).to.be.true;
 
         forEach(expectedOutput, function(item, index) {
-          if(["lastChapterDate", "created"].includes(index)) {
+          if(includes(["lastChapterDate", "created"], index)) {
             expect(isMoment(book[index])).to.be.true;
-          } else if(["chapters", "categories"].includes(index)) {
+          } else if(includes(["chapters", "categories"], index)) {
             expect(book[index]).to.be.an.array;
           } else {
             expect(book[index]).to.equal(item);
@@ -126,7 +126,7 @@ describe("Data", function() {
 
         const mergedBook = book1.merge(book2);
         forEach(expectedProperties, function(property, index) {
-          if(["categories", "chapters"].includes(index)) {
+          if(includes(["categories", "chapters"], index)) {
             expect(mergedBook[index][0]).to.equal(property[0]);
           } else {
             expect(mergedBook[index]).to.equal(property);
@@ -159,7 +159,7 @@ describe("Data", function() {
         };
 
         forEach(expectedProperties, function(property, index) {
-          if(["categories", "chapters"].includes(index)) {
+          if(includes(["categories", "chapters"], index)) {
             expect(mergedBook[index][0]).to.equal(property[0]);
           } else {
             expect(mergedBook[index]).to.equal(property);

@@ -9,7 +9,7 @@ describe("Data", function() {
   describe("Reducers", function() {
     describe("ChapterReducer", function() {
       beforeEach(function() {
-        var chapterReducerInjector = require("inject!renderer/data/reducers/ChapterReducer");
+        var chapterReducerInjector = require("inject!renderer/data/reducers/chapterReducer");
 
         this.merge = sinon.stub();
         Chapter.prototype.merge = this.merge;
