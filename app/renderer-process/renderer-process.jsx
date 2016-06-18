@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { Router, hashHistory } from "react-router";
 
 import Routes from "renderer/containers/Routes";
-import storeCreator from "renderer/data/store";
+import storeCreator from "renderer/data/storeCreator";
 import Library from "renderer/data/models/Library";
 import "renderer/stylesheets/style";
 

@@ -1,10 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { routerMiddleware } from "react-router-redux";
-import reducers from "renderer/data/reducers";
-import localStorageMiddleware from "renderer/data/store/middleware/localStorageMiddleware";
 import thunkMiddleware from "redux-thunk";
 import createLogger from "redux-logger";
-import moment from "moment";
+
+import localStorageMiddleware from "./middleware/localStorageMiddleware";
+import reducers from "renderer/data/reducers";
 
 export default function storeCreator(initialState = {}, options = {}) {
   const middleware = [];
