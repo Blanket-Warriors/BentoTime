@@ -3,13 +3,13 @@ import { Link } from "react-router";
 import Img from "renderer/components/Img";
 import combineClasses from "renderer/utilities/combineClasses";
 
-const BookListItem = function({ book, newChapter }) {
+const BookListItem = function({ book, hasNewChapter }) {
   const newChapterFlag = <div className="book-list__new-chapter">New Chapter!</div>;
 
   return (
     <li className="book-list-item">
       <Link className="book-list-item__link" to={`book/${book.id}`}>
-        {newChapter ? newChapterFlag : ""}
+        {hasNewChapter ? newChapterFlag : ""}
         <Img
           className="book-list-item__image"
           src={book.image}

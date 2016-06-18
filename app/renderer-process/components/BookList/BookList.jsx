@@ -2,21 +2,22 @@ import React from "react";
 import _ from "lodash";
 import moment from "moment";
 import BookListItem from "renderer/components/BookListItem";
-import combine from "renderer/utilities/combineClasses";
+import combineClasses from "renderer/utilities/combineClasses";
 
-const BookList = function({ books, searchFilter, dateFilter, bookmarkFilter, className }) {
+var BookList = function({ books, searchFilter, dateFilter, onlyShowBookmarks, className }) {
   const today = moment();
   const matchFromBeginning = new RegExp("^" + searchFilter, "gi");
   const matchAnywhere = new RegExp(searchFilter, "gi");
 
   const mappedBooks = _(books)
-    .filter(function filterBookList(book) {
-      if(bookmarkFilter && !book.bookmarked) {
-        return false;
-      }
+    .filter(function filterBooks(book) {
+      if(!book.id) { return false; }
+      if(onlyShowBookmarks) { return book.bookmarked; }
 
-      if(dateFilter && !moment.unix(book.lastChapterDate).isSameOrAfter(today, dateFilter)) {
-        return false;
+      if(dateFilter) {
+        const lastChapterDate = moment.unix(book.lastChapterDate);
+        const wasUpdatedRecently = !lastChapterDate.isSameOrAfter(today, dateFilter);
+        return wasUpdatedRecently;
       }
 
       if(typeof searchFilter === "boolean") { return searchFilter; }
@@ -32,19 +33,22 @@ const BookList = function({ books, searchFilter, dateFilter, bookmarkFilter, cla
       }
       return false;
     })
-    .sortBy(book => -moment(book.lastChapterDate).format("x"))
+    .sortBy(book => -book.lastChapterDate)
     .map(function createBookListItem(book) {
-      const newChapter = book.chapters && book.bookmarked && book.chapters[0] && !book.chapters[0].viewed;
-      return <BookListItem key={book.id} book={book} newChapter={newChapter} />;
+      const isChapterBookmarked = book.chapters && book.bookmarked && book.chapters[0];
+      const hasNewChapter = isChapterBookmarked && !book.chapters[0].viewed;
+      return <BookListItem key={book.id} book={book} hasNewChapter={hasNewChapter} />;
     })
     .value();
 
   return (
-    <ul className={combine("book-list", className)}>
+    <ul className={combineClasses("book-list", className)}>
       {mappedBooks.length ? mappedBooks : <h3 className={"book-list--empty"}>No Manga</h3>}
     </ul>
   );
 };
+
+
 
 BookList.propTypes = {
   books: React.PropTypes.object.isRequired
