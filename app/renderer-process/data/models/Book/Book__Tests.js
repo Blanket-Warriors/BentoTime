@@ -1,5 +1,4 @@
 import { forEach, includes } from "lodash";
-import { isMoment } from "moment";
 
 import Chapter from "renderer/data/models/Chapter";
 import mangaEdenApi from "test/fixtures/mangaEden";
@@ -70,9 +69,7 @@ describe("Data", function() {
         expect(book instanceof Book).to.be.true;
 
         forEach(expectedOutput, function(item, index) {
-          if(includes(["lastChapterDate"], index)) {
-            expect(isMoment(book[index])).to.be.true;
-          } else if(includes(["categories"], index)) {
+          if(includes(["categories"], index)) {
             expect(book[index]).to.be.an.array;
           } else {
             expect(book[index]).to.equal(item);
@@ -90,9 +87,7 @@ describe("Data", function() {
         expect(book instanceof Book).to.be.true;
 
         forEach(expectedOutput, function(item, index) {
-          if(includes(["lastChapterDate", "created"], index)) {
-            expect(isMoment(book[index])).to.be.true;
-          } else if(includes(["chapters", "categories"], index)) {
+          if(includes(["chapters", "categories"], index)) {
             expect(book[index]).to.be.an.array;
           } else {
             expect(book[index]).to.equal(item);
