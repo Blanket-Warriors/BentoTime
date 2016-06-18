@@ -51,7 +51,10 @@ var BookList = function({ books, searchFilter, dateFilter, onlyShowBookmarks, cl
 
 
 BookList.propTypes = {
-  books: React.PropTypes.object.isRequired
+  books: React.PropTypes.object.isRequired,
+  dateFilter: React.PropTypes.string,
+  onlyShowBookmarks: React.PropTypes.bool,
+  className: React.PropTypes.string
 };
 
 BookList.defaultProps = {
