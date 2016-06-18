@@ -22,10 +22,10 @@ const editMenu = {
 const viewMenu = {
   label: "View",
   submenu: [
-    { label: "Reload", click: helpers.reloadPage, accelerator: "CmdOrCtrl+R" },
+    { label: "Reload", click: (item, window)=>{helpers.reloadPage(window)}, accelerator: "CmdOrCtrl+R" },
     {
       label: "Toggle Full Screen",
-      click: helpers.toggleFullscreen,
+      click: (item, window)=>{helpers.toggleFullscreen()},
       accelerator: isMac ? "Ctrl+Command+F" : "F11"
     },
     { type: "separator" }
@@ -52,7 +52,7 @@ const helpMenu = {
     {
       label: "Toggle Developer Tools",
       accelerator: isMac ? "Alt+Command+I" : "Ctrl+Shift+I",
-      click: helpers.openDevTools
+      click: (item, window)=>{helpers.openDevTools()}
     }
   ]
 };

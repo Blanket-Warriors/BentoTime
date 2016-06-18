@@ -1,7 +1,6 @@
 mangaEdenApi
 ------------
-[mangaEdenApi](./mangaEdenApi.js) sends api requests to the [Manga Eden Api](https://www.mangaeden.com/api). It sends requests using the [Superagent](https://github.com/visionmedia/superagent) http tool wrapped as an observable with [RxJS](https://github.com/Reactive-Extensions/RxJS). It then formats the responses as either a [Library](), [Book](), or [Chapter]().
-
+[mangaEdenApi](./mangaEdenApi.js) sends api requests to the [Manga Eden Api](https://www.mangaeden.com/api). It sends requests using [isomorphic-fetch](../../../../documentation/Dependencies.md#isomorphic-fetch). It then formats the responses as either a [Library](../../models/Library), [Book](../../models/Book), or [Chapter](../../models/Chapter).
 
 ## How to use
 There are a few basic functions exported by `mangaEdenApi.js`:
@@ -19,26 +18,24 @@ There are a few basic functions exported by `mangaEdenApi.js`:
 The flow of a generic request is in our `getData` function:
 
 ```js
-function getData(url, callback) {
-  return request
-    .get(url)
-    .end((error, { body = {} }) => {
-      return callback(error, body);
+function getData(url) {
+  return fetch(url)
+    .then(function(response) {
+      if(response.status >= 400) {
+        throw new Error(response);
+      }
+      return response.json();
     });
 }
 ```
-
-Using Superagent's `request`, we send a get request to whatever url we want, and when it returns a response, we fire a callback function, giving it any error that could have resulted, as well as the body of our response (that defaults to an empty object if it doesn't exist).
-
-Superagent defaults to a promise-style way of handling data, but because we're wrapping it as an observable, we choose to ignore this and instead just manually run a callback.  This results in a generic async function that sends an api request, and ends by passing that data via a callback.  This is the format that `Observable.fromNodeCallback` expects, so we can turn our request into an observable with:
-`const getData$ = Observable.fromNodeCallback(getData);`
-
-We use the resulting `getData$` as a base for our other requests.  An example of a request we could create with this is:
+We simply fire a fetch request using isomorphic-fetch, which returns a promise. We can they respond to any errors we encounter, and format a response in the form of a javascript object.
 
 ```
-export function getBook$(bookID) {
-  return getData$(`${baseHost}api/manga/${bookID}/`)
-    .map(response => Book.createFromMangaEdenMangaApi(response, bookID));
+export function getBook$(bookId) {
+  return getData(`${baseHost}api/manga/${bookId}/`)
+    .then(response => {
+      return Promise.resolve(Book.createFromMangaEdenMangaApi(response, bookId));
+    });
 }
 ```
 

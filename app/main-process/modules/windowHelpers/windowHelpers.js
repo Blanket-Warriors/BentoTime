@@ -1,30 +1,37 @@
 import { BrowserWindow } from "electron";
 
-function reloadPage(item, focusedWindow) {
+function reloadPage(focusedWindow) {
   if(focusedWindow) {
-    // on reload, start fresh and close any old
-    // open secondary windows
     if(focusedWindow.id === 1) {
-      BrowserWindow.getAllWindows().forEach(function(win) {
-        if(win.id > 1) {
-          win.close();
-        }
-      });
+      closeSecondaryWindows();
     }
     focusedWindow.reload();
   }
 }
 
-function toggleFullscreen(item, focusedWindow) {
+function closeSecondaryWindows() {
+  BrowserWindow.getAllWindows().forEach(function(win) {
+    if(win.id > 1) {
+      win.close();
+    }
+  });
+}
+
+function toggleFullscreen(focusedWindow) {
   if(focusedWindow) {
     focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
   }
 }
 
-function openDevTools(item, focusedWindow) {
+function openDevTools(focusedWindow) {
   if (focusedWindow) {
     focusedWindow.webContents.toggleDevTools();
   }
 }
 
-export default { reloadPage, toggleFullscreen, openDevTools };
+export default {
+  reloadPage,
+  toggleFullscreen,
+  openDevTools,
+  closeSecondaryWindows
+};
