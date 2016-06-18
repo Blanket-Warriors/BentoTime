@@ -1,12 +1,10 @@
-This readme is incomplete.
-
 Library View
-=========
-
+------------
 The Library View displays all of our Manga.
 
-#### How to use:
+![Bentotime](../../../../public/assets/screenshots/library-view.png)
 
+## How to use
 ```js
 import LibraryView from 'app/components/LibraryView';
 

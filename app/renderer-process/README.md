@@ -2,7 +2,7 @@ Renderer Process
 -----------------
 [renderer-process.jsx](./renderer-process.jsx) is the root and entry-point of our renderer (this is specified in our [renderer webpack configuration](../webpack/webpack.renderer.js)). All of our compiled code starts here.
 
-## How to use:
+## How to use
 Once compiled into `renderer.js` and run, our entire application will become appended to the DOM node `mountPoint` in our [`index.html`](../../public/index.html).  So the only thing we need to do is include the compiled Javascript script (using `renderer-process.jsx` as an entry point), and add the `mountPoint` node to our application.  That ends up looking something like this:
 
 ```html
