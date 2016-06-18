@@ -1,11 +1,12 @@
 Img
-----
+====
 Img is a component to help us load images in a better way, and gives us flexibility to improve image handling in the future.
 
 
-## How to use
+How to use
+-----------
 ```js
-import Img from 'app/components/Img';
+import Img from "app/components/Img";
 
 <Img
   src="assets/images/phant.svg"
@@ -14,7 +15,8 @@ import Img from 'app/components/Img';
 />
 ```
 
-## Props
+Props
+------
 * `className`: We can add classes to an Img component
 * `src`: The source of the image
 * `fallback` (Optional): A backup image to load if the first fails

@@ -1,5 +1,5 @@
 Book
-----
+=====
 A book is a single manga title. We are using the naming convention of `Book` because it is easier to understand the plural sense of the word and gives a bit more clarity of understanding the structure of everything.  A Book holds information such as titles, descriptions, and categories.  They also serve a container for Chapters.
 
 ```js

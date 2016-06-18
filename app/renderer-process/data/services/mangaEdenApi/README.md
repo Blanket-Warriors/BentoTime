@@ -1,20 +1,25 @@
 mangaEdenApi
-------------
+============
 [mangaEdenApi](./mangaEdenApi.js) sends api requests to the [Manga Eden Api](https://www.mangaeden.com/api). It sends requests using [isomorphic-fetch](../../../../documentation/Dependencies.md#isomorphic-fetch). It then formats the responses as either a [Library](../../models/Library), [Book](../../models/Book), or [Chapter](../../models/Chapter).
 
-## How to use
+How to use
+----------
 There are a few basic functions exported by `mangaEdenApi.js`:
 
-- `getLibrary$([pageId])`
-  A function that takes an optional pageId (for paginated results), and responds with an observable containing a [Library]()
+- **`getLibrary$([pageId])`**
 
-- `getBook$(bookId)`
-  A function that takes in a `bookId` argument and responds with an observable containing a [Book]().
+  getLibrary is a function that takes an optional `pageId` (for paginated results), and responds with a promise containing a [Library](../../models/Library) created from mangaEden's "Manga List" API endpoint.
 
-- `getChapter$(chapterid)`
-  A function that takes in a `chapterId` argument and responds with an observable containing an array of [Chapters]()
+- **`getBook$(bookId)`**
 
-## How it works
+  getBook is a function that takes in a `bookId` argument and responds with a promise containing a [Book](../../models/Book) created from mangaEden's "Manga info and chapters list" API endpoint.
+
+- **`getChapter$(chapterid)`**
+
+  getChapter is a function that takes in a `chapterId` argument and responds with a promise containing an array of [Chapters](../../models/Chapter) from mangaEden's "Chapter pages" API endpoint.
+
+How it works
+------------
 The flow of a generic request is in our `getData` function:
 
 ```js
@@ -39,4 +44,4 @@ export function getBook$(bookId) {
 }
 ```
 
-Here, we are exporting our `getBook$` request.  When we pass it the ID of a book, it gets formatted into a url string with an ES2015 [template string](https://developers.google.com/web/updates/2015/01/ES6-Template-Strings?hl=en). The url responds with what we consider as a single-item observable and maps the response, formatting it to the way we would like to store it in our application.
+Here, we are exporting our `getBook$` request.  When we pass it the ID of a book, it gets formatted into a url string with an ES2015 [template string](https://developers.google.com/web/updates/2015/01/ES6-Template-Strings?hl=en).

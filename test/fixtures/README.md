@@ -1,6 +1,5 @@
 Fixtures
-===========
-
+========
 Fixtures are static data that we can use for fake api responses and other pieces of data.
 
 #### MangaEden

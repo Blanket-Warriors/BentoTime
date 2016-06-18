@@ -1,12 +1,13 @@
 Webpack
-==========
-
+=======
 [Webpack](https://webpack.github.io/) is a utility we use for taking all of our modules, running our [compilers](https://en.wikipedia.org/wiki/Compiler) on them, and merging them into a javascript file and a css file. There are a few reasonings behind using Webpack and compilers.
 
 1. A separation of readability and performance. This ranges from using new javascript features and Sass, to improving performance by removing the impact of whitespace, comments, and long variable names.
 
 2. Modularity. It's nice to be able to have all of our concerns in different files and folders without importing a crazy amount of javascript files in our .html files.
 
+How it works
+------------
 We have a few different configurations that do different things, but they all start with `webpack.base.js`.
 
 #### `webpack.base.js`

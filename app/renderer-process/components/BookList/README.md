@@ -1,14 +1,15 @@
 BookList
---------
+========
 BookList takes in an object or array of books, and returns a list component that displays the information for those books in the form of [BookListItems](../BookListItem).
 
-## How to use
+How to use
+----------
 
 #### With Filter
 BookList is very stingy on displaying books, and will only display books matched by the filter. This helps us speed up our application by reducing the amount of components rendered. We filter our `BookList` by passing in a `filter` prop. The `filter` prop is a string that we use to match against the manga titles, ignoring case:
 
 ```js
-import BookList from 'app/components/BookList';
+import BookList from "app/components/BookList";
 const myBooks = [/*An array of books*/];
 const filterString = "naruto";
 
@@ -29,11 +30,13 @@ const myBooks = [/*An array of books*/];
 <BookList books={myBooks} filter={true} />
 ```
 
-## Props
+Props
+-----
 * `books`: An object or array of [Books](../../data/models/Book)
 * `filter`: What we use to filter book titles. As of now, this can be a string or boolean. A boolean can be used to display the entire or none of the list, where a string is used to search through the title of each book.
 
-## Further Detail
+How it works
+--------------
 The heart of this code comes from where we create our list of `mappedBooks`.  It starts with:
 
 ```js

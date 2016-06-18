@@ -1,5 +1,5 @@
 Chapter
--------
+========
 A chapter is simply an id associated with an array of pages in order.
 
 ```js

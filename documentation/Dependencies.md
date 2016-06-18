@@ -1,5 +1,5 @@
 Dependencies
--------------
+============
 These are the main dependencies of BentoTime, and if you intend to use this repository to learn, these are the technologies you should be focusing on. Have fun and good luck!
 
 - #### Isomorphic-Fetch
@@ -36,7 +36,7 @@ Starting at React v.0.14, Facebook split out React's DOM functionality into [Rea
 [Redux-Thunk](https://github.com/gaearon/redux-thunk) helps us deal with asynchronous tasks using action creators that return functions instead of actions.
 
 DevDependencies
----------------
+===============
 These are dependencies that are not used much in the actual application, but facilitate it in building and using the application. This notably includes Electron, our compliation dependencies, and testing dependencies.
 
 - #### Babel-Core

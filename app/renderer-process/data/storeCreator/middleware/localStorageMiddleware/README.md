@@ -1,11 +1,12 @@
 localStorageMiddleware
-----------------------
+======================
 localStorageMiddleware lets us save our store to [localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), so that we can have persistent data. Since we save to localStorage, we don't need to send nearly as many API requests, speeding up our application! Keep in mind that, for performance reasons, we don't always save to localStorage:
 
  - **`REQUEST` or `FAILURE` actions** - These create states that don't really need to be persistent, so screw 'em!
  - **[Debounce](https://lodash.com/docs#debounce)** - If we have a bunch of rapid state changes, we should only save the state to localstorage once.
 
-## How to Use
+How to Use
+----------
 To use localStorage, we need to both be able to save and retrieve items from localStorage. Usage would look something like this:
 ```js
 import { createStore, applyMiddleware } from "redux";
