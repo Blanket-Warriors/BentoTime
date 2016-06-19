@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from "react";
 import _, { find, debounce, cloneDeep } from "lodash";
 import { connect } from "react-redux";
+import combine from "renderer/utilities/combineClasses";
 import shouldUpdate from "renderer/utilities/shouldUpdate";
-
 import { fetchLibrary, fetchBook, fetchChapter } from "renderer/data/actions";
 
 class Layout extends Component {
@@ -34,57 +34,57 @@ class Layout extends Component {
   }
 
   updateLibrary(library) {
-    const { dispatch } = this.props;
-    return shouldUpdate(library) ? dispatch(fetchLibrary()) : Promise.resolve();
-  }
-
-  updateBookmarks(library, shouldUpdateBookmarks) {
-    const { dispatch } = this.props;
-    if(!shouldUpdateBookmarks){ return Promise.resolve(); }
-
-    const bookmarks = _(library.books)
-      .filter(book => {
-        return book.bookmarked && shouldUpdate(book);
-      })
-      .map(book => dispatch(fetchBook(book)))
-      .value();
-    return Promise.all(bookmarks);
+    if(shouldUpdate(library)) {
+      return this.props.dispatch(fetchLibrary());
+    }
+    return Promise.resolve();
   }
 
   updateBook(library, bookid) {
-    if(!library.books || !bookid) {
-      return Promise.resolve();
-    }
+    if(!library.books || !bookid) { return Promise.resolve(); }
 
-    const { dispatch } = this.props;
     const book = find(library.books, { id: bookid });
-    return shouldUpdate(book) ? dispatch(fetchBook(book)) : Promise.resolve();
+    if(shouldUpdate(book)) {
+      return this.props.dispatch(fetchBook(book));
+    }
+    return Promise.resolve();
   }
 
   updateChapter(library, bookid, chapterid) {
-    if(!library.books || !bookid || !chapterid) {
-      return Promise.resolve();
-    }
+    if(!library.books || !bookid || !chapterid) { return Promise.resolve(); }
 
-    const { dispatch } = this.props;
     const book = find(library.books, { id: bookid });
     const chapter = find(book.chapters, { id: chapterid });
-    return shouldUpdate(chapter) ? dispatch(fetchChapter(book, chapter)) : Promise.resolve();
+    if(shouldUpdate(chapter)) {
+      return this.props.dispatch(fetchChapter(book, chapter));
+    }
+    return Promise.resolve();
+  }
+
+  updateBookmarks(library, shouldUpdateBookmarks) {
+    if(!shouldUpdateBookmarks){ return Promise.resolve(); }
+
+    const bookmarks = _(library.books)
+      .filter(book => book.bookmarked && shouldUpdate(book))
+      .map(book => this.props.dispatch(fetchBook(book)))
+      .value();
+
+    return Promise.all(bookmarks);
   }
 
   render() {
-    const { library, user, dispatch } = this.props;
-    const { bookid, chapterid, pageid } = this.props.params;
+    const { dispatch, className, library, params } = this.props;
+    const { bookid, chapterid, pageid } = params;
 
-    const hasBook = Boolean(library.books && bookid);
-    const book = hasBook ? library.books[bookid] : undefined;
+    const bookExists = Boolean(library.books && bookid);
+    const book = bookExists ? library.books[bookid] : undefined;
 
-    const hasChapter = Boolean(book && book.chapters && chapterid);
-    const chapter = hasChapter ? find(book.chapters, { id: chapterid }) : undefined;
+    const chapterExists = Boolean(book && book.chapters && chapterid);
+    const chapter = chapterExists ? find(book.chapters, { id: chapterid }) : undefined;
 
     return (
-      <div className="layout">
-        {React.cloneElement(this.props.children, { library, user, book, chapter, dispatch })}
+      <div className={combine("layout", className)}>
+        {React.cloneElement(this.props.children, { library, book, chapter, dispatch })}
       </div>
     );
   }
@@ -92,28 +92,24 @@ class Layout extends Component {
 
 Layout.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  className: PropTypes.string,
   library:  PropTypes.object,
-  params:   PropTypes.object,
-  routing:  PropTypes.object,
-  user:     PropTypes.object
+  params:   PropTypes.object
 };
 
 Layout.defaultProps = {
+  dispatch: function(){},
+  className: "",
   library: {},
-  params: {},
-  routing: {},
-  user: {}
+  params: {}
 };
-
-function mapStateToProps(state) {
-  return {
-    library: cloneDeep(state.library),
-    user: cloneDeep(state.user),
-    routing: cloneDeep(state.routing)
-  };
-}
 
 // Attaches an addition export so that we can test the component without Redux
 export const unconnected = Layout;
 
-export default connect(mapStateToProps)(Layout);
+export default connect(function mapStateToProps(state) {
+  const props = {
+    library: cloneDeep(state.library)
+  };
+  return props;
+})(Layout);

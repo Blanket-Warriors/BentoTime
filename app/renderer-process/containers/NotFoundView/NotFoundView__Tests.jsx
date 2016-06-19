@@ -9,11 +9,11 @@ describe("Containers", function() {
     });
 
     it("Should render a `h1`", function() {
-      expect(this.component.type()).to.equal("h1");
+      expect(this.component.type()).to.equal("h3");
     });
 
     it("Should render the text `NotFound View`", function() {
-      expect(this.component.text()).to.equal("NotFound View");
+      expect(this.component.text()).to.equal("Page Not Found");
     });
   });
 });
