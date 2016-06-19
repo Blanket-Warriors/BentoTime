@@ -11,9 +11,9 @@ import BookView from "renderer/components/BookView";
 ```
 
 #### Props
- * `book`: We need to pass the book so we can display the information
  * `dispatch`: We need to pass this through in order to use our [bookHero](../../components/bookHero)
- * `className` (Optional): Any class name passed in will be attached to the component.
+ * `book` (Optional): We need to pass the book so we can display the information. If there isn't a book, however, this case is handled with a loading screen.
+ * `className` (Optional): Any class name passed in will be attached to the component
 
 #### ClassNames
  * `.book-view`: Our main class

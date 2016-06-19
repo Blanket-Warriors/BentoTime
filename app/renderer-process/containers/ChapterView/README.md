@@ -13,9 +13,9 @@ import ChapterView from "renderer/components/ChapterView";
 ```
 
 #### Props
- * `book`: We use this so that we can navigate back to the right book
- * `chapter`: This has our chapter information
  * `dispatch`: We need to pass this through in order to update our chapter to a `viewed` state
+ * `book` (Optional): We use this so that we can navigate back to the right book
+ * `chapter` (Optional): This has our chapter information
  * `className` (Optional): Any class name passed in will be attached to the component
 
 #### ClassNames

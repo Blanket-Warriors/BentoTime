@@ -7,7 +7,7 @@ import BookInfo from "renderer/components/BookInfo";
 const BookView = function BookView({ book, dispatch, className }) {
   if(!book || !book.chapters || book.isFetching) {
     return (
-      <h3 className={combine("book-view book-view--loading", className)}>
+      <h3 className={combine("book-view", "book-view--loading", className)}>
         loading...
       </h3>
     );
@@ -22,14 +22,14 @@ const BookView = function BookView({ book, dispatch, className }) {
 };
 
 BookView.propTypes = {
-  book: React.PropTypes.object.isRequired,
   dispatch: React.PropTypes.func.isRequired,
+  book: React.PropTypes.object,
   className: React.PropTypes.string
 };
 
 BookView.defaultProps = {
-  book: null,
   dispatch: function(){},
+  book: null,
   className: ""
 };
 

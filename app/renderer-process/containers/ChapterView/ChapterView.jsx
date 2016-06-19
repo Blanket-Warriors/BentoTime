@@ -33,17 +33,17 @@ class ChapterView extends Component {
   }
 }
 
-BookView.propTypes = {
-  book: React.PropTypes.object.isRequired,
-  chapter: React.PropTypes.object.isRequired,
+ChapterView.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
+  book: React.PropTypes.object,
+  chapter: React.PropTypes.object,
   className: React.PropTypes.string
 };
 
-BookView.defaultProps = {
+ChapterView.defaultProps = {
+  dispatch: function(){},
   book: null,
   chapter: null,
-  dispatch: function(){},
   className: ""
 };
 
