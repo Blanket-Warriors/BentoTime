@@ -1,15 +1,25 @@
 Book Reducer
 ============
-`bookReducer` is a  [reducer](http://rackt.org/redux/docs/basics/Reducers.html) nested within our [libraryReducer](../libraryReducer). Book reducer allows us to keep track of the state of a single book within our library. It takes actions from [bookActions](../../actions/bookActions) to build our book's state, and passes on [chapterActions](../../actions/chapterActions) to be handled by our [chapterReducer](../chapterReducer).
+`bookReducer` is a [reducer](http://rackt.org/redux/docs/basics/Reducers.html) nested within our [libraryReducer](../libraryReducer). Book reducer allows us to modify the state of a single book within our library. It takes actions from [bookActions](../../actions/bookActions) to build our book's state, and passes on [chapterActions](../../actions/chapterActions) to be handled by our [chapterReducer](../chapterReducer).
 
-Action Types
+How to use
 ------------
-- `FETCH_BOOK_REQUEST` is a [book action](../../actions/bookActions) sent when we start an api request
-- `FETCH_BOOK_SUCCESS` is a [book action](../../actions/bookActions)sent an api request responds with a positive status
-- `FETCH_BOOK_FAILURE` is a [book action](../../actions/bookActions) sent when an api responds with an error
-- `FETCH_CHAPTER_XXXX` are [chapter actions](../../actions/chapterActions) that get passed on and handled by our [chapterReducer](../chapterReducer)
+Our book reducer handles any book. To use it, just pass it to the store on creation:
+```js
+import { createStore } from "redux";
+import bookReducer from "renderer/data/reducers/bookReducer";
 
-How to Use
+createStore(bookReducer);
+```
+
+#### Action Types
+- `SET_BOOKMARK` is a [book action](../../actions/bookActions) went when we set a book as `bookmarked`
+- `FETCH_BOOK_REQUEST` is a [book action](../../actions/bookActions) sent when we start an api request
+- `FETCH_BOOK_SUCCESS` is a [book action](../../actions/bookActions) sent an api request responds with a positive status
+- `FETCH_BOOK_FAILURE` is a [book action](../../actions/bookActions) sent when an api responds with an error
+- [`CHAPTER`](../../actions/chapterActions) actions get passed on and handled by our [chapterReducer](../chapterReducer)
+
+How it works
 -----------
 Say we fire an action `FETCH_BOOK_REQUEST` by calling our `fetchBook` method in [bookActions](../../actions/bookActions). This action is dispatched through our [libraryReducer](../libraryReducer), before being delegated to this file. Since the action type is `'FETCH_BOOK_REQUEST'`, it gets caught by this switch case:
 
