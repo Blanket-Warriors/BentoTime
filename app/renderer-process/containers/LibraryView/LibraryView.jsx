@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
 import { bind, debounce } from "lodash";
 
+import combine from "renderer/utilities/combineClasses";
 import SearchBar from "renderer/components/SearchBar";
 import BookList from "renderer/components/BookList";
 
@@ -13,44 +14,52 @@ class LibraryView extends Component {
     };
 
     this.onSearch = bind(this.onSearch, this);
-    this.updateSearchState = debounce( searchFilter => {
-      this.setState({searchFilter: searchFilter});
-    }, 750);
   }
 
   onSearch(event) {
-    const searchFilter = event.target.value;
-    this.updateSearchState(searchFilter);
+    debounce(function updateSearchState(searchFilter) {
+      this.setState({ searchFilter });
+    }, 750).call(this, event.target.value);
   }
 
   render() {
-    const library = this.props.library;
-    const searchFilter = this.state.searchFilter;
-    const searchFilterExists = searchFilter.length > 0;
-    const onlyShowBookmarks = !searchFilterExists;
-    const dateFilter = searchFilterExists ? this.state.dateFilter : "week";
+    const { library, className } = this.props;
+    const { searchFilter, dateFilter } = this.state;
 
     if(!library.books || library.isFetching) {
-      return <h3 className="library-view--loading">loading...</h3>;
+      return (
+        <h3 className={combine("library-view", "library-view--loading", className)}>
+          loading...
+        </h3>
+      );
     }
 
     return (
-      <div className="library-view">
-        <SearchBar className="library-view__search" onChange={this.onSearch} />
+      <div className={combine("library-view", className)}>
+        <SearchBar
+          className="library-view__search"
+          onChange={this.onSearch}
+        />
         <BookList
           className="library-view__books"
           books={library.books}
           searchFilter={searchFilter}
-          onlyShowBookmarks={onlyShowBookmarks}
-          dateFilter={null}
+          onlyShowBookmarks={searchFilter.length === 0}
+          dateFilter={dateFilter}
         />
       </div>
     );
   }
 }
 
+LibraryView.propTypes = {
+  library: PropTypes.object.isRequired,
+  className: PropTypes.string
+};
+
 LibraryView.defaultProps = {
-  library: {}
+  library: {},
+  className: ""
 };
 
 export default LibraryView;
