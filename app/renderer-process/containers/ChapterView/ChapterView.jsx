@@ -1,35 +1,50 @@
-import React, { Component, PropTypes } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router";
-import { map, isEmpty } from "lodash";
 
 import { setChapterViewed } from "renderer/data/actions/chapterActions";
-import combineClasses from "renderer/utilities/combineClasses";
+import combine from "renderer/utilities/combineClasses";
 import PageList from "renderer/components/PageList";
 
 class ChapterView extends Component {
-  constructor(props) {
-    super(props);
-  }
+  constructor(props) { super(props); }
 
   componentDidMount() {
-    const { dispatch, book, chapter } = this.props;
+    const { book, chapter, dispatch } = this.props;
     dispatch(setChapterViewed(book, chapter, true));
   }
 
   render() {
-    const { book, chapter } = this.props;
+    const { book, chapter, className } = this.props;
 
-    if( !book || !chapter || isEmpty(chapter.pages) ){
-      return <h3 className="chapter-view--loading">loading...</h3>;
+    if( !book || !chapter || !chapter.pages || !chapter.pages.length ) {
+      return (
+        <h3 className={combine("chapter-view", "chapter-view--loading", className)}>
+          loading...
+        </h3>
+      );
     }
 
     return (
-      <div className="chapter-view">
-        <Link to={"/book/" + book.id} className="chapter-view__back">Back</Link>
-        <PageList className="chapter-view__chapters" pages={chapter.pages} />
+      <div className={combine("chapter-view", className)}>
+        <Link className="chapter-view__back" to={"/book/" + book.id}>Back</Link>
+        <PageList className="chapter-view__pages" pages={chapter.pages} />
       </div>
     );
   }
 }
+
+BookView.propTypes = {
+  book: React.PropTypes.object.isRequired,
+  chapter: React.PropTypes.object.isRequired,
+  dispatch: React.PropTypes.func.isRequired,
+  className: React.PropTypes.string
+};
+
+BookView.defaultProps = {
+  book: null,
+  chapter: null,
+  dispatch: function(){},
+  className: ""
+};
 
 export default ChapterView;
