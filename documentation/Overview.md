@@ -1,1 +1,3 @@
-*This readme has not been completed yet*
+A Bird's-Eye View of BentoTime
+==============================
+*This readme is under construction*

@@ -13,16 +13,16 @@ If you just want to use BentoTime without entering a single line of code, just d
 
 Getting Started With Development
 --------------------------------
-  1. install dependencies - `npm install`
-  2. Make sure all the tests are running - `npm test`
-  3. Run Webpack dev server and electron - `npm start`
+  1. Be sure you have [node.js](https://nodejs.org/en/) installed. We recommend using  [nvm](https://github.com/creationix/nvm) to install it.
+  2. install dependencies - `npm install`
+  3. Make sure all the tests are running - `npm test`
+  4. Run Webpack dev server and electron - `npm start`
 
 #### Documentation
 We have READMEs for almost every module in this project, so definitely check those out!  There are also a few precursory things to read that can help you understand the repo.
  - [Our Dependencies](./documentation/Dependencies.md): The code we build on top of to make Bentotime
- - [Our Build Process](./documentation/Build-Process.md): The steps that happen when we hit npm start
- - [A :bird:'s Eye View](./documentation/Overview.md): Our application structure, and description some opinions we made with this.
  - [Root Files](./documentation/Root-Files.md): Explains the files in this directory (our root folder)
+ - [A :bird:'s Eye View](./documentation/Overview.md): Our application structure, and description some opinions we made with this.
 
 #### Other Useful CLI Commands
 Command                     |Description
