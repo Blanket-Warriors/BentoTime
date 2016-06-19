@@ -7,7 +7,8 @@ describe("Containers", function() {
     beforeEach(function() {
       this.book = {
         title: "The little engine that could",
-        description: "A book about a train that tried so hard and finally succeeded"
+        description: "A book about a train that tried so hard and finally succeeded",
+        chapters: []
       };
 
       this.component = shallow(<BookView book={this.book} />);

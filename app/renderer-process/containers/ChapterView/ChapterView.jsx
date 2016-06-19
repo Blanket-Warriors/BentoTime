@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react";
 import { Link } from "react-router";
-import { map } from "lodash";
+import { map, isEmpty } from "lodash";
 
 import { setChapterViewed } from "renderer/data/actions/chapterActions";
 import combineClasses from "renderer/utilities/combineClasses";
@@ -19,7 +19,7 @@ class ChapterView extends Component {
   render() {
     const { book, chapter } = this.props;
 
-    if( !book || !chapter ){
+    if( !book || !chapter || isEmpty(chapter.pages) ){
       return <h3 className="chapter-view--loading">loading...</h3>;
     }
 

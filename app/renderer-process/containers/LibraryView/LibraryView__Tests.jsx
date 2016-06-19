@@ -35,7 +35,7 @@ describe("Containers", function() {
       expect(bookList.prop("searchFilter")).to.equal(this.searchFilterText);
     });
 
-    it("Should render a Loading component if no book is passed in as a prop", function() {
+    it("Should render a Loading component if no library is passed in as a prop", function() {
       this.component = shallow(<LibraryView />);
       expect(this.component.text()).to.equal("loading...");
     });

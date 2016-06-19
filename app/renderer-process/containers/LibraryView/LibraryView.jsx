@@ -30,7 +30,7 @@ class LibraryView extends Component {
     const onlyShowBookmarks = !searchFilterExists;
     const dateFilter = searchFilterExists ? this.state.dateFilter : "week";
 
-    if(!library.lastUpdated) {
+    if(!library.books || library.isFetching) {
       return <h3 className="library-view--loading">loading...</h3>;
     }
 
