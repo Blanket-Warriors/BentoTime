@@ -15,8 +15,11 @@ import BookmarkIcon from "renderer/components/BookmarkIcon";
 <BookmarkIcon book={book} dispatch={dispatch} />
 ```
 
-Props
------
-* `className`: We can add classes to an BookmarkIcon component
-* `dispatch`: The dispatcher for our store
+#### Props
 * `book`: The book we are setting a bookmark on
+* `dispatch`: The dispatcher for our store
+* `className` (Optional): We can add classes to an BookmarkIcon component
+
+#### ClassNames
+ * `.bookmark-icon`: Our main class
+ * `.bookmark-icon--bookmarked`: Class that's appended when a bookmark-icon is bookmarked

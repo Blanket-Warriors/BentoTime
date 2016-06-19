@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router";
-import combineClasses from "renderer/utilities/combineClasses";
+import combine from "renderer/utilities/combineClasses";
 
 import BookmarkIcon from "renderer/components/BookmarkIcon";
 import Img from "renderer/components/Img";
 
 const BookHero = function BookHero({ book, dispatch, className }) {
   return (
-    <div className={combineClasses("book-hero", className)}>
+    <div className={combine("book-hero", className)}>
       <h1 className="book-hero__title">{book.title}</h1>
       <Img
         className="book-hero__image"
@@ -20,6 +20,18 @@ const BookHero = function BookHero({ book, dispatch, className }) {
       <svg className="book-hero__arrow"><path d="M0 0 L15 16 L30 0" /></svg>
     </div>
   );
+};
+
+BookHero.propTypes = {
+  book: React.PropTypes.object.isRequired,
+  dispatch: React.PropTypes.func.isRequired,
+  className: React.PropTypes.string
+};
+
+BookHero.defaultProps = {
+  book: null,
+  dispatch: function(){},
+  className: ""
 };
 
 export default BookHero;

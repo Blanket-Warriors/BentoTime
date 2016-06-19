@@ -12,6 +12,10 @@ import ChapterList from "app/components/ChapterList";
 <ChapterList book={book} />
 ```
 
-Props
------
-* `Chapters`: An object or array of [Chapters](../../data/models/Chapter)
+#### Props
+* `book`: A book that contains chapters
+* `className` (Optional): Any class name passed in will be attached to the component.
+
+#### ClassNames
+ * `.chapter-list`: Our main class
+ * `.chapter-list__item`: An item in our chapter list

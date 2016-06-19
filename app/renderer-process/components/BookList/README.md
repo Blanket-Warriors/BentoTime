@@ -9,17 +9,18 @@ import BookList from "renderer/components/BookList";
 const myBooks = [/*An array of books*/];
 const filterString = "naruto";
 
-<BookList 
-  books={myBooks} 
-  filter={filterString} 
+<BookList
+  books={myBooks}
+  filter={filterString}
 />
 ```
 
 #### Props
 * `books`: An object or array of [Books](../../data/models/Book)
-* `onlyShowBookmarks`: If this prop is passed in, we only show bookmarked books.
-* `dateFilter`: This prop should be a string like "day", "week", or "month" (as supported by [Moment.js Queries](http://momentjs.com/docs/#/query/)). It will show all the books with chapters published within that timeframe.
-* `searchFilter`: The search filter can be a string or a boolean. If it's a string, we filter out books that don't include that string in their title. If it's a boolean, we either show all the books or none of the books. This filter takes last priority, so it's applied after date and bookmark filters.
+* `className` (Optional): Any class name passed in will be attached to the component.
+* `dateFilter` (Optional): This prop should be a string like "day", "week", or "month" (as supported by [Moment.js Queries](http://momentjs.com/docs/#/query/)). It will show all the books with chapters published within that timeframe.
+* `onlyShowBookmarks` (Optional): If this prop is passed in, we only show bookmarked books.
+* `searchFilter` (Optional): The search filter can be a string or a boolean. If it's a string, we filter out books that don't include that string in their title. If it's a boolean, we either show all the books or none of the books. This filter takes last priority, so it's applied after date and bookmark filters.
 
 #### ClassNames
  * `.book-list`: Our main component class

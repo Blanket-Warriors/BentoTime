@@ -7,11 +7,14 @@ How to use
 ```js
 import ChapterListItem from "app/components/ChapterListItem";
 
-<ChapterListItem key={key} book={book} />
+<ChapterListItem chapter={chapter} book={book} />
 ```
 
-Props
------
+#### Props
 * `book`: An single [Book](../../data/models/Book)
 * `chapter`: An single [Chapter](../../data/models/Chapter)
-* `key`: Helps us keep track of a list of ChapterListItems
+* `className` (Optional): Any class name passed in will be attached to the component.
+
+#### ClassNames
+ * `.chapter-list-item`: Our main class
+ * `.chapter-list-item--viewed`: Present when a chapter item has been viewed.

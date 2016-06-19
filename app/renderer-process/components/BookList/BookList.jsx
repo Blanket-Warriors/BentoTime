@@ -2,7 +2,7 @@ import React from "react";
 import _ from "lodash";
 import moment from "moment";
 import BookListItem from "renderer/components/BookListItem";
-import combineClasses from "renderer/utilities/combineClasses";
+import combine from "renderer/utilities/combineClasses";
 
 var BookList = function({ books, searchFilter, dateFilter, onlyShowBookmarks, className }) {
   const today = moment();
@@ -42,24 +42,25 @@ var BookList = function({ books, searchFilter, dateFilter, onlyShowBookmarks, cl
     .value();
 
   return (
-    <ul className={combineClasses("book-list", className)}>
+    <ul className={combine("book-list", className)}>
       {mappedBooks.length ? mappedBooks : <h3 className={"book-list--empty"}>No Manga</h3>}
     </ul>
   );
 };
 
-
-
 BookList.propTypes = {
   books: React.PropTypes.object.isRequired,
+  className: React.PropTypes.string,
   dateFilter: React.PropTypes.string,
-  onlyShowBookmarks: React.PropTypes.bool,
-  className: React.PropTypes.string
+  onlyShowBookmarks: React.PropTypes.bool
 };
 
 BookList.defaultProps = {
-  searchFilter: null,
-  dateFilter: null
+  books: {},
+  className: "",
+  dateFilter: null,
+  onlyShowBookmarks: false,
+  searchFilter: null
 };
 
 export default BookList;

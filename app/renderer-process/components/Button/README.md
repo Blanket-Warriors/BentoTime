@@ -10,6 +10,8 @@ import Button from "app/components/Button";
 <Button />
 ```
 
-Props
------
+#### Props
 * All props are passed through to the resulting Button
+
+#### ClassNames
+ * `.button`: Our main class

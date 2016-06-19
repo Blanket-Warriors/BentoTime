@@ -15,9 +15,14 @@ const SearchBar = function({ type, onChange, placeholder, className }) {
 };
 
 SearchBar.propTypes = {
+  className: React.PropTypes.string,
+  onChange: React.PropTypes.func,
+  placeholder: React.PropTypes.string,
+  type: React.PropTypes.string
 };
 
 SearchBar.defaultProps = {
+  className: "",
   onChange: function(){},
   placeholder: "Search...",
   type: "search"

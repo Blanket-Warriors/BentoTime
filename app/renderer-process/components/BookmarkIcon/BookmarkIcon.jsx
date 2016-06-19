@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react";
 import { setBookmark } from "renderer/data/actions/bookActions";
-import combineClasses from "renderer/utilities/combineClasses";
+import combine from "renderer/utilities/combineClasses";
 
 class BookmarkIcon extends Component {
   constructor(props) {
@@ -21,14 +21,26 @@ class BookmarkIcon extends Component {
   render() {
     const isBookmarked = this.state.bookmarked;
     const icon = isBookmarked ? "full_heart.svg" : "empty_heart.svg";
-    const classes = combineClasses("bookmark-icon", isBookmarked ? "bookmarkicon--bookmarked" : "");
+    const bookmarkClass = isBookmarked ? "bookmark-icon--bookmarked" : "";
 
     return <img
-      className={classes}
+      className={combine("bookmark-icon", bookmarkClass, this.props.className)}
       src={`assets/images/bookmark/${icon}`}
       onClick={this.onClick.bind(this)}
     />;
   }
 }
+
+BookmarkIcon.propTypes = {
+  book: React.PropTypes.object.isRequired,
+  dispatch: React.PropTypes.func.isRequired,
+  className: React.PropTypes.string
+};
+
+BookmarkIcon.defaultProps = {
+  book: null,
+  dispatch: function(){},
+  className: ""
+};
 
 export default BookmarkIcon;

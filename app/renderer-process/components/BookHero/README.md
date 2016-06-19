@@ -12,9 +12,9 @@ import BookHero from "renderer/components/BookHero";
 ```
 
 #### Props
- * `className`: Any class name passed in will be attached to the component.
  * `book`: We need to pass the book so we can display the information
  * `dispatch`: We need to pass this through in order to use our [bookmarkIcon](../bookmarkIcon)
+ * `className` (Optional): Any class name passed in will be attached to the component.
 
 #### ClassNames
  * `.book-hero`: Our main class
