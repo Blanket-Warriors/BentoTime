@@ -4,7 +4,9 @@ import BookHero from "renderer/components/BookHero";
 import BookInfo from "renderer/components/BookInfo";
 
 const BookView = function BookView({ book, dispatch }) {
-  if(!book) { return <h3 className="book-view--loading">loading...</h3>; }
+  if(!book || !book.chapters || book.isFetching) {
+    return <h3 className="book-view--loading">loading...</h3>;
+  }
 
   return (
     <div className="book-view">
