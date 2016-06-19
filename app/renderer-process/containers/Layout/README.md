@@ -28,10 +28,11 @@ import Layout from "app/components/Layout";
 
 The non-redux connected component is also exported as an `unconnected` property in the exported Class.
 
-Props
-------
-* `dispatch`: Given to us by React-Redux, this allows us to dispatch actions to our Store.
+#### Props
+* `dispatch`: Given to us by React-Redux, this allows us to dispatch actions to our Store
+* `className`: We can pass classNames to Layout container
 * `library`: Our manga data as a Library model
 * `params`: Given to us by React-Router, this gives us our url parameters
-* `routing`: Given to us by React-Router-Redux, this gives us information about our route
-* `user`: Determined by our User model, this gives us various information and settings related to our user.
+
+#### ClassNames
+* `layout`: Our only class, as this file isn't meant to do much with styles
