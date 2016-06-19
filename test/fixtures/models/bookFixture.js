@@ -1,7 +1,9 @@
+import { imgHost } from "test/stubs/services/mangaEdenService";
+
 export default {
   "id":"55a1a17b719a1609004ad58f",
   "title":"Airindream",
-  "image":"http://cdn.mangaeden.com/mangasimg/88/88482f39e126a59bcac77a1df273fae30a9af811fc16cb08f4910cc5.jpg",
+  "image": imgHost + "88/88482f39e126a59bcac77a1df273fae30a9af811fc16cb08f4910cc5.jpg",
   "artist":"",
   "author":"",
   "created":1316022774,
