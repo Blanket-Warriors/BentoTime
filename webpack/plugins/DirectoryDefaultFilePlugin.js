@@ -8,7 +8,7 @@ DirectoryDefaultFilePlugin.prototype.apply = function(resolver) {
     resolver.fileSystem.stat(directory, function(error, stat) {
       if (error || !stat) return done();
       if (!stat.isDirectory()) return done();
-      if(Boolean(directory.match(/node_modules/))) return done();
+      if(directory.match(/node_modules/)) return done();
 
       resolver.doResolve("file", {
         path: req.path,
