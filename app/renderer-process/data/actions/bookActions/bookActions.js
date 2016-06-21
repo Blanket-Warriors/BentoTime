@@ -14,7 +14,7 @@ function fetchBookSuccess(book) {
   return {
     type: ActionTypes.FETCH_BOOK_SUCCESS,
     book: book,
-    receivedAt: parseInt(moment().format("x"))
+    receivedAt: parseInt(moment().format("X"))
   };
 }
 

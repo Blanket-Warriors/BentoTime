@@ -29,29 +29,30 @@ class Book {
     }
   }
 
-  merge(nextBook) {
-    var newBook = new Book(this);
-    if(!nextBook) { return newBook; }
+  merge(bookToMerge) {
+    var nextBook = new Book(this);
+    if(!bookToMerge) { return nextBook; }
 
     const bookPropertiesToMerge = without(Object.keys(this), "chapters");
     bookPropertiesToMerge.forEach(function(propertyName) {
-      var nextProperty = nextBook[propertyName];
+      var nextProperty = bookToMerge[propertyName];
       if(nextProperty !== undefined && nextProperty !== null) {
-        newBook[propertyName] = nextProperty;
+        nextBook[propertyName] = nextProperty;
       }
     });
 
     // Diff lengths, add new chapters, and update old ones
-    if(nextBook.chapters && nextBook.chapters.length) {
+    if(bookToMerge.chapters && bookToMerge.chapters.length) {
       const currentChapters = this.chapters || [];
-      const chapterLengthDifference = nextBook.chapters.length - currentChapters.length;
-      newBook.chapters = nextBook.chapters.map(function(nextChapter, nextIndex) {
-        const currentIndex = nextIndex + chapterLengthDifference;
-        const currentChapter = new Chapter(currentChapters[currentIndex]);
-        return currentChapter.merge(nextChapter);
+      const chapterLengthDifference = bookToMerge.chapters.length - currentChapters.length;
+      const newChapters = bookToMerge.chapters.slice(0, chapterLengthDifference);
+      const oldChapters = currentChapters.map(function(currChapter, index) {
+        return currChapter.merge(bookToMerge.chapters[index + chapterLengthDifference]);
       });
+
+      nextBook.chapters = newChapters.concat(oldChapters);
     }
-    return newBook;
+    return nextBook;
   }
 }
 

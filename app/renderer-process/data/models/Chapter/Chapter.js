@@ -13,17 +13,17 @@ class Chapter {
     this.viewed       = initialData.viewed;
   }
 
-  merge(nextChapter) {
-    var newChapter = new Chapter(this);
-    if(!nextChapter) { return newChapter; }
+  merge(chapterToMerge) {
+    var nextChapter = new Chapter(this);
+    if(!chapterToMerge) { return nextChapter; }
 
     Object.keys(this).forEach(function(property) {
-      if(nextChapter[property] !== undefined && nextChapter[property] !== null) {
-        newChapter[property] = nextChapter[property];
+      if(chapterToMerge[property] !== undefined && chapterToMerge[property] !== null) {
+        nextChapter[property] = chapterToMerge[property];
       }
     });
 
-    return newChapter;
+    return nextChapter;
   }
 }
 
@@ -38,7 +38,7 @@ Chapter.createFromMangaEdenMangaApi = function([number, date, title, id]) {
   return new Chapter({
     id: id,
     number: number,
-    releaseDate: moment.unix(parseInt(date)),
+    releaseDate: parseInt(date),
     title: title
   });
 };

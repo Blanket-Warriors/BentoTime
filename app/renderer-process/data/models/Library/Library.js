@@ -19,23 +19,23 @@ class Library {
     }
   }
 
-  merge(updateLibrary) {
+  merge(libraryToMerge) {
     var nextLibrary = new Library(this);
-    if(!updateLibrary) {
+    if(!libraryToMerge) {
       console.warn("Trying to merge with a non-existing library!");
       return nextLibrary;
     }
 
     Object.keys(this).forEach(function(propertyName) {
-      var updateProperty = updateLibrary[propertyName];
+      var updateProperty = libraryToMerge[propertyName];
       var propertyExists = updateProperty !== undefined && updateProperty !== null;
       if(propertyName != "books" && propertyExists) {
         nextLibrary[propertyName] = updateProperty;
       }
     });
 
-    if(typeof updateLibrary.books == "object") {
-      nextLibrary.books = reduce(updateLibrary.books, (books, book, bookIndex) => {
+    if(typeof libraryToMerge.books == "object") {
+      nextLibrary.books = reduce(libraryToMerge.books, (books, book, bookIndex) => {
         const prevBook = this.books[bookIndex];
         books[bookIndex] = prevBook ? prevBook.merge(new Book(book)) : new Book(book);
         return books;

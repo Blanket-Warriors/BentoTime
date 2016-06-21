@@ -15,7 +15,7 @@ function fetchChapterSuccess(book, chapter) {
     type: ActionTypes.FETCH_CHAPTER_SUCCESS,
     book: book,
     chapter: chapter,
-    receivedAt: parseInt(moment().format("x"))
+    receivedAt: parseInt(moment().format("X"))
   };
 }
 
@@ -25,7 +25,7 @@ function fetchChapterFailure(book, chapter, error) {
     error: error,
     book: book,
     chapter: chapter,
-    receivedAt: parseInt(moment().format("x"))
+    receivedAt: parseInt(moment().format("X"))
   };
 }
 
