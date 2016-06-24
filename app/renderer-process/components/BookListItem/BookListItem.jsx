@@ -7,7 +7,7 @@ const BookListItem = function({ book, hasNewChapter, className }) {
   return (
     <li className={combine("book-list-item", className)}>
       <Link className="book-list-item__link" to={`book/${book.id}`}>
-        {hasNewChapter ? <div className="book-list__new-chapter">New Chapter!</div> : ""}
+        {hasNewChapter ? <div className="book-list-item__new-chapter">New Chapter!</div> : ""}
         <Img
           className="book-list-item__image"
           src={book.image}
