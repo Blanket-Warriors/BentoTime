@@ -30,10 +30,11 @@ Version 1.4
 ===========
 ##### Pre 2.0-stretch goals
 
-feature              | Description
----------------------|------------
-**Saving**           | Users should be able to save pages locally
-**paginated search** | Large search results should be paginated to prevent freezing up
+feature                  | Description
+-------------------------|------------
+**Saving**               | Users should be able to save pages locally
+**Paginated Search**     | Large search results should be paginated to prevent freezing up
+**Interactive Tutorial** | Helping first-time users understand everything they can do.
 
 Version 2.0+
 ============
