@@ -38,7 +38,8 @@ Command                     |Description
 
 Contributing
 ------------
-Use our [contribution repo](https://github.com/Blanket-Warriors/Style-Guide/tree/master/Contribution) to get an idea of the format we expect for PR's, commits, and issues.
+ - Take a look at our [roadmap](./documentation/Roadmap.md) and [issues](https://github.com/Blanket-Warriors/BentoTime/issues) to get an idea of the ways we want to improve Bentotime. 
+ - Use our [contribution repo](https://github.com/Blanket-Warriors/Style-Guide/tree/master/Contribution) to get an idea of the format we expect for PR's, commits, and issues. 
 
 License
 -------
