@@ -5,11 +5,12 @@ import moment from "moment";
 class Chapter {
   constructor(initialData = {}) {
     this.id           = initialData.id;
-    this.pages        = initialData.pages;
+    this.isFetching   = initialData.isFetching;
+    this.lastUpdated  = initialData.lastUpdated;
     this.number       = initialData.number;
+    this.pages        = initialData.pages;
     this.releaseDate  = initialData.releaseDate;
     this.title        = initialData.title;
-    this.isFetching   = initialData.isFetching;
     this.viewed       = initialData.viewed;
   }
 
@@ -28,28 +29,28 @@ class Chapter {
 }
 
 Chapter.createFromMangaEdenChapterApi = function(response, chapterID) {
+  var formatPage = function formatPage([pageNumber, imageUrl, width, height]) {
+    return {
+      id: pageNumber,
+      image: imgHost + imageUrl,
+      width: width,
+      height: height
+    };
+  };
+
   return new Chapter({
     id: chapterID,
-    pages: map(response.images, this.formatPage)
+    pages: map(response.images, formatPage)
   });
 };
 
 Chapter.createFromMangaEdenMangaApi = function([number, date, title, id]) {
   return new Chapter({
     id: id,
-    number: number,
+    number: parseFloat(number),
     releaseDate: parseInt(date),
     title: title
   });
-};
-
-Chapter.formatPage = function([pageNumber, imageUrl, width, height]) {
-  return {
-    id: pageNumber,
-    image: imgHost + imageUrl,
-    width: width,
-    height: height
-  };
 };
 
 export default Chapter;

@@ -73,7 +73,7 @@ Book.createFromMangaEdenMangaApi = function(response, bookID) {
     id: bookID,
     image: imgHost + response.image,
     lastChapterDate: parseInt(response.last_chapter_date),
-    status: response.status,
+    status: parseInt(response.status),
     title: decodeEntities(response.title)
   });
 };
@@ -86,7 +86,7 @@ Book.createFromMangaEdenListApi = function(response) {
     image: imgHost + response.im,
     id: response.i,
     lastChapterDate: parseInt(response.ld),
-    status: response.s,
+    status: parseInt(response.s),
     title: decodeEntities(response.t)
   });
 };

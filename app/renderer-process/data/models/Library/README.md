@@ -22,12 +22,12 @@ How to Use
     });
 ```
 
+#### Methods
+ * `createFromMangaEdenListApi`: Creates a new library from the data received from Manga Eden.
+ * `merge`: Merges two libraries together, assuming `this` to be the library being merged into, and any arguments to be the library to be merged. This returns a new Library instance.
+
 #### Properties
+ * `books`: An object that contains all of our books, sorted by bookId.
  * `isFetching`: This is a boolean that is true if a request to a library API has been sent, but has not returned yet.
  * `lastUpdated`: The unix timestamp representing the last time we received data about the library. This does NOT update when a book or chapter has updated, and only pertains to data about the library itself.
  * `totalBooks`: An integer representing the number of books we have.
- * `books`: An object that contains all of our books, sorted by bookId.
-
-#### Methods
- * `merge`: Merges two libraries together, assuming `this` to be the library being merged into, and any arguments to be the library to be merged. This returns a new Library instance.
- * `createFromMangaEdenListApi`: Creates a new library from the data received from Manga Eden.
