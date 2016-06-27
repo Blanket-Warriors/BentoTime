@@ -1,14 +1,14 @@
 A Bird's-Eye View of BentoTime
 ==============================
-BentoTime is an [Electron]() application. This is an application that is meant to be run as a native desktop application, but built like a web application. It combines the power of the [Chrome]() web browser and [Node.js]() APIs. This gives us the power to do things like write local files and make external API calls without worrying about things like CORS.
+BentoTime is an [Electron](http://electron.atom.io/) application. This is an application that is meant to be run as a native desktop application, but built like a web application. It combines the power of the [Chrome](https://www.google.com/chrome/browser/desktop/index.html) web browser and [Node.js](https://nodejs.org/en/) APIs. This gives us the power to do things like write local files and make external API calls without worrying about things like CORS.
 
 Compilation
 -----------
-BentoTime is compiled with [Webpack](), [Babel](), and [SASS](). This means that the actual code we write isn't able to be run directly. Instead, it gets compiled into more standard Javascript and CSS, and THEN gets run. Although this has the one drawback in that it makes us wait a little longer when running our application for development, it has many benefits...
+BentoTime is compiled with [Webpack](https://webpack.github.io/), [Babel](https://babeljs.io/), and [SASS](http://sass-lang.com/). This means that the actual code we write isn't able to be run directly. Instead, it gets compiled into more standard Javascript and CSS, and THEN gets run. Although this has the one drawback in that it makes us wait a little longer when running our application for development, it has many benefits...
 
  * We can use new Javascript features that don't exist yet
  * We can use SASS
- * We can use [JSX]().
+ * We can use [JSX](https://facebook.github.io/react/docs/jsx-in-depth.html).
 
 These make writing Javascript just a bit more fun. Also, compiling our code means that we can make performance adjustments that would otherwise make our code unreadable.
 
