@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "An application to read manga",
   "author": "Blanket Warriors",
-  "license": "ISC",
+  "license": "MIT",
   "main": "build/main.js",
   "build": {
     "name": "BentoTime",

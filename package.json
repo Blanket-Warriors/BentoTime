@@ -1,6 +1,8 @@
 {
   "name": "BentoTime",
   "version": "1.0.0",
+  "license": "MIT",
+  "author": "Blanket Warriors",
   "description": "An application for reading Manga",
   "repository": "https://github.com/Blanket-Warriors/BentoTime",
   "main": "public/main.js",
@@ -31,8 +33,6 @@
       "add-module-exports"
     ]
   },
-  "author": "Blanket Warriors",
-  "license": "ISC",
   "engine": "node >= 4.0.0",
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
