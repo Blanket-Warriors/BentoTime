@@ -15,7 +15,7 @@ class Img extends React.Component {
   }
 
   render() {
-    const props = omit(this.props, ["src", "onError"]);
+    const props = omit(this.props, ["src", "onError", "fallback"]);
     props.src = this.state.src;
     props.onError = this._handleError.bind(this);
     props.className = combine(this.props.className, "image");

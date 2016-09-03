@@ -83,7 +83,7 @@
     "react-addons-test-utils": "^15.2.0",
     "sass-loader": "^4.0.0",
     "sinon": "^1.17.4",
-    "webpack": "^1.13.1",
+    "webpack": "^1.13.2",
     "webpack-dev-server": "^1.14.1"
   }
 }

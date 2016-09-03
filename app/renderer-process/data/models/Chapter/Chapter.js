@@ -32,7 +32,7 @@ Chapter.createFromMangaEdenChapterApi = function(response, chapterID) {
   var formatPage = function formatPage([pageNumber, imageUrl, width, height]) {
     return {
       id: pageNumber,
-      image: imgHost + imageUrl,
+      image: imageUrl && (imgHost + imageUrl),
       width: width,
       height: height
     };

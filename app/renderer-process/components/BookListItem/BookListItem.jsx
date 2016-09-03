@@ -10,7 +10,7 @@ const BookListItem = function({ book, hasNewChapter, className }) {
         {hasNewChapter ? <div className="book-list-item__new-chapter">New Chapter!</div> : ""}
         <Img
           className="book-list-item__image"
-          src={book.image}
+          src={book.image || "assets/images/book_placeholder.png"}
           fallback="assets/images/book_placeholder.png"
           alt={book.title}
         />
