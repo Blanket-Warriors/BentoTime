@@ -1,0 +1,9 @@
+/* Grid Functions
+––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– */
+@function grid-column-width($num-columns) {
+  @return $column-width * $num-columns - ($column-margin*($total-columns - $num-columns)/$total-columns);
+}
+
+@function grid-offset-length($n) {
+  @return grid-column-width($n) + $column-margin;
+}

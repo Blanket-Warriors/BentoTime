@@ -1,0 +1,47 @@
+.book-hero {
+  @include fadeIn(0.5s, 1);
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  background-color: $black;
+}
+
+.book-hero__title {
+  @include vertical-align-text(100vh);
+}
+
+.book-hero__back {
+  position: absolute;
+  left: 50px;
+  top: 50px;
+}
+
+.book-hero__image {
+  @include fadeIn(0.5s, 0.5);
+  @include blur(10);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.book-hero > .bookmark-icon {
+  top: 90%;
+  left: 90%;
+  position: absolute;
+}
+
+.book-hero__arrow {
+  stroke: $white;
+  opacity: 0.2;
+  stroke-width: 2px;
+  fill: transparent;
+  position: absolute;
+  top: 97%;
+  left: 50%;
+}

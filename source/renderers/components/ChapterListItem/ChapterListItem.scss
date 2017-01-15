@@ -1,0 +1,27 @@
+$chapterListItemSize: 2.2em;
+
+.chapter-list-item {
+  @include fadeIn(0.5s);
+  @include transition(0.25s);
+  display: inline-block;
+  height: $chapterListItemSize;
+  width: $chapterListItemSize;
+  line-height: $chapterListItemSize;
+  margin: 0.5em;
+  backface-visibility: visible;
+  border: 0.1em solid rgba(256, 256, 256, 0.4);
+  border-radius: 0.1em;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  font-weight: bold;
+  overflow: hidden;
+  &:hover {
+    background-color: rgba(256, 256, 256, 0.4);
+  }
+}
+
+.chapter-list-item--viewed {
+  @include fadeIn(0.5s, 0.6);
+  opacity: 0.6;
+}
