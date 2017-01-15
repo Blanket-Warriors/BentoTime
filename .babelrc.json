@@ -1,0 +1,4 @@
+{
+	"presets": [ "babel-polyfill", "latest", "stage-3", "react" ],
+	"plugins": [ "react-hot-loader/babel", "add-module-exports" ]
+}

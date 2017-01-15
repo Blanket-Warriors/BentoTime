@@ -1,4 +1,6 @@
 # Files we shouldn't lint
+public/**/*
 app/vendor/**/*
+**/zuck/**/*
 **/*.scss
 **/*.md
