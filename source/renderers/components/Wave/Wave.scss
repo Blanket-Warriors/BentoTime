@@ -1,0 +1,42 @@
+.wave-container {
+	left: 0;
+	opacity: 0.2;
+	position: fixed;
+	top: 0;
+	z-index: -50;
+}
+
+.wave {
+	animation: drift 12000ms infinite linear;
+	background: #0af;
+	border-radius: 43%;
+	height: 2000px;
+	left: 50%;
+	margin-left: -700px;
+	margin-top: -300px;
+	opacity: .4;
+	position: fixed;
+	top: 100vh;
+	transform-origin: 50% 48%;
+	width: 2000px.
+	z-index: -50;
+}
+
+.wave.-three {
+	animation: drift 10000ms infinite linear;
+	z-index: -50;
+	position: fixed;
+}
+
+.wave.-two {
+	animation: drift 15000ms infinite linear;
+	background: white;
+	z-index: -50;
+	opacity: 0.4;
+	position: fixed;
+}
+
+@keyframes drift {
+	from { transform: rotate(0deg);   }
+	from { transform: rotate(360deg); }
+}
