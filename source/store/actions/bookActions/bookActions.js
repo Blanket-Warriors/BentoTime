@@ -12,3 +12,10 @@ export function fetchBook(bookId) {
 		payload: { bookId }
 	}
 }
+
+export function updateBook(bookId, book) {
+	return {
+		type: types.UPDATE_BOOK,
+		payload: { bookId, book }
+	};
+}

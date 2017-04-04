@@ -1,1 +1,19 @@
-export * from "./bookActions/bookActions";
+export const UPDATE_LIBRARY         = "UPDATE_LIBRARY";
+export const FETCH_LIBRARY_REQUEST  = "FETCH_LIBRARY_REQUEST";
+export const FETCH_LIBRARY_SUCCESS  = "FETCH_LIBRARY_SUCCESS";
+export const FETCH_LIBRARY_FAILURE  = "FETCH_LIBRARY_FAILURE";
+
+export const UPDATE_BOOK            = "UPDATE_BOOK";
+export const FETCH_BOOK_REQUEST     = "FETCH_BOOK_REQUEST";
+export const FETCH_BOOK_SUCCESS     = "FETCH_BOOK_SUCCESS";
+export const FETCH_BOOK_FAILURE     = "FETCH_BOOK_FAILURE";
+
+export const UPDATE_CHAPTER         = "UPDATE_CHAPTER";
+export const FETCH_CHAPTER_REQUEST  = "FETCH_CHAPTER_REQUEST";
+export const FETCH_CHAPTER_SUCCESS  = "FETCH_CHAPTER_SUCCESS";
+export const FETCH_CHAPTER_FAILURE  = "FETCH_CHAPTER_FAILURE";
+
+export const ADD_BOOKMARK           = "ADD_BOOKMARK";
+export const REMOVE_BOOKMARK        = "REMOVE_BOOKMARK";
+
+export const UPDATE_READ_MODE       = "UPDATE_READ_MODE";
