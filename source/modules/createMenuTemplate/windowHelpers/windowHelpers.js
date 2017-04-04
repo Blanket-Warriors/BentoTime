@@ -1,6 +1,6 @@
 import { BrowserWindow } from "electron";
 
-function reloadPage(focusedWindow) {
+function reloadPage(item, focusedWindow) {
   if(focusedWindow) {
     if(focusedWindow.id === 1) {
       closeSecondaryWindows();
@@ -17,13 +17,13 @@ function closeSecondaryWindows() {
   });
 }
 
-function toggleFullscreen(focusedWindow) {
+function toggleFullscreen(item, focusedWindow) {
   if(focusedWindow) {
     focusedWindow.setFullScreen(!focusedWindow.isFullScreen());
   }
 }
 
-function openDevTools(focusedWindow) {
+function openDevTools(item, focusedWindow) {
   if (focusedWindow) {
     focusedWindow.webContents.toggleDevTools();
   }

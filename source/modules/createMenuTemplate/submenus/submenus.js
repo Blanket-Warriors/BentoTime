@@ -1,5 +1,6 @@
 import { app, shell, autoUpdater } from "electron";
-import helpers from "main/modules/windowHelpers/windowHelpers.js";
+import helpers from "../windowHelpers/windowHelpers.js";
+import { createLauncherWindow } from "../createWindow/createWindow.js";
 
 const isMac = process.platform === "darwin";
 const version = app.getVersion();
@@ -22,13 +23,14 @@ const editMenu = {
 const viewMenu = {
   label: "View",
   submenu: [
-    { label: "Reload", click: (item, window)=>{helpers.reloadPage(window);}, accelerator: "CmdOrCtrl+R" },
+    { label: "New Window", click: createLauncherWindow, accelerator: "CmdOrCtrl+N" }
+    { label: "Reload",     click: helpers.reloadPage,   accelerator: "CmdOrCtrl+R" },
+    { type: "separator" },
     {
       label: "Toggle Full Screen",
-      click: (item, window)=>{helpers.toggleFullscreen();},
+      click: helpers.toggleFullscreen,
       accelerator: isMac ? "Ctrl+Command+F" : "F11"
     },
-    { type: "separator" }
   ]
 };
 
@@ -52,7 +54,7 @@ const helpMenu = {
     {
       label: "Toggle Developer Tools",
       accelerator: isMac ? "Alt+Command+I" : "Ctrl+Shift+I",
-      click: (item, window)=>{helpers.openDevTools();}
+      click: helpers.openDevTools
     }
   ]
 };
@@ -67,11 +69,11 @@ const macMainMenu = {
     { type: "separator" },
 
     { label: `Hide ${name}`, role: "hide", accelerator: "Command+H" },
-    { label: "Hide Others",           role: "hideothers", accelerator: "Command+Alt+H"},
-    { label: "Show All",              role: "unhide" },
+    { label: "Hide Others", role: "hideothers", accelerator: "Command+Alt+H"},
+    { label: "Show All", role: "unhide" },
     { type: "separator" },
 
-    { label: "Quit", accelerator: "Command+Q", click: () => app.quit()}
+    { label: "Quit", accelerator: "Command+Q", click: app.quit}
   ]
 };
 
