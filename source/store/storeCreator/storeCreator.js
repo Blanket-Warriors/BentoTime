@@ -2,8 +2,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { routerMiddleware } from "react-router-redux";
 import thunkMiddleware from "redux-thunk";
 
-import callApiMiddleware from "./middleware/callApiMiddleware/callApiMiddleware.js";
-import localStorageMiddleware from "./middleware/localStorageMiddleware/localStorageMiddlware.js";
+import { callApiMiddleware, createLocalStorageMiddleware } from "zuck";
 import reducers from "store/reducers/reducers.js";
 
 function storeCreator(initialState = {}, options = {}) {
@@ -12,7 +11,7 @@ function storeCreator(initialState = {}, options = {}) {
 		thunkMiddleware,
 		reduxRouterMiddleware,
 		callApiMiddleware,
-		localStorageMiddleware
+		createLocalStorageMiddleware("__bentotime__")
 	];
 
 	const store = createStore(

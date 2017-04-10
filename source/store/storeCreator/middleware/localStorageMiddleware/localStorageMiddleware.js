@@ -5,7 +5,7 @@ const debouncedSaveState = debounce(function saveState(store, next, action) {
     let result = next(action);
     if(process.env["NODE_ENV"] === "development") { console.log("saving state!"); }
     const state = store.getState();
-    window.localStorage.setItem("bentotime", JSON.stringify(state || {}));
+    window.localStorage.setItem("__zuck__", JSON.stringify(state || {}));
     return result;
   }
 });
